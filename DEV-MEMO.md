@@ -1,6 +1,6 @@
 # DEV-MEMO — FADD9
 
-最終更新: 2026-08-24(Rebuild 1 — fadd9 転換)
+最終更新: 2026-08-24(Phase 2 — Samples Library)
 旧 Atlas ポータルからの全面転換以降の設計決定を記録する。Atlas 時代の記録は下部「レガシー記録」に残す。
 
 ## Rebuild 1(2026-08-24)— fadd9 転換
@@ -40,6 +40,38 @@
 - サブページ works / now / os / updates はまだ旧 Atlas 文言。順次改修
 - og.png 差し替え
 - Samples 譜例の data JSON 化(Phase 2 の種データ)
+
+---
+
+## Phase 2(2026-08-24)— Samples Library
+
+### 目的
+
+「既存 ABC 記法の弱点=動くサンプルの少なさ」を埋める譜例ライブラリを実装。works の一覧/詳細アーキテクチャを流用し、`data/samples.json` を正本にした。
+
+### 新規ファイル
+
+| ファイル | 役割 |
+| --- | --- |
+| `data/samples.json` | 譜例台帳の正本。12 譜例 × category(exercise/chords/scales/riffs/songs) |
+| `samples/index.html` | 一覧。カテゴリフィルタ(`?category=`)/検索/タグチップ |
+| `samples/sample.html` | 詳細(`?slug=`)。ABC ボード+COPY ボタン+練習ヒント+関連譜例 |
+| `js/samples.js` | 一覧・詳細レンダラ。clipboard API + execCommand フォールバック |
+
+### 設計上の決定
+
+1. **ABC は全て検算済み**: 小節長 = 拍子×L を手計算で確認(eighth 数の整合)。`>` (broken rhythm)、`[EG]`(重音)、`z`(休止)、`^` `_`(臨時記号)など記法要素をサンプル間で分散させ、「読む辞書」も兼ねる
+2. **楽曲はパブリックドメインのみ**(Ode to Joy / Greensleeves)。著作権のあるリフは書かない
+3. **コピー体験を最優先**: 詳細ページの COPY ボタンが Phase 2 の核。Phase 3 の描画・再生が来るまでの実用性担保
+4. **関連譜例スコアリング**: 同カテゴリ +2、タグ一致 +1(旧 works は同タイプ+1/タグ+2 だったが、カテゴリの方が音楽的近さに効くため重みを反転)
+5. **palette 遅延ロードを works → samples に切替**。レガシーカタログは palette 対象外(ページ内検索で足りる)
+6. **ホーム Library カードを実リンク化**(`?category=`)。PLANNED バッジ廃止、EXERCISE カード追加
+
+### 未消化
+
+- 描画・再生なし(abcjs 同梱は Phase 3)
+- og.png 差し替え、updates ページの fadd9 化
+- samples/sample.html の OGP 動的差し替えは title/description のみ
 
 ---
 

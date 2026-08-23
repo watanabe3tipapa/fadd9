@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Samples — fadd9 譜例ライブラリ</title>
+  <meta name="description" content="ABC記法で書かれたギター譜例のライブラリ。コード進行・スケール・リフ・曲をカテゴリと検索で辿れます。">
+  <meta property="og:title" content="Samples — fadd9 譜例ライブラリ">
+  <meta property="og:description" content="ABC記法で書かれたギター譜例のライブラリ。">
+  <meta property="og:url" content="https://watanabe3tipapa.github.io/fadd9/samples/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://watanabe3tipapa.github.io/fadd9/og.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://watanabe3tipapa.github.io/fadd9/samples/">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%230a0e1a'/><path d='M28 30v46M46 30v46M64 30v46M82 30v46' stroke='%23e8ecf4' stroke-width='4'/><path d='M16 34h78M16 54h78M16 74h78' stroke='%232dd4bf' stroke-width='4'/><circle cx='46' cy='64' r='8' fill='%23fde68a'/></svg>">
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へスキップ</a>
+
+  <header class="page-head">
+    <div class="container">
+      <nav class="crumbs mono" aria-label="パンくず">
+        <a href="../index.html">HOME</a> / <span>SAMPLES</span>
+      </nav>
+      <h1 class="page-title">Samples<span class="section__sub">譜例ライブラリ</span></h1>
+      <p class="page-lead">ABC記法で書かれたギターの練習素材。検索・カテゴリで選んで、詳細ページからコピーして使う。</p>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section section--flush-top">
+      <div class="container">
+        <div class="filters" role="group" aria-label="絞り込み">
+          <div class="filters__types">
+            <button type="button" class="filter-btn mono is-on" data-type="all" aria-pressed="true">ALL</button>
+            <button type="button" class="filter-btn mono" data-type="exercise" aria-pressed="false">EXERCISE · 練習</button>
+            <button type="button" class="filter-btn mono" data-type="chords" aria-pressed="false">CHORDS · コード</button>
+            <button type="button" class="filter-btn mono" data-type="scales" aria-pressed="false">SCALES · スケール</button>
+            <button type="button" class="filter-btn mono" data-type="riffs" aria-pressed="false">RIFFS · リフ</button>
+            <button type="button" class="filter-btn mono" data-type="songs" aria-pressed="false">SONGS · 曲</button>
+          </div>
+          <div class="filters__search">
+            <label class="visually-hidden" for="samples-search">譜例を検索</label>
+            <input type="search" id="samples-search" placeholder="検索… (例: blues, pentatonic, 王道)" autocomplete="off">
+          </div>
+        </div>
+
+        <div class="filters__foot mono">
+          <p><span id="filtered-count">— / —</span> 件</p>
+          <div class="tagbar" id="tag-bar" aria-label="タグで絞り込み"></div>
+        </div>
+
+        <noscript>
+          <p class="works-error">JavaScript を有効にすると一覧・絞り込みが使えます。生データは <a class="textlink" href="../data/samples.json">samples.json</a> でも公開しています。</p>
+        </noscript>
+
+        <div class="grid grid--3 works-grid" id="samples-grid" aria-live="polite">
+          <p class="works-error">読み込み中…</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__bottom footer__bottom--solo">
+      <p><small>&copy; 2026 watanabe3ti — <a class="textlink" href="../index.html">fadd9 HOME</a></small></p>
+      <p class="footer__rss-note"><span id="samples-count"></span> 件の譜例を掲載 — Guitar, notated.</p>
+    </div>
+  </footer>
+
+  <script src="../js/palette.js" defer></script>
+  <script src="../js/samples.js" defer></script>
+</body>
+</html>

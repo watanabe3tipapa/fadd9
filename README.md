@@ -20,11 +20,11 @@ fadd9 は、ギターを入り口に **ABC記法(テキストで書く楽譜)** 
 
 - Hero — Fadd9 コードダイアグラム(SVG 手描き)+ コンセプト導線
 - Why ABC — テキスト記譜の利点(TEXT / GIT / PLAY)
-- Samples — 手書き譜例ボード(study / progression)。Phase 2 でライブラリ化
-- Library — Chords / Scales / Riffs / Songs カテゴリ(準備中)
+- Samples — 手書き譜例ボード(study / progression)
+- **Samples Library** — `data/samples.json` 正本の譜例 12 件。カテゴリ(練習/コード進行/スケール/リフ/曲)・検索・タグで絞り込み、詳細ページから ABC テキストをワンクリックコピー
 - Roadmap — フェーズ計画
 - Updates + Atom feed — 更新履歴
-- ⌘K Command Palette — 全ページ共通
+- ⌘K Command Palette — 譜例 12 件も横断検索
 
 ---
 
@@ -54,8 +54,8 @@ python3 -m http.server 8000
 | Phase | 内容 | 状態 |
 |---|---|---|
 | 1 | トップページ刷新(fadd9 転換) | ✅ 完了 |
-| 2 | Samples Library(data JSON 正本 + 一覧/検索/詳細) | 着手予定 |
-| 3 | Play & Render(abcjs ローカル同梱、描画と再生) | 計画 |
+| 2 | Samples Library(data JSON 正本 + 一覧/検索/詳細) | ✅ 完了 |
+| 3 | Play & Render(abcjs ローカル同梱、描画と再生) | 着手予定 |
 | 4 | Reference & Playground(チートシート、Fadd9 OS 統合) | 計画 |
 
 ## リポジトリ構成(主なファイル)
@@ -63,29 +63,46 @@ python3 -m http.server 8000
 ```
 fadd9/
 ├── index.html          # LP 本体(Hero + Why ABC + Samples + Library + Roadmap)
-├── works/index.html    # レガシーカタログ(Phase 2 でサンプルライブラリへ改修)
+├── samples/index.html  # 譜例ライブラリ一覧(?category=exercise/chords/scales/riffs/songs)
+├── samples/sample.html # 譜例詳細(?slug=)+ ABC コピー + 練習ヒント + 関連譜例
+├── works/index.html    # レガシーカタログ(Phase 後半で改修)
 ├── works/work.html     # 個別ページ(?slug=)
 ├── now/index.html      # Now ページ(移行中)
 ├── os/index.html       # Fadd9 OS(旧 Atlas OS、Phase 4 で改修)
 ├── updates/index.html  # 更新履歴タイムライン
 ├── css/style.css       # デザイントークン / レスポンシブ
 ├── js/main.js          # reveal アニメーション / 年表示
-├── js/palette.js       # Command Palette(全ページ共通)
+├── js/palette.js       # Command Palette(譜例を遅延ロードで横断検索)
+├── js/samples.js       # 譜例一覧・詳細レンダラ(+コピー機能)
 ├── js/works.js         # レガシー一覧・詳細レンダラ
 ├── js/os.js            # ウィンドウマネージャ / Compact Mode
-├── js/recent.js        # Recent Files(Phase 2 で再利用予定)
 ├── data.json           # サイト設定メタデータ
-├── data/works-*.json   # レガシーデータ(Phase 2 で samples.json へ統合予定)
+├── data/samples.json   # 譜例台帳の正本(12 譜例)
+├── data/works-*.json   # レガシーデータ
 ├── feed.xml            # Atom feed
 ├── sitemap.xml / robots.txt
-└── og.png              # OGP 共有画像(1200×630)
+└── og.png              # OGP 共有画像(1200×630、差し替え予定)
 ```
+
+## samples.json のスキーマ
+
+| フィールド | 内容 |
+|---|---|
+| slug | URL 用 ID(`sample.html?slug=`) |
+| name / nameJa | 曲・練習名(英/日) |
+| category | exercise / chords / scales / riffs / songs |
+| level | BEGINNER / INTERMEDIATE / ADVANCED |
+| key / meter / tempo | 調・拍子・速度(Q: 表記) |
+| tags | 検索用タグ配列 |
+| summaryJa / tipsJa | 概要と練習ヒント |
+| abc | ABC テキスト本体(X:/T:/M:/L:/Q:/K: 順) |
 
 ## 既知の制限
 
-- サブページ(works / now / os / updates)は旧 Atlas のまま。Phase 2〜4 で順次改修
+- サンプル詳細は JS レンダリングのため、クローラによっては本文を取得できない(title/description は差し替え済み)
+- サブページ(works / now / os / updates)は旧 Atlas のまま。順次改修
 - og.png は旧デザインのまま。差し替え予定
-- Samples の譜例は現在手書き HTML。Phase 2 で data JSON 化
+- 楽譜の視覚描画・ブラウザ内再生は Phase 3 で対応
 
 ---
 
@@ -100,4 +117,4 @@ fadd9/
 
 ## 開発・保守状態
 
-- 最終更新: 2026-08-24 (Rebuild 1 — fadd9 転換)
+- 最終更新: 2026-08-24 (Phase 2 — Samples Library)

@@ -95,10 +95,9 @@
   <nav class="localnav" aria-label="ページ内リンク">
     <ul class="container localnav__list">
       <li><a href="#about">About</a></li>
-      <li><a href="#samples">Samples</a></li>
-      <li><a href="#library">Library</a></li>
+      <li><a href="#samples">譜例</a></li>
+      <li><a href="samples/index.html">Library</a></li>
       <li><a href="#roadmap">Roadmap</a></li>
-      <li><a href="works/index.html">Works</a></li>
       <li><a href="updates/index.html">Updates</a></li>
     </ul>
   </nav>
@@ -173,36 +172,41 @@ K:C
 "C" C E G c | "G" G B d g | "Am" A c e a | "F" F A c f |</pre>
           </figure>
         </div>
+        <p class="section__more"><a class="textlink" href="samples/index.html">すべての譜例を見る(12件)<span aria-hidden="true"> →</span></a></p>
       </div>
     </section>
 
     <!-- ============ Library ============ -->
     <section class="section" id="library" aria-labelledby="library-title">
       <div class="container">
-        <h2 class="section__title" id="library-title">Library<span class="section__sub">カテゴリ — 準備中</span></h2>
+        <h2 class="section__title" id="library-title">Library<span class="section__sub">カテゴリ別の入口</span></h2>
         <div class="grid grid--4">
           <article class="card reveal">
-            <p class="card__type mono">CHORDS <span class="planned">PLANNED</span></p>
-            <h3 class="card__name">コード進行</h3>
-            <p class="card__desc">定番進行から一音変化まで。指板ポジション付きで。</p>
+            <p class="card__type mono">EXERCISE</p>
+            <h3 class="card__name"><a class="work-card__link" href="samples/index.html?category=exercise">練習</a></h3>
+            <p class="card__desc">ウォームアップ、フィンガリング、ピッキング。毎日の土台。</p>
           </article>
           <article class="card reveal">
-            <p class="card__type mono">SCALES <span class="planned">PLANNED</span></p>
-            <h3 class="card__name">スケール練習</h3>
-            <p class="card__desc">指慣らしからモードまで。テンポ指定つきエチュード。</p>
+            <p class="card__type mono">CHORDS</p>
+            <h3 class="card__name"><a class="work-card__link" href="samples/index.html?category=chords">コード進行</a></h3>
+            <p class="card__desc">王道進行・カノン進行・ダイアトニック。理論と指板を結ぶ。</p>
           </article>
           <article class="card reveal">
-            <p class="card__type mono">RIFFS <span class="planned">PLANNED</span></p>
-            <h3 class="card__name">リフ&amp;フレーズ</h3>
-            <p class="card__desc">弾きたくなる短い素材。キーやテンポのバリエーション付き。</p>
+            <p class="card__type mono">SCALES</p>
+            <h3 class="card__name"><a class="work-card__link" href="samples/index.html?category=scales">スケール練習</a></h3>
+            <p class="card__desc">メジャーからペンタトニックまで。即興の語彙を増やす。</p>
           </article>
           <article class="card reveal">
-            <p class="card__type mono">SONGS <span class="planned">PLANNED</span></p>
-            <h3 class="card__name">曲まるごと</h3>
-            <p class="card__desc">構成ごと区切ったフル譜面。セクションラベルで読みやすく。</p>
+            <p class="card__type mono">RIFFS</p>
+            <h3 class="card__name"><a class="work-card__link" href="samples/index.html?category=riffs">リフ&amp;フレーズ</a></h3>
+            <p class="card__desc">ブルーズシャッフル、パワーコード。弾きたくなる短い素材。</p>
+          </article>
+          <article class="card reveal">
+            <p class="card__type mono">SONGS</p>
+            <h3 class="card__name"><a class="work-card__link" href="samples/index.html?category=songs">曲まるごと</a></h3>
+            <p class="card__desc">パブリックドメインの名曲を ABC で。6/8 拍子など拍子の勉強に。</p>
           </article>
         </div>
-        <p class="section__more"><a class="textlink" href="updates/index.html">進捗は Updates で追えます<span aria-hidden="true"> →</span></a></p>
       </div>
     </section>
 
@@ -213,8 +217,8 @@ K:C
         <ol class="signal-list">
           <li class="signal-list__item reveal">
             <time class="mono" datetime="phase-2">PHASE 2</time>
-            <strong>Samples Library</strong>
-            <p>data JSON を正本にした一覧・検索・詳細ページ。旧 Works の仕組みを流用。</p>
+            <strong>Samples Library ✅</strong>
+            <p>data/samples.json を正本にした一覧・検索・詳細ページを公開(12 譜例)。</p>
           </li>
           <li class="signal-list__item reveal">
             <time class="mono" datetime="phase-3">PHASE 3</time>
@@ -249,10 +253,11 @@ K:C
       <nav class="footer__sites" aria-label="サイト内ページ">
         <h2 class="footer__heading mono">SITES</h2>
         <ul class="footer__links">
+          <li><a href="samples/index.html">Samples — 譜例ライブラリ</a></li>
+          <li><a href="updates/index.html">Updates — 更新履歴</a></li>
           <li><a href="works/index.html">Works — レガシーカタログ(移行中)</a></li>
           <li><a href="now/index.html">Now — 現在地(移行中)</a></li>
           <li><a href="os/index.html">Fadd9 OS — デスクトップ体験</a></li>
-          <li><a href="updates/index.html">Updates — 更新履歴</a></li>
           <li><a href="feed.xml">RSS (fadd9)</a></li>
         </ul>
       </nav>

@@ -1621,6 +1621,35 @@ body.os-compact .menubar__menus {
   vertical-align: 0.1em;
 }
 
+/* ---- 譜例詳細ページ ---- */
+.abc-board--detail {
+  margin-top: 2rem;
+  max-width: 720px;
+}
+
+.btn-copy {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--ink);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  padding: 0.2rem 0.7rem;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-copy:hover {
+  color: var(--teal);
+  border-color: var(--teal);
+}
+
+.copy-note {
+  color: var(--teal);
+  font-size: 0.75rem;
+  margin-top: 0.6rem;
+}
+
 @media (max-width: 720px) {
   .hero__layout {
     flex-direction: column-reverse;

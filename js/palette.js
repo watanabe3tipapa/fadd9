@@ -17,7 +17,12 @@
   /* ---------- 静的インデックス ---------- */
   const staticItems = [
     { group: "PAGE", label: "HOME — fadd9 ホーム", hint: "ABC記法 ギター 譜例", href: BASE + "index.html" },
-    { group: "PAGE", label: "Samples — 譜例", hint: "study progression コピー", href: BASE + "index.html#samples" },
+    { group: "PAGE", label: "Samples — 譜例ライブラリ", hint: "一覧 検索 カテゴリ", href: BASE + "samples/index.html" },
+    { group: "PAGE", label: "Samples · Exercise — 練習", hint: "ウォームアップ 指練習", href: BASE + "samples/index.html?category=exercise" },
+    { group: "PAGE", label: "Samples · Chords — コード進行", hint: "王道 カノン ダイアトニック", href: BASE + "samples/index.html?category=chords" },
+    { group: "PAGE", label: "Samples · Scales — スケール", hint: "メジャー ペンタトニック", href: BASE + "samples/index.html?category=scales" },
+    { group: "PAGE", label: "Samples · Riffs — リフ", hint: "ブルーズ ロック シャッフル", href: BASE + "samples/index.html?category=riffs" },
+    { group: "PAGE", label: "Samples · Songs — 曲", hint: "パブリックドメイン メロディ", href: BASE + "samples/index.html?category=songs" },
     { group: "PAGE", label: "Roadmap — これから", hint: "phase 計画 library", href: BASE + "index.html#roadmap" },
     { group: "PAGE", label: "Works — レガシーカタログ", hint: "旧道具一覧 移行中", href: BASE + "works/index.html" },
     { group: "PAGE", label: "Now — 現在地(移行中)", hint: "いま 作っている", href: BASE + "now/index.html" },
@@ -31,25 +36,24 @@
     { group: "HUB", label: "Toolsmith", hint: "道具箱 ニュース tool", href: "https://toolsmith.watanabe3ti.com/" }
   ];
 
-  /* ---------- 道具インデックス（遅延ロード） ---------- */
-  let workItems = [];
-  let worksLoaded = false;
-  async function loadWorks() {
-    if (worksLoaded) return;
+  /* ---------- 譜例インデックス(遅延ロード) ---------- */
+  let sampleItems = [];
+  let samplesLoaded = false;
+  async function loadSamples() {
+    if (samplesLoaded) return;
     try {
-      const files = ["data/works-tools.json", "data/works-lab.json"].map((f) => BASE + f);
-      const results = await Promise.all(files.map((f) => fetch(f).then((r) => r.json())));
-      workItems = results.flatMap((r) => r.works).map((w) => ({
-        group: `WORK · ${w.type}`,
-        label: w.name,
-        hint: [w.lang, ...w.tags].filter(Boolean).join(" · "),
-        tags: w.tags.join(" ").toLowerCase(),
-        summary: w.summaryJa,
-        href: BASE + `works/work.html?slug=${encodeURIComponent(w.slug)}`
+      const r = await fetch(BASE + "data/samples.json").then((r) => r.json());
+      sampleItems = r.samples.map((s) => ({
+        group: `SAMPLE · ${s.category}`,
+        label: s.name,
+        hint: [s.nameJa, `KEY ${s.key}`, ...s.tags].join(" · "),
+        tags: [...s.tags, s.category, s.key].join(" ").toLowerCase(),
+        summary: s.summaryJa,
+        href: BASE + `samples/sample.html?slug=${encodeURIComponent(s.slug)}`
       }));
-      worksLoaded = true;
+      samplesLoaded = true;
     } catch {
-      workItems = [];
+      sampleItems = [];
     }
   }
 
@@ -89,7 +93,7 @@
     overlay.hidden = false;
     launch.setAttribute("aria-expanded", "true");
     document.body.style.overflow = "hidden";
-    loadWorks().then(render);
+    loadSamples().then(render);
     input.value = "";
     render();
     input.focus();
@@ -103,7 +107,7 @@
   }
 
   function filter(q) {
-    const all = staticItems.concat(workItems);
+    const all = staticItems.concat(sampleItems);
     if (!q) return all.slice(0, 14);
     const tokens = q.toLowerCase().split(/\s+/);
     return all
