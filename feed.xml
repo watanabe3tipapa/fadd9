@@ -5,11 +5,20 @@
   <link rel="alternate" type="text/html" href="https://watanabe3tipapa.github.io/fadd9/updates/"/>
   <link rel="self" type="application/atom+xml" href="https://watanabe3tipapa.github.io/fadd9/feed.xml"/>
   <id>tag:watanabe3ti,2026:fadd9-updates</id>
-  <updated>2026-08-24T12:00:00Z</updated>
+  <updated>2026-08-24T18:00:00Z</updated>
   <author>
     <name>watanabe3ti</name>
     <uri>https://watanabe3ti.com/</uri>
   </author>
+
+  <entry>
+    <title>Phase 4 — Reference &amp; Playground</title>
+    <link rel="alternate" type="text/html" href="https://watanabe3tipapa.github.io/fadd9/playground/"/>
+    <id>tag:watanabe3ti,2026:fadd9-phase4</id>
+    <published>2026-08-24T18:00:00Z</published>
+    <updated>2026-08-24T18:00:00Z</updated>
+    <summary>ABC記法チートシート(鳴る実例つき)と、入力即描画・即再生のプレイグラウンドを公開。下書きは自動保存、譜例をその場で読み込んで改造可能。Fadd9 OS を譜例データの練習室に改造し、OGP 画像も刷新。</summary>
+  </entry>
 
   <entry>
     <title>Phase 3 — Play &amp; Render</title>

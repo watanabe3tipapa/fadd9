@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reference — ABC記法チートシート | fadd9</title>
+  <meta name="description" content="ABC記法の実用チートシート。ヘッダフィールド、音符とオクターブ、時値、反復記号、重音とコード記号を、鳴る実例つきで解説します。">
+  <meta property="og:title" content="Reference — ABC記法チートシート | fadd9">
+  <meta property="og:description" content="ABC記法を実例で覚えるチートシート。">
+  <meta property="og:url" content="https://watanabe3tipapa.github.io/fadd9/reference/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://watanabe3tipapa.github.io/fadd9/og.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://watanabe3tipapa.github.io/fadd9/reference/">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%230a0e1a'/><path d='M28 30v46M46 30v46M64 30v46M82 30v46' stroke='%23e8ecf4' stroke-width='4'/><path d='M16 34h78M16 54h78M16 74h78' stroke='%232dd4bf' stroke-width='4'/><circle cx='46' cy='64' r='8' fill='%23fde68a'/></svg>">
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へスキップ</a>
+
+  <header class="page-head">
+    <div class="container">
+      <nav class="crumbs mono" aria-label="パンくず">
+        <a href="../index.html">HOME</a> / <span>REFERENCE</span>
+      </nav>
+      <h1 class="page-title">Reference<span class="section__sub">ABC記法チートシート</span></h1>
+      <p class="page-lead">fadd9 の譜例を読むために必要な ABC 記法を、鳴る実例つきで。覚えることは少ない。「書いて、貼って、鳴らす」を繰り返すうちに体に入ります。</p>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ Headers ============ -->
+    <section class="section section--flush-top" id="headers" aria-labelledby="headers-title">
+      <div class="container">
+        <h2 class="section__title" id="headers-title">Header fields<span class="section__sub">譜頭 — 曲の設定</span></h2>
+        <p class="section__lead">X で始まり K で終わるのが約束。この順序さえ守れば、あとは行の集まりです。</p>
+        <div class="grid grid--3">
+          <article class="card reveal">
+            <p class="card__type mono">X: / T: / C:</p>
+            <p class="card__desc"><strong>X:</strong> 曲番号(必須・先頭)、<strong>T:</strong> 曲名、<strong>C:</strong> 作者。複数 T: で別名も書けます。</p>
+          </article>
+          <article class="card reveal">
+            <p class="card__type mono">M: / L:</p>
+            <p class="card__desc"><strong>M:</strong> 拍子(<span class="mono">M:4/4</span>)。<strong>L:</strong> 基準音価(<span class="mono">L:1/8</span>=音符は標準で 8 分音符)。</p>
+          </article>
+          <article class="card reveal">
+            <p class="card__type mono">Q: / K:</p>
+            <p class="card__desc"><strong>Q:</strong> テンポ(<span class="mono">Q:1/4=72</span>)。<strong>K:</strong> 調性(<span class="mono">K:F</span>)。必須・末尾。</p>
+          </article>
+        </div>
+        <figure class="abc-board ref-board reveal">
+          <figcaption class="abc-board__head">
+            <span class="abc-board__file mono">最小構成の雛形</span>
+            <span class="badge-soft mono">TEMPLATE</span>
+          </figcaption>
+          <pre>X:1
+T:title
+M:4/4
+L:1/8
+Q:1/4=80
+K:C
+(ここに音符を書く)</pre>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ Notes ============ -->
+    <section class="section" id="notes" aria-labelledby="notes-title">
+      <div class="container">
+        <h2 class="section__title" id="notes-title">Notes &amp; Octaves<span class="section__sub">音名とオクターブ</span></h2>
+        <div class="ref-grid">
+          <div class="ref-item reveal">
+            <h3 class="card__name">C D E F G A B = ドレミファソラシ</h3>
+            <p class="card__desc">大文字は中央のオクターブ、小文字は 1 オクターブ上。<span class="mono">,</span> で下、<span class="mono">'</span> で上が伸びる。</p>
+            <pre class="ref-code mono">C D E F G A B   c d e f g a b
+C,               c'</pre>
+            <figure class="ref-demo" data-demo="octaves"></figure>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">臨時記号 ^ = _</h3>
+            <p class="card__desc">音名の直前に置く。<strong>^</strong> シャープ、<strong>_</strong> フラット、<strong>=</strong> ナチュラル。</p>
+            <pre class="ref-code mono">^F  _B  =F</pre>
+            <figure class="ref-demo" data-demo="accidentals"></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Durations ============ -->
+    <section class="section" id="durations" aria-labelledby="durations-title">
+      <div class="container">
+        <h2 class="section__title" id="durations-title">Durations<span class="section__sub">音の長さ</span></h2>
+        <div class="ref-grid">
+          <div class="ref-item reveal">
+            <h3 class="card__name">数字で倍、/ で割る</h3>
+            <p class="card__desc"><span class="mono">L:1/4</span> のとき、<span class="mono">C2</span> は 2 分音符、<span class="mono">C/2</span>(省略形 <span class="mono">C/</span>)は 8 分音符、<span class="mono">C3</span> は付点 2 分。</p>
+            <pre class="ref-code mono">L:1/4
+C2 D E F   (二分・四分・四分・四分)</pre>
+            <figure class="ref-demo" data-demo="durations"></figure>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">&gt; でシャッフル</h3>
+            <p class="card__desc"><span class="mono">A&gt;B</span> は「前を付点・次を半分」。<span class="mono">A&lt;B</span> は逆。ブルーズの揺れに必須。</p>
+            <pre class="ref-code mono">E&gt;E E&gt;E E&gt;E E&gt;E</pre>
+            <figure class="ref-demo" data-demo="broken"></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Bars ============ -->
+    <section class="section" id="bars" aria-labelledby="bars-title">
+      <div class="container">
+        <h2 class="section__title" id="bars-title">Bars &amp; Repeats<span class="section__sub">小節線と反復</span></h2>
+        <div class="ref-grid">
+          <div class="ref-item reveal">
+            <h3 class="card__name">| 小節線、|| |] 終わり</h3>
+            <p class="card__desc"><strong>|</strong> 区切り、<strong>||</strong> 段落終止、<strong>|]</strong> 曲の終止。</p>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">|: :| :: 反復</h3>
+            <p class="card__desc"><strong>|:</strong> 前反復、<strong>:|</strong> 後反復、<strong>::</strong> 両方。</p>
+            <pre class="ref-code mono">|: C D E F | G A B c :|</pre>
+            <figure class="ref-demo" data-demo="repeats"></figure>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">z が休符</h3>
+            <p class="card__desc">音符と同じ文法で長さを変えられる(<span class="mono">z2</span>、<span class="mono">z/2</span>)。<strong>Z</strong> は全休止。</p>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">- でタイ、() でスラー</h3>
+            <p class="card__desc"><span class="mono">C-C</span> 同音タイ。<span class="mono">(CDE)</span> でレガート。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Chords ============ -->
+    <section class="section" id="chords" aria-labelledby="chords-title">
+      <div class="container">
+        <h2 class="section__title" id="chords-title">Chords<span class="section__sub">重音とコード記号</span></h2>
+        <div class="ref-grid">
+          <div class="ref-item reveal">
+            <h3 class="card__name">[CEG] 同時に鳴す</h3>
+            <p class="card__desc">括弧内の音を同時に発音。パワーコードなら <span class="mono">[EG]</span>。</p>
+            <pre class="ref-code mono">[EG] z [EG] [EA]</pre>
+            <figure class="ref-demo" data-demo="dyad"></figure>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">"Am" コード記号</h3>
+            <p class="card__desc">ダブルクォートで挟むと、その位置にコードネームが表示される。演奏には影響しない。</p>
+            <pre class="ref-code mono">"C"C E G c | "G"G B d g |</pre>
+            <figure class="ref-demo" data-demo="chordsym"></figure>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">(3 三連符</h3>
+            <p class="card__desc">括弧+数字で連符。<span class="mono">(3ABC</span> のように次の 3 音に適用。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Next ============ -->
+    <section class="section" id="try" aria-labelledby="try-title">
+      <div class="container">
+        <h2 class="section__title" id="try-title">Try it<span class="section__sub">書いてみる</span></h2>
+        <div class="grid grid--hub">
+          <article class="card reveal">
+            <p class="card__type mono">PLAYGROUND</p>
+            <h3 class="card__name">プレイグラウンド</h3>
+            <p class="card__desc">入力して即、描画と再生。このページの例を貼って確かめよう。</p>
+            <p class="card__action"><a class="textlink" href="../playground/index.html">開く<span aria-hidden="true"> →</span></a></p>
+          </article>
+          <article class="card reveal">
+            <p class="card__type mono">SAMPLES</p>
+            <h3 class="card__name">実物の譜例</h3>
+            <p class="card__desc">この文法だけで書かれた 12 譜例。読める曲数が語彙になる。</p>
+            <p class="card__action"><a class="textlink" href="../samples/index.html">ライブラリへ<span aria-hidden="true"> →</span></a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__bottom footer__bottom--solo">
+      <p><small>&copy; 2026 watanabe3ti — <a class="textlink" href="../index.html">fadd9 HOME</a></small></p>
+      <p class="footer__rss-note">Guitar, notated.</p>
+    </div>
+  </footer>
+
+  <script src="../js/vendor/abcjs-basic-min.js" defer></script>
+  <script src="../js/palette.js" defer></script>
+  <script src="../js/reference.js" defer></script>
+</body>
+</html>

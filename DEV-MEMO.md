@@ -1,6 +1,6 @@
 # DEV-MEMO — FADD9
 
-最終更新: 2026-08-24(Phase 3 — Play & Render)
+最終更新: 2026-08-24(Phase 4 — Reference & Playground)
 旧 Atlas ポータルからの全面転換以降の設計決定を記録する。Atlas 時代の記録は下部「レガシー記録」に残す。
 
 ## Rebuild 1(2026-08-24)— fadd9 転換
@@ -101,8 +101,53 @@
 ### 未消化
 
 - 再生中の音符ハイライト(cursorControl)は未実装
-- og.png 差し替え、updates ページの fadd9 化
 - 一覧ページでのミニスコア描画(重いので見送り)
+
+---
+
+## Phase 4(2026-08-24)— Reference & Playground
+
+### 目的
+
+「読める・鳴らせる」に続く三段目「**書ける**」を提供する。ABC 記法の学習辞書(Reference)と、書いて即確認できる実験場(Playground)で、独習のループを閉じる。
+
+### 新規ファイル
+
+| ファイル | 役割 |
+| --- | --- |
+| `reference/index.html` | ABC記法チートシート。ヘッダフィールド/音名/臨時記号/時値/broken rhythm/反復/休符/重音/コード記号 |
+| `js/reference.js` | `[data-demo]` 属性付き要素へ DEMOS マップの実例スコアを renderAbc で描画 |
+| `playground/index.html` | エディタ + 描画パネル + audio-bar |
+| `js/playground.js` | 入力 debounce 350ms → renderAbc + SynthController.setTune。COPY/CLEAR/サンプル読込/localStorage 下書き |
+
+### 改修ファイル
+
+| ファイル | 内容 |
+| --- | --- |
+| `os/index.html` / `js/os.js` | Atlas OS → **Fadd9 OS**(練習室)。データ正本を works JSON → `data/samples.json` へ切替。フォルダ=カテゴリ(exercise/chords/scales/riffs/songs)、Start Here/Readme を fadd9 文言へ、ブランド `◉ FADD9 OS`、localStorage キーも `fadd9-os-mode` へ変更 |
+| `now/index.html` | 「現在地」→「練習の現在地」。PRACTICING(ウォームアップ)/INTERESTED(理論と耳)/NEXT 構成。譜例詳細への直リンクつき |
+| `updates/index.html` | fadd9 フェーズ履歴に刷新(Atlas Release 履歴は DEV-MEMO に退避) |
+| `index.html` | localnav に Reference/Playground 追加(Roadmap を外す)、footer SITES 更新 |
+| `js/palette.js` | PAGE に Reference/Playground 追加 |
+| `sitemap.xml` / `feed.xml` | /reference/ /playground/ 追加、Phase 4 エントリ追加 |
+| `og.png` | PIL で再生成: 濃紺グラデ + コード図(ティールナット/金ドット)+ Menlo ロゴタイプ + タグライン |
+| `css/style.css` | `.ref-grid/.ref-item/.ref-code/.ref-demo`(紙色ミニパネル)、`.pg-select`、`.playground__*`、`#pg-input` を追記 |
+
+### 設計上の決定
+
+1. **チートシートの実例は静的 HTML + data-demo 属性**: 各記法要素の説明文は HTML 直書き(SEO/noscript でも意味が通る)し、譜面だけ JS が描画。DEMOS マップを js/reference.js に一元化し、ABC 追加時はマップ編集のみ
+2. **Playground は K: 必須ガード**: `K:` を含まない入力では描画せずステータスに案内表示(abcjs の全画面エラー回避)。構文エラー時は譜面を消して理由を status 行に表示
+3. **下書きは localStorage(`fadd9-playground-draft`)**: リロードしても書きかけが消えない。CLEAR はストレージを消さず入力欄のみクリア(誤操作に寛容)
+4. **サンプル読込ドロップダウン**: samples.json の abc をそのまま流し込み → 「ライブラリから拾って改造する」動線。読込後は select をリセット
+5. **Fadd9 OS は「体験」から「練習室」へ**: レガシー works データへの依存を絶ち、Samples UI と完全に同じ正本を読む。ファイル行は詳細ページ(?slug=)へ。Compact Mode の挙動は踏襲
+6. **now は練習ログの入口**: BUILDING/INTERESTED/NEXT 構造は維持しつつ中身をギター練習に置換。譜例 slug への直リンクで回遊を作る
+
+### 未消化(Phase 5 以降)
+
+- works 一覧/詳細の処遇(レガシーカタログとして温存か、削除か)
+- 再生中の音符ハイライト(cursorControl)
+- 軽量計測(方針決定後に GoatCounter 等を検討)
+- 譜例の増強(指弾き・スライド・モード別スケール)
 
 ---
 

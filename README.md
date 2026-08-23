@@ -23,6 +23,10 @@ fadd9 は、ギターを入り口に **ABC記法(テキストで書く楽譜)** 
 - Samples — 手書き譜例ボード(study / progression)
 - **Samples Library** — `data/samples.json` 正本の譜例 12 件。カテゴリ(練習/コード進行/スケール/リフ/曲)・検索・タグで絞り込み、詳細ページから ABC テキストをワンクリックコピー
 - **Play & Render** — 詳細ページで楽譜を SVG 描画し、ブラウザ内で再生(速度変更 WARP 対応)。abcjs v6 をローカル同梱、外部通信ゼロ
+- **Reference** — ABC記法チートシート。各記法要素に「鳴る実例」をその場で描画
+- **Playground** — テキストを書くと即描画・即再生のエディタ。下書きは localStorage 自動保存、譜例を読み込んで改造可能
+- **Fadd9 OS** — 譜例データをデスクトップのメタファーで読む練習室ビュー(Mac OS 9 風)
+- Now — 練習の現在地
 - Roadmap — フェーズ計画
 - Updates + Atom feed — 更新履歴
 - ⌘K Command Palette — 譜例 12 件も横断検索
@@ -57,7 +61,7 @@ python3 -m http.server 8000
 | 1 | トップページ刷新(fadd9 転換) | ✅ 完了 |
 | 2 | Samples Library(data JSON 正本 + 一覧/検索/詳細) | ✅ 完了 |
 | 3 | Play & Render(abcjs ローカル同梱、描画と再生) | ✅ 完了 |
-| 4 | Reference & Playground(チートシート、Fadd9 OS 統合) | 計画 |
+| 4 | Reference & Playground(チートシート、入力即再生、Fadd9 OS 改修) | ✅ 完了 |
 
 ## リポジトリ構成(主なファイル)
 
@@ -65,25 +69,30 @@ python3 -m http.server 8000
 fadd9/
 ├── index.html          # LP 本体(Hero + Why ABC + Samples + Library + Roadmap)
 ├── samples/index.html  # 譜例ライブラリ一覧(?category=exercise/chords/scales/riffs/songs)
-├── samples/sample.html # 譜例詳細(?slug=)+ ABC コピー + 練習ヒント + 関連譜例
+├── samples/sample.html # 譜例詳細(?slug=)+ 楽譜描画/再生 + ABC コピー + 関連譜例
+├── reference/index.html# ABC記法チートシート(鳴る実例つき)
+├── playground/index.html # 入力即描画・即再生のエディタ
 ├── works/index.html    # レガシーカタログ(Phase 後半で改修)
 ├── works/work.html     # 個別ページ(?slug=)
-├── now/index.html      # Now ページ(移行中)
-├── os/index.html       # Fadd9 OS(旧 Atlas OS、Phase 4 で改修)
+├── now/index.html      # Now ページ(練習の現在地)
+├── os/index.html       # Fadd9 OS — 譜例データの練習室デスクトップ
 ├── updates/index.html  # 更新履歴タイムライン
 ├── css/style.css       # デザイントークン / レスポンシブ
 ├── js/vendor/abcjs-basic-min.js  # abcjs v6(楽譜描画+合成再生、ローカル同梱)
 ├── js/main.js          # reveal アニメーション / 年表示
 ├── js/palette.js       # Command Palette(譜例を遅延ロードで横断検索)
-├── js/samples.js       # 譜例一覧・詳細レンダラ(+コピー機能)
+├── js/samples.js       # 譜例一覧・詳細レンダラ(+コピー・描画・再生)
+├── js/reference.js     # チートシートの実例スコア描画
+├── js/playground.js    # Playground エディタ(live render / 再生 / 下書き保存)
 ├── js/works.js         # レガシー一覧・詳細レンダラ
-├── js/os.js            # ウィンドウマネージャ / Compact Mode
+├── js/os.js            # ウィンドウマネージャ / Compact Mode(samples.json 正本)
 ├── data.json           # サイト設定メタデータ
 ├── data/samples.json   # 譜例台帳の正本(12 譜例)
 ├── data/works-*.json   # レガシーデータ
+├── tools/validate_abc.py # ABC 小節長バリデータ(小節拍数を機械検算)
 ├── feed.xml            # Atom feed
 ├── sitemap.xml / robots.txt
-└── og.png              # OGP 共有画像(1200×630、差し替え予定)
+└── og.png              # OGP 共有画像(1200×630、fadd9 デザイン)
 ```
 
 ## samples.json のスキーマ
@@ -102,8 +111,7 @@ fadd9/
 ## 既知の制限
 
 - サンプル詳細は JS レンダリングのため、クローラによっては本文を取得できない(title/description は差し替え済み)
-- サブページ(works / now / os / updates)は旧 Atlas のまま。順次改修
-- og.png は旧デザインのまま。差し替え予定
+- works 一覧/詳細はレガシー(旧 Atlas の道具カタログ)のまま。Phase 5 以降で方針決定
 - 再生は Web Audio 対応ブラウザのみ(Safari など非対応環境では譜面と COPY のみ)
 
 ---
@@ -119,4 +127,4 @@ fadd9/
 
 ## 開発・保守状態
 
-- 最終更新: 2026-08-24 (Phase 2 — Samples Library)
+- 最終更新: 2026-08-24 (Phase 4 — Reference & Playground)

@@ -1,5 +1,5 @@
-/* Watanabe3ti Atlas OS — Mac OS 9 風デスクトップ体験
-   Atlas と同じ道具データ（data/works-*.json）を読む統合ビュー。 */
+/* FADD9 OS — Mac OS 9 風デスクトップ体験
+   data/samples.json を正本に、譜例をフォルダとして眺める統合ビュー。 */
 (() => {
   "use strict";
 
@@ -9,56 +9,61 @@
       "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
     }[c]));
 
+  const CATEGORIES = ["exercise", "chords", "scales", "riffs", "songs"];
+  const CATEGORY_TITLE = {
+    exercise: "Exercises — 練習",
+    chords: "Chords — コード進行",
+    scales: "Scales — スケール",
+    riffs: "Riffs — リフ",
+    songs: "Songs — 曲"
+  };
+
   /* ---------- データ ---------- */
   async function loadData() {
-    const files = ["data/works-tools.json", "data/works-lab.json"].map((f) => BASE + f);
-    const results = await Promise.all(files.map((f) => fetch(f).then((r) => r.json())));
-    const works = results.flatMap((r) => r.works);
-    return {
-      tools: works.filter((w) => w.type === "TOOL"),
-      lab: works.filter((w) => w.type === "EXPERIMENT"),
-      notes: works.filter((w) => w.type === "WRITING")
-    };
+    const res = await fetch(BASE + "data/samples.json");
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const samples = (await res.json()).samples;
+    return { samples,
+             ...Object.fromEntries(CATEGORIES.map((c) => [c, samples.filter((s) => s.category === c)])) };
   }
 
   const LINKS = [
-    { name: "GitHub", desc: "コードと実験のリポジトリ", url: "https://github.com/watanabe3tipapa/" },
-    { name: "BLOG", desc: "思考と記録の長文発信", url: "https://watanabe3ti.txt-nifty.com/" },
-    { name: "LOG", desc: "日々のログ", url: "https://log.watanabe3ti.com/" },
-    { name: "Wiki", desc: "知識とメモの整理場所", url: "https://wiki.watanabe3ti.com/" },
-    { name: "Toolsmith", desc: "道具箱とテクノロジーニュース", url: "https://toolsmith.watanabe3ti.com/" },
-    { name: "Toolsmith NEWS", desc: "更新情報", url: "https://toolsmith.watanabe3ti.com/news/" }
+    { name: "Samples 一覧", desc: "譜例ライブラリ(検索・絞り込み)", url: BASE + "samples/index.html" },
+    { name: "Playground", desc: "書いてすぐ鳴るエディタ", url: BASE + "playground/index.html" },
+    { name: "Reference", desc: "ABC記法チートシート", url: BASE + "reference/index.html" },
+    { name: "GitHub", desc: "コードと実験のリポジトリ", url: "https://github.com/watanabe3tipapa/", ext: true },
+    { name: "BLOG", desc: "思考と記録の長文発信", url: "https://watanabe3ti.txt-nifty.com/", ext: true },
+    { name: "LOG", desc: "日々のログ", url: "https://log.watanabe3ti.com/", ext: true }
   ];
 
-  const fileRow = (w) => `
-    <a class="file-row" href="${BASE}works/work.html?slug=${encodeURIComponent(w.slug)}">
-      <span class="file-row__name">${esc(w.name)}</span>
-      <span class="file-row__meta mono">${esc(w.type)} · ${esc(w.status)} · ${esc(w.lang || "")}</span>
+  const fileRow = (s) => `
+    <a class="file-row" href="${BASE}samples/sample.html?slug=${encodeURIComponent(s.slug)}">
+      <span class="file-row__name">${esc(s.name)}</span>
+      <span class="file-row__meta mono">${esc(s.level)} · KEY ${esc(s.key)} · ${esc(s.meter)}</span>
     </a>`;
 
   const linkRow = (l) => `
-    <a class="file-row" href="${esc(l.url)}" target="_blank" rel="noopener">
-      <span class="file-row__name">${esc(l.name)}<span aria-hidden="true"> ↗</span></span>
-      <span class="file-row__meta mono">ALIAS</span>
+    <a class="file-row" href="${esc(l.url)}"${l.ext ? ' target="_blank" rel="noopener"' : ""}>
+      <span class="file-row__name">${esc(l.name)}${l.ext ? '<span aria-hidden="true"> ↗</span>' : ""}</span>
+      <span class="file-row__meta mono">${l.ext ? "ALIAS" : "ALIAS"}</span>
     </a>`;
 
   const startBody = () => `
-    <p class="win__lead">Watanabe3ti Atlas OS へようこそ。ここは <strong>Atlas と同じ道具データ</strong>を、デスクトップのメタファーで読む体験モードです。</p>
+    <p class="win__lead"><strong>FADD9 OS</strong> へようこそ。ここは <strong>譜例ライブラリと同じデータ</strong>を、デスクトップのメタファーで読む体験モードです。ギターを持ってから開いてください。</p>
     <ul class="win__menu">
-      <li><a href="${BASE}index.html">Atlas ホームを見る</a></li>
-      <li><a href="${BASE}works/index.html">Works 一覧を開く</a></li>
-      <li><a href="${BASE}now/index.html">Now — 現在地</a></li>
-      <li><a href="https://watanabe3ti.com/" target="_blank" rel="noopener">本家 main（Classic OS）へ ↗</a></li>
-      <li><a href="https://watanabe3ti.com/next/" target="_blank" rel="noopener">Takeoff to Wonder（next）へ ↗</a></li>
+      <li><a href="${BASE}index.html">fadd9 ホームを見る</a></li>
+      <li><a href="${BASE}samples/index.html">Samples 一覧を開く</a></li>
+      <li><a href="${BASE}playground/index.html">Playground — 書いて即再生</a></li>
+      <li><a href="${BASE}reference/index.html">Reference — ABC記法早見表</a></li>
     </ul>
     <p class="win__note mono">TIP: ⌘K で Command Palette が開きます。</p>`;
 
   const readmeBody = () => `
-    <p class="win__lead">この画面は watanabe3ti.com 本体（main）の OS 体験へのオマージュとして、Atlas 側に用意した軽量な再解釈です。</p>
+    <p class="win__lead">この画面は fadd9 の譜例データを別の角度から眺めるための「練習室」です。</p>
     <ul class="plainlist">
-      <li>フォルダの中身は <span class="mono">data/works-*.json</span> から生成されています。Atlas UI と OS UI は同じ正本データを読んでいます。</li>
-      <li>ファイルをクリックすると、Atlas の道具詳細ページが開きます。</li>
-      <li>画面幅が狭いときは Compact Mode（一覧表示）になります。メニューバーからいつでも切替できます。</li>
+      <li>フォルダの中身は <span class="mono">data/samples.json</span> から生成されています。Samples UI も OS UI も同じ正本を読んでいます。</li>
+      <li>ファイル行をクリックすると、楽譜の描画と再生ができる詳細ページが開きます。</li>
+      <li>画面幅が狭いときは Compact Mode(一覧表示)になります。メニューバーから切替できます。</li>
       <li>起動演出は意図的に省略しています。急ぐ人のための OS です。</li>
     </ul>`;
 
@@ -66,11 +71,9 @@
   const winsRoot = document.getElementById("windows");
   const templates = {
     start: { title: "Start Here", body: startBody },
-    apps: { title: "Applications — Tools", body: null },
-    lab: { title: "Experiments", body: null },
-    notes: { title: "Documents — Notes", body: null },
     readme: { title: "Readme", body: readmeBody },
-    links: { title: "Links", body: null }
+    links: { title: "Links", body: null },
+    ...Object.fromEntries(CATEGORIES.map((c) => [c, { title: CATEGORY_TITLE[c], body: null }]))
   };
 
   let topZ = 10;
@@ -83,10 +86,10 @@
 
     const tpl = templates[id];
     let bodyHtml;
-    if (id === "apps") bodyHtml = data.tools.map(fileRow).join("");
-    else if (id === "lab") bodyHtml = data.lab.map(fileRow).join("");
-    else if (id === "notes") bodyHtml = data.notes.map(fileRow).join("");
-    else if (id === "links") bodyHtml = LINKS.map(linkRow).join("");
+    if (CATEGORIES.includes(id)) {
+      bodyHtml = (data[id] || []).map(fileRow).join("") ||
+        '<p class="win__note mono">このカテゴリはまだ空です。</p>';
+    } else if (id === "links") bodyHtml = LINKS.map(linkRow).join("");
     else bodyHtml = tpl.body();
 
     const win = document.createElement("section");
@@ -164,12 +167,12 @@
     document.body.classList.toggle("os-compact", compact);
     compactRoot.hidden = !compact;
     toggleBtn.textContent = compact ? "Desktop View" : "Compact";
-    try { localStorage.setItem("atlas-os-mode", mode); } catch {}
+    try { localStorage.setItem("fadd9-os-mode", mode); } catch {}
   }
 
   function initMode() {
     let saved = null;
-    try { saved = localStorage.getItem("atlas-os-mode"); } catch {}
+    try { saved = localStorage.getItem("fadd9-os-mode"); } catch {}
     applyMode(saved || (mq.matches ? "compact" : "desktop"));
   }
 
@@ -178,25 +181,21 @@
   );
   mq.addEventListener?.("change", () => {
     let saved = null;
-    try { saved = localStorage.getItem("atlas-os-mode"); } catch {}
+    try { saved = localStorage.getItem("fadd9-os-mode"); } catch {}
     if (!saved) applyMode(mq.matches ? "compact" : "desktop");
   });
 
   function renderCompact(data) {
     compactRoot.innerHTML = `
       <div class="compact__intro">
-        <p class="mono compact__label">WATANABE3TI ATLAS OS — COMPACT MODE</p>
-        <p>同じ道具データを、小さな画面向けの一覧で。アイコン操作は不要です。</p>
+        <p class="mono compact__label">FADD9 OS — COMPACT MODE</p>
+        <p>同じ譜例データを、小さな画面向けの一覧で。アイコン操作は不要です。</p>
         <p class="mono"><button type="button" class="chip" onclick="document.getElementById('mode-toggle').click()">Desktop View へ</button></p>
       </div>
-      ${[
-        ["Applications — Tools", data.tools],
-        ["Experiments", data.lab],
-        ["Documents — Notes", data.notes]
-      ].map(([title, arr]) => `
+      ${CATEGORIES.map((c) => `
         <section class="compact__sec">
-          <h2 class="compact__title">${esc(title)}</h2>
-          ${arr.map(fileRow).join("")}
+          <h2 class="compact__title">${esc(CATEGORY_TITLE[c])}</h2>
+          ${(data[c] || []).map(fileRow).join("")}
         </section>`).join("")}
       <section class="compact__sec">
         <h2 class="compact__title">Links</h2>

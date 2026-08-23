@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Playground — 書いて、すぐ鳴る | fadd9</title>
+  <meta name="description" content="ABC記法をブラウザで書いて、即描画・即再生。fadd9 の譜例を読み込んで改造すれば、今日からあなたの譜面になります。">
+  <meta property="og:title" content="Playground — 書いて、すぐ鳴る | fadd9">
+  <meta property="og:description" content="ABC記法をブラウザで書いて、即描画・即再生。">
+  <meta property="og:url" content="https://watanabe3tipapa.github.io/fadd9/playground/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://watanabe3tipapa.github.io/fadd9/og.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://watanabe3tipapa.github.io/fadd9/playground/">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%230a0e1a'/><path d='M28 30v46M46 30v46M64 30v46M82 30v46' stroke='%23e8ecf4' stroke-width='4'/><path d='M16 34h78M16 54h78M16 74h78' stroke='%232dd4bf' stroke-width='4'/><circle cx='46' cy='64' r='8' fill='%23fde68a'/></svg>">
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へスキップ</a>
+
+  <header class="page-head">
+    <div class="container">
+      <nav class="crumbs mono" aria-label="パンくず">
+        <a href="../index.html">HOME</a> / <span>PLAYGROUND</span>
+      </nav>
+      <h1 class="page-title">Playground<span class="section__sub">書いて、すぐ鳴る</span></h1>
+      <p class="page-lead">左(下)のテキストを書き換えると、楽譜と音が追従します。下書きはこのブラウザに自動保存。文法は Reference へ。</p>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section section--flush-top">
+      <div class="container playground">
+
+        <div class="playground__toolbar filters">
+          <div class="filters__types">
+            <label class="visually-hidden" for="pg-sample">譜例を読み込む</label>
+            <select id="pg-sample" class="filter-btn mono pg-select" aria-label="譜例を読み込む">
+              <option value="">SAMPLES…</option>
+            </select>
+            <button type="button" id="pg-copy" class="btn-copy mono">COPY</button>
+            <button type="button" id="pg-clear" class="btn-copy mono">CLEAR</button>
+          </div>
+          <p class="playground__status mono" id="pg-status" role="status"></p>
+        </div>
+
+        <div class="playground__cols">
+          <div class="playground__editor">
+            <label class="visually-hidden" for="pg-input">ABC テキスト</label>
+            <textarea id="pg-input" spellcheck="false" autocomplete="off"
+              placeholder="X:1&#10;T:my tune&#10;M:4/4&#10;L:1/8&#10;K:C&#10;C D E F G A B c |"></textarea>
+          </div>
+          <div class="playground__score">
+            <figure class="score-panel score-panel--flush">
+              <div id="pg-score"></div>
+            </figure>
+            <div class="audio-bar" id="pg-audio" hidden>
+              <div id="pg-controls"></div>
+              <p class="audio-hint mono">WARP で速度調整。編集すると音も更新されます。</p>
+            </div>
+          </div>
+        </div>
+
+        <noscript><p class="works-error">プレイグラウンドには JavaScript が必要です。</p></noscript>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__bottom footer__bottom--solo">
+      <p><small>&copy; 2026 watanabe3ti — <a class="textlink" href="../index.html">fadd9 HOME</a></small></p>
+      <p class="footer__rss-note">Guitar, notated.</p>
+    </div>
+  </footer>
+
+  <script src="../js/vendor/abcjs-basic-min.js" defer></script>
+  <script src="../js/palette.js" defer></script>
+  <script src="../js/playground.js" defer></script>
+</body>
+</html>

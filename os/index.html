@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Atlas OS — Watanabe3ti</title>
-  <meta name="description" content="Atlas と同じ道具データをデスクトップのメタファーで読む、Mac OS 9 風の体験ビュー。Compact Mode / Command Palette 対応。">
-  <meta property="og:title" content="Atlas OS — Watanabe3ti">
-  <meta property="og:description" content="道具データをデスクトップのメタファーで読む体験ビュー。">
-  <meta property="og:url" content="https://watanabe3tipapa.github.io/atlas/os/">
+  <title>Fadd9 OS — デスクトップで練習室 | fadd9</title>
+  <meta name="description" content="譜例データをデスクトップのメタファーで読む、Mac OS 9 風の体験ビュー。Compact Mode / Command Palette 対応。">
+  <meta property="og:title" content="Fadd9 OS — デスクトップで練習室 | fadd9">
+  <meta property="og:description" content="譜例データをデスクトップのメタファーで読む体験ビュー。">
+  <meta property="og:url" content="https://watanabe3tipapa.github.io/fadd9/os/">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://watanabe3tipapa.github.io/atlas/og.png">
+  <meta property="og:image" content="https://watanabe3tipapa.github.io/fadd9/og.png">
   <meta name="twitter:card" content="summary">
-  <link rel="canonical" href="https://watanabe3tipapa.github.io/atlas/os/">
+  <link rel="canonical" href="https://watanabe3tipapa.github.io/fadd9/os/">
   <link rel="stylesheet" href="../css/style.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='38' fill='none' stroke='%23fde68a' stroke-width='6'/><circle cx='50' cy='50' r='8' fill='%232dd4bf'/></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%230a0e1a'/><path d='M28 30v46M46 30v46M64 30v46M82 30v46' stroke='%23e8ecf4' stroke-width='4'/><path d='M16 34h78M16 54h78M16 74h78' stroke='%232dd4bf' stroke-width='4'/><circle cx='46' cy='64' r='8' fill='%23fde68a'/></svg>">
 </head>
 <body class="os-body">
   <a class="skip-link" href="#compact-root">一覧へスキップ</a>
 
   <div class="menubar mono">
-    <span class="menubar__brand">◉ watanabe3ti Atlas OS</span>
-    <span class="menubar__menus" aria-hidden="true">File&nbsp;&nbsp;Edit&nbsp;&nbsp;View&nbsp;&nbsp;Special</span>
+    <span class="menubar__brand">◉ FADD9 OS</span>
+    <span class="menubar__menus" aria-hidden="true">File&nbsp;&nbsp;Edit&nbsp;&nbsp;Play&nbsp;&nbsp;Special</span>
     <span class="menubar__spacer"></span>
     <button type="button" id="mode-toggle" class="menubar__btn">Compact</button>
     <time id="os-clock" class="menubar__clock"></time>
@@ -32,17 +32,25 @@
         <span class="desk-icon__glyph desk-icon__glyph--start" aria-hidden="true">✦</span>
         <span class="desk-icon__label">Start Here</span>
       </button>
-      <button type="button" class="desk-icon" data-win="apps">
+      <button type="button" class="desk-icon" data-win="exercise">
         <span class="desk-icon__glyph" aria-hidden="true">▤</span>
-        <span class="desk-icon__label">Applications</span>
+        <span class="desk-icon__label">Exercises</span>
       </button>
-      <button type="button" class="desk-icon" data-win="lab">
+      <button type="button" class="desk-icon" data-win="chords">
         <span class="desk-icon__glyph" aria-hidden="true">◈</span>
-        <span class="desk-icon__label">Experiments</span>
+        <span class="desk-icon__label">Chords</span>
       </button>
-      <button type="button" class="desk-icon" data-win="notes">
-        <span class="desk-icon__glyph" aria-hidden="true">✎</span>
-        <span class="desk-icon__label">Documents</span>
+      <button type="button" class="desk-icon" data-win="scales">
+        <span class="desk-icon__glyph" aria-hidden="true">♪</span>
+        <span class="desk-icon__label">Scales</span>
+      </button>
+      <button type="button" class="desk-icon" data-win="riffs">
+        <span class="desk-icon__glyph" aria-hidden="true">≋</span>
+        <span class="desk-icon__label">Riffs</span>
+      </button>
+      <button type="button" class="desk-icon" data-win="songs">
+        <span class="desk-icon__glyph" aria-hidden="true">♫</span>
+        <span class="desk-icon__label">Songs</span>
       </button>
       <button type="button" class="desk-icon" data-win="readme">
         <span class="desk-icon__glyph" aria-hidden="true">▣</span>
@@ -59,9 +67,9 @@
 
   <nav class="dock mono" aria-label="クイックリンク">
     <a href="../index.html">HOME</a>
-    <a href="../works/index.html">WORKS</a>
-    <a href="../now/index.html">NOW</a>
-    <a href="https://toolsmith.watanabe3ti.com/" target="_blank" rel="noopener">TOOLSMITH ↗</a>
+    <a href="../samples/index.html">SAMPLES</a>
+    <a href="../playground/index.html">PLAYGROUND</a>
+    <a href="../reference/index.html">REFERENCE</a>
     <a href="https://github.com/watanabe3tipapa/" target="_blank" rel="noopener">GITHUB ↗</a>
   </nav>
 

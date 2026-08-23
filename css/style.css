@@ -1692,6 +1692,102 @@ a.abc-board__file:hover {
   font-size: 0.68rem;
 }
 
+/* ---- Reference チートシート ---- */
+.ref-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.ref-item {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1.25rem 1.35rem;
+}
+
+.ref-item .card__name {
+  margin-bottom: 0.4rem;
+}
+
+.ref-item .card__desc {
+  margin-bottom: 0.9rem;
+}
+
+.ref-code {
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.7rem 0.85rem;
+  overflow-x: auto;
+  font-size: 0.82rem;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+.ref-demo {
+  margin: 0.9rem 0 0;
+  background: #fdfbf4;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.ref-demo svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ---- Playground ---- */
+.playground__toolbar {
+  align-items: center;
+}
+
+.playground__status {
+  color: var(--ink-dim);
+  font-size: 0.72rem;
+}
+
+.pg-select {
+  appearance: none;
+  cursor: pointer;
+}
+
+.playground__cols {
+  display: grid;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .playground__cols {
+    grid-template-columns: minmax(280px, 5fr) 7fr;
+  }
+}
+
+#pg-input {
+  width: 100%;
+  min-height: 380px;
+  resize: vertical;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1rem 1.05rem;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  line-height: 1.75;
+  letter-spacing: 0.02em;
+}
+
+#pg-input:focus-visible {
+  outline-offset: -2px;
+}
+
+.score-panel--flush {
+  margin-top: 0;
+}
+
 @media (max-width: 720px) {
   .hero__layout {
     flex-direction: column-reverse;

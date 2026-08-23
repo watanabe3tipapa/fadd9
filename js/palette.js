@@ -24,6 +24,8 @@
     { group: "PAGE", label: "Samples · Riffs — リフ", hint: "ブルーズ ロック シャッフル", href: BASE + "samples/index.html?category=riffs" },
     { group: "PAGE", label: "Samples · Songs — 曲", hint: "パブリックドメイン メロディ", href: BASE + "samples/index.html?category=songs" },
     { group: "PAGE", label: "Roadmap — これから", hint: "phase 計画 library", href: BASE + "index.html#roadmap" },
+    { group: "PAGE", label: "Reference — ABC記法チートシート", hint: "文法 早見表 記号", href: BASE + "reference/index.html" },
+    { group: "PAGE", label: "Playground — 書いて即再生", hint: "エディタ 入力 描画", href: BASE + "playground/index.html" },
     { group: "PAGE", label: "Works — レガシーカタログ", hint: "旧道具一覧 移行中", href: BASE + "works/index.html" },
     { group: "PAGE", label: "Now — 現在地(移行中)", hint: "いま 作っている", href: BASE + "now/index.html" },
     { group: "PAGE", label: "Updates — 更新履歴", hint: "release changelog 再訪", href: BASE + "updates/index.html" },
