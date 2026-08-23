@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atlas OS — Watanabe3ti</title>
+  <meta name="description" content="Atlas と同じ道具データをデスクトップのメタファーで読む、Mac OS 9 風の体験ビュー。Compact Mode / Command Palette 対応。">
+  <meta property="og:title" content="Atlas OS — Watanabe3ti">
+  <meta property="og:description" content="道具データをデスクトップのメタファーで読む体験ビュー。">
+  <meta property="og:url" content="https://watanabe3tipapa.github.io/atlas/os/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://watanabe3tipapa.github.io/atlas/og.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://watanabe3tipapa.github.io/atlas/os/">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='38' fill='none' stroke='%23fde68a' stroke-width='6'/><circle cx='50' cy='50' r='8' fill='%232dd4bf'/></svg>">
+</head>
+<body class="os-body">
+  <a class="skip-link" href="#compact-root">一覧へスキップ</a>
+
+  <div class="menubar mono">
+    <span class="menubar__brand">◉ watanabe3ti Atlas OS</span>
+    <span class="menubar__menus" aria-hidden="true">File&nbsp;&nbsp;Edit&nbsp;&nbsp;View&nbsp;&nbsp;Special</span>
+    <span class="menubar__spacer"></span>
+    <button type="button" id="mode-toggle" class="menubar__btn">Compact</button>
+    <time id="os-clock" class="menubar__clock"></time>
+  </div>
+
+  <div class="desktop" aria-label="デスクトップ">
+    <div class="desk-icons">
+      <button type="button" class="desk-icon" data-win="start">
+        <span class="desk-icon__glyph desk-icon__glyph--start" aria-hidden="true">✦</span>
+        <span class="desk-icon__label">Start Here</span>
+      </button>
+      <button type="button" class="desk-icon" data-win="apps">
+        <span class="desk-icon__glyph" aria-hidden="true">▤</span>
+        <span class="desk-icon__label">Applications</span>
+      </button>
+      <button type="button" class="desk-icon" data-win="lab">
+        <span class="desk-icon__glyph" aria-hidden="true">◈</span>
+        <span class="desk-icon__label">Experiments</span>
+      </button>
+      <button type="button" class="desk-icon" data-win="notes">
+        <span class="desk-icon__glyph" aria-hidden="true">✎</span>
+        <span class="desk-icon__label">Documents</span>
+      </button>
+      <button type="button" class="desk-icon" data-win="readme">
+        <span class="desk-icon__glyph" aria-hidden="true">▣</span>
+        <span class="desk-icon__label">Readme</span>
+      </button>
+      <button type="button" class="desk-icon" data-win="links">
+        <span class="desk-icon__glyph" aria-hidden="true">⇗</span>
+        <span class="desk-icon__label">Links</span>
+      </button>
+    </div>
+    <div id="windows" class="windows"></div>
+    <div class="hero__moon desktop__moon" aria-hidden="true"></div>
+  </div>
+
+  <nav class="dock mono" aria-label="クイックリンク">
+    <a href="../index.html">HOME</a>
+    <a href="../works/index.html">WORKS</a>
+    <a href="../now/index.html">NOW</a>
+    <a href="https://toolsmith.watanabe3ti.com/" target="_blank" rel="noopener">TOOLSMITH ↗</a>
+    <a href="https://github.com/watanabe3tipapa/" target="_blank" rel="noopener">GITHUB ↗</a>
+  </nav>
+
+  <main class="compact" id="compact-root" hidden tabindex="-1">
+    <noscript><p class="works-error">JavaScript を有効にするとデータ一覧が表示されます。</p></noscript>
+  </main>
+
+  <script src="../js/palette.js" defer></script>
+  <script src="../js/os.js" defer></script>
+</body>
+</html>

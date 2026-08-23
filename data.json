@@ -1,0 +1,65 @@
+{
+  "site": {
+    "name": "WATANABE3TI.COM",
+    "tagline": "Curiosity, indexed.",
+    "hero": {
+      "en": "I build small systems for following curiosity.",
+      "ja": "ツール、ノート、実験を通して、Web の中の「気になる」を育てています。"
+    },
+    "atlasUrl": "https://watanabe3tipapa.github.io/atlas/"
+  },
+  "featured": [
+    {
+      "slug": "toolsmith",
+      "name": "Toolsmith",
+      "type": "TOOLBOX",
+      "status": "ACTIVE",
+      "updated": "2026-03",
+      "field": ["TOOLS", "NEWS", "LINKS"],
+      "summaryJa": "道具箱の蓋のようなサイト。公開ツールの棚と、テクノロジーのニュース、内外の拠点へのリンクを束ねる拠点。",
+      "url": "https://toolsmith.watanabe3ti.com/"
+    }
+  ],
+  "signal": [
+    {
+      "date": "2026-03-26",
+      "title": "Arm AGI CPU",
+      "summaryJa": "エージェントAIクラウド時代のシリコン基盤 — Arm の新アーキテクチャを読む。",
+      "url": "https://toolsmith.watanabe3ti.com/news/archives/29"
+    },
+    {
+      "date": "2025-08-06",
+      "title": "Groq",
+      "summaryJa": "AI推論やデータ分析を加速するために設計された高性能プロセッサ。",
+      "url": "https://toolsmith.watanabe3ti.com/news/archives/28"
+    },
+    {
+      "date": "2024-12-10",
+      "title": "Willow",
+      "summaryJa": "Google の量子チップ。「10億年が5分以内」の計算性能とは。",
+      "url": "https://toolsmith.watanabe3ti.com/news/archives/27"
+    }
+  ],
+  "routes": [
+    { "name": "Tools", "nameJa": "道具を探す", "summaryJa": "公開ツールやエディタの棚。使えるものから選ぶ。", "url": "works/index.html?type=tool" },
+    { "name": "Experiments", "nameJa": "実験を覗く", "summaryJa": "コード、試作、検証の記録。進行形の研究室。", "url": "works/index.html?type=experiment" },
+    { "name": "Notes", "nameJa": "ノートを読む", "summaryJa": "思考と記録の長文発信。日々のログは LOG へ。", "url": "works/index.html?type=writing" }
+  ],
+  "worlds": [
+    { "mode": 1, "label": "Classic OS", "path": "main", "summaryJa": "Mac OS 9 風デスクトップ。触って探索するコンピューティング体験。", "url": "https://watanabe3ti.com/" },
+    { "mode": 2, "label": "Digital Tunnel", "path": "neo", "summaryJa": "バイナリのトンネル背景に広がる、もう一つの OS 体験。", "url": "https://watanabe3ti.com/neo/" },
+    { "mode": 3, "label": "Mission Control", "path": "next", "summaryJa": "月と宇宙を背景にした思想の入口。「Takeoff to Wonder」。", "url": "https://watanabe3ti.com/next/" }
+  ],
+  "hubs": [
+    { "category": "CODE", "name": "GitHub", "summaryJa": "ソースコードと実験のリポジトリ。", "url": "https://github.com/watanabe3tipapa/" },
+    { "category": "WRITING", "name": "BLOG", "summaryJa": "思考と記録の長文発信。", "url": "https://watanabe3ti.txt-nifty.com/" },
+    { "category": "LOG", "name": "LOG", "summaryJa": "日々の作業と出来事のログ。", "url": "https://log.watanabe3ti.com/" },
+    { "category": "KNOWLEDGE", "name": "Wiki", "summaryJa": "知識とメモの整理場所。", "url": "https://wiki.watanabe3ti.com/" },
+    { "category": "TOOLBOX", "name": "Toolsmith", "summaryJa": "道具箱とテクノロジーニュース。", "url": "https://toolsmith.watanabe3ti.com/" }
+  ],
+  "social": [
+    { "name": "X (Twitter)", "url": "https://twitter.com/watanabe3tipapa" },
+    { "name": "Facebook", "url": "https://www.facebook.com/toru.watanabe3ti" },
+    { "name": "Instagram", "url": "https://www.instagram.com/chombo_watanabe3tipapa" }
+  ]
+}
