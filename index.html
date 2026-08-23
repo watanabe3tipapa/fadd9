@@ -3,203 +3,230 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Watanabe3ti — Tools, experiments, and notes for curiosity</title>
-  <meta name="description" content="ツール、ノート、実験を通して、Web の中の「気になる」を育てています。I build small systems for following curiosity.">
-  <meta property="og:title" content="Watanabe3ti — Tools, experiments, and notes for curiosity">
-  <meta property="og:description" content="ツール、ノート、実験を通して、Web の中の「気になる」を育てています。I build small systems for following curiosity.">
-  <meta property="og:url" content="https://watanabe3tipapa.github.io/atlas/">
+  <title>fadd9 — ギターとABC記法の独習ライブラリ</title>
+  <meta name="description" content="ギターの練習素材を、テキストで書く楽譜「ABC記法」で書き残す独習ライブラリ。コード進行・スケール・リフを実例とともに公開しています。">
+  <meta property="og:title" content="fadd9 — ギターとABC記法の独習ライブラリ">
+  <meta property="og:description" content="ギターの練習素材を、テキストで書く楽譜「ABC記法」で書き残す独習ライブラリ。">
+  <meta property="og:url" content="https://watanabe3tipapa.github.io/fadd9/">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://watanabe3tipapa.github.io/atlas/og.png">
-  <meta property="og:site_name" content="WATANABE3TI.COM Atlas">
+  <meta property="og:image" content="https://watanabe3tipapa.github.io/fadd9/og.png">
+  <meta property="og:site_name" content="FADD9">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@watanabe3tipapa">
-  <link rel="canonical" href="https://watanabe3tipapa.github.io/atlas/">
+  <link rel="canonical" href="https://watanabe3tipapa.github.io/fadd9/">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='38' fill='none' stroke='%23fde68a' stroke-width='6'/><circle cx='50' cy='50' r='8' fill='%232dd4bf'/></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%230a0e1a'/><path d='M28 30v46M46 30v46M64 30v46M82 30v46' stroke='%23e8ecf4' stroke-width='4'/><path d='M16 34h78M16 54h78M16 74h78' stroke='%232dd4bf' stroke-width='4'/><circle cx='46' cy='64' r='8' fill='%23fde68a'/></svg>">
 </head>
 <body>
   <a class="skip-link" href="#main">本文へスキップ</a>
 
   <!-- ============ Hero ============ -->
   <header class="hero" id="top">
-    <div class="container">
-      <p class="hero__eyebrow mono">WATANABE3TI.COM</p>
-      <h1 class="hero__title">I build small systems<br class="sp-only"> for following curiosity.</h1>
-      <p class="hero__lead">ツール、ノート、実験を通して、Web の中の「気になる」を育てています。</p>
-      <div class="hero__cta">
-        <a class="btn btn--primary" href="os/index.html">Enter the OS<span aria-hidden="true"> →</span></a>
-        <a class="btn btn--ghost" href="https://watanabe3ti.com/next/">Takeoff<span aria-hidden="true"> ↗</span></a>
+    <div class="container hero__layout">
+      <div class="hero__body">
+        <p class="hero__eyebrow mono">FADD9 — GUITAR × ABC NOTATION</p>
+        <h1 class="hero__title">Play guitar.<br class="sp-only"> Write it in ABC.</h1>
+        <p class="hero__lead">
+          ギターの練習素材を、テキストで書く楽譜「ABC記法」で書き残す。
+          fadd9 は独習のための譜例ライブラリです。コード進行もリフも、すべて文字で。
+        </p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="#samples">譜例を見る<span aria-hidden="true"> →</span></a>
+          <a class="btn btn--ghost" href="#about">Why ABC?<span aria-hidden="true"> ↓</span></a>
+        </div>
+        <p class="hero__tagline mono">X:1 &nbsp;T:fadd9 &nbsp;M:4/4 &nbsp;L:1/8 &nbsp;K:F</p>
       </div>
-      <p class="hero__tagline mono">Curiosity, indexed.</p>
+
+      <figure class="chord-figure hero__chord">
+        <svg viewBox="0 0 200 240" role="img" aria-label="Fadd9 のコードダイアグラム（6弦5弦をミュートし、4弦3フレット・3弦2フレット・2弦1フレット・1弦3フレットを押弦）">
+          <!-- frets -->
+          <g stroke="#233047" stroke-width="3" stroke-linecap="round">
+            <line x1="14" y1="76" x2="186" y2="76"/>
+            <line x1="14" y1="116" x2="186" y2="116"/>
+            <line x1="14" y1="156" x2="186" y2="156"/>
+            <line x1="14" y1="196" x2="186" y2="196"/>
+          </g>
+          <!-- nut -->
+          <rect x="12" y="31" width="176" height="6" rx="3" fill="#2dd4bf"/>
+          <!-- strings -->
+          <g stroke="#e8ecf4" stroke-width="2" opacity="0.75">
+            <line x1="20" y1="37" x2="20" y2="210"/>
+            <line x1="52" y1="37" x2="52" y2="210"/>
+            <line x1="84" y1="37" x2="84" y2="210"/>
+            <line x1="116" y1="37" x2="116" y2="210"/>
+            <line x1="148" y1="37" x2="148" y2="210"/>
+            <line x1="180" y1="37" x2="180" y2="210"/>
+          </g>
+          <!-- muted strings -->
+          <g stroke="#9aa5bd" stroke-width="2.5" stroke-linecap="round">
+            <line x1="14" y1="14" x2="26" y2="26"/>
+            <line x1="26" y1="14" x2="14" y2="26"/>
+            <line x1="46" y1="14" x2="58" y2="26"/>
+            <line x1="58" y1="14" x2="46" y2="26"/>
+          </g>
+          <!-- dots: F A C G -->
+          <g>
+            <circle cx="84" cy="136" r="13" fill="#fde68a"/>
+            <circle cx="116" cy="96" r="13" fill="#fde68a"/>
+            <circle cx="148" cy="56" r="13" fill="#fde68a"/>
+            <circle cx="180" cy="136" r="13" fill="#fde68a"/>
+            <g fill="#0a0e1a" font-family="Menlo, monospace" font-size="13" font-weight="bold" text-anchor="middle">
+              <text x="84" y="141">F</text>
+              <text x="116" y="101">A</text>
+              <text x="148" y="61">C</text>
+              <text x="180" y="141">G</text>
+            </g>
+          </g>
+          <!-- string labels -->
+          <g fill="#9aa5bd" font-family="Menlo, monospace" font-size="11" text-anchor="middle">
+            <text x="20" y="230">E</text>
+            <text x="52" y="230">A</text>
+            <text x="84" y="230">D</text>
+            <text x="116" y="230">G</text>
+            <text x="148" y="230">B</text>
+            <text x="180" y="230">e</text>
+          </g>
+        </svg>
+        <figcaption class="mono">Fadd9 — x x 3 2 1 3</figcaption>
+      </figure>
     </div>
-    <div class="hero__moon" aria-hidden="true"></div>
   </header>
 
   <nav class="localnav" aria-label="ページ内リンク">
     <ul class="container localnav__list">
-      <li><a href="#featured">Featured</a></li>
-      <li><a href="#signal">Signal</a></li>
-      <li><a href="#recent">Recent</a></li>
-      <li><a href="#routes">Routes</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#samples">Samples</a></li>
+      <li><a href="#library">Library</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
       <li><a href="works/index.html">Works</a></li>
-      <li><a href="now/index.html">Now</a></li>
-      <li><a href="#worlds">Worlds</a></li>
-      <li><a href="#hubs">Hubs</a></li>
+      <li><a href="updates/index.html">Updates</a></li>
     </ul>
   </nav>
 
   <main id="main">
 
-    <!-- ============ Featured ============ -->
-    <section class="section section--featured" id="featured" aria-labelledby="featured-title">
+    <!-- ============ About ============ -->
+    <section class="section" id="about" aria-labelledby="about-title">
       <div class="container">
-        <h2 class="section__title" id="featured-title">Featured</h2>
-        <article class="card card--featured reveal">
-          <dl class="meta mono">
-            <div><dt>TYPE</dt><dd>TOOLBOX</dd></div>
-            <div><dt>STATUS</dt><dd class="is-active">ACTIVE</dd></div>
-            <div><dt>UPDATED</dt><dd>2026-03</dd></div>
-            <div><dt>FIELD</dt><dd>TOOLS · NEWS · LINKS</dd></div>
-          </dl>
-          <h3 class="card__name">Toolsmith</h3>
-          <p class="card__desc">
-            道具箱の蓋のようなサイト。公開ツールの棚と、テクノロジーのニュース、
-            内外の拠点へのリンクを束ねる拠点です。
-          </p>
-          <p class="card__action"><a class="textlink" href="https://toolsmith.watanabe3ti.com/">Visit Toolsmith<span aria-hidden="true"> ↗</span></a></p>
-        </article>
-      </div>
-    </section>
-
-    <!-- ============ Signal ============ -->
-    <section class="section" id="signal" aria-labelledby="signal-title">
-      <div class="container">
-        <h2 class="section__title" id="signal-title">Signal<span class="section__sub">最新の発信</span></h2>
-        <ul class="signal-list">
-          <li class="signal-list__item reveal">
-            <time class="mono" datetime="2026-03-26">2026.03.26</time>
-            <a class="textlink" href="https://toolsmith.watanabe3ti.com/news/archives/29">Arm AGI CPU</a>
-            <p>エージェントAIクラウド時代のシリコン基盤 — Arm の新アーキテクチャを読む。</p>
-          </li>
-          <li class="signal-list__item reveal">
-            <time class="mono" datetime="2025-08-06">2025.08.06</time>
-            <a class="textlink" href="https://toolsmith.watanabe3ti.com/news/archives/28">Groq</a>
-            <p>AI推論やデータ分析を加速するために設計された高性能プロセッサ。</p>
-          </li>
-          <li class="signal-list__item reveal">
-            <time class="mono" datetime="2024-12-10">2024.12.10</time>
-            <a class="textlink" href="https://toolsmith.watanabe3ti.com/news/archives/27">Willow</a>
-            <p>Google の量子チップ。「10億年が5分以内」の計算性能とは。</p>
-          </li>
-        </ul>
-        <p class="section__more"><a class="textlink" href="https://toolsmith.watanabe3ti.com/news/">すべてのニュースを見る<span aria-hidden="true"> ↗</span></a></p>
-      </div>
-    </section>
-
-    <!-- ============ Recent Files ============ -->
-    <section class="section" id="recent" aria-labelledby="recent-title">
-      <div class="container">
-        <h2 class="section__title" id="recent-title">Recent Files<span class="section__sub">最近の更新</span></h2>
-        <ul class="recent-list" id="recent-list">
-          <li><span class="works-error">読み込み中…</span></li>
-        </ul>
-        <p class="section__more"><a class="textlink" href="works/index.html">すべての道具を見る<span aria-hidden="true"> →</span></a></p>
-      </div>
-    </section>
-
-    <!-- ============ Three routes ============ -->
-    <section class="section" id="routes" aria-labelledby="routes-title">
-      <div class="container">
-        <h2 class="section__title" id="routes-title">Three routes<span class="section__sub">目的別の入口</span></h2>
+        <h2 class="section__title" id="about-title">Why ABC<span class="section__sub">なぜテキストで楽譜なのか</span></h2>
         <div class="grid grid--3">
           <article class="card reveal">
-            <p class="card__type mono">TYPE: TOOLS</p>
-            <h3 class="card__name">道具を探す</h3>
-            <p class="card__desc">公開ツールやエディタの棚。使えるものから選ぶ。</p>
-            <p class="card__action"><a class="textlink" href="works/index.html?type=tool">Tool list<span aria-hidden="true"> →</span></a></p>
+            <p class="card__type mono">TYPE: TEXT</p>
+            <h3 class="card__name">そのまま書ける</h3>
+            <p class="card__desc">
+              楽譜が ASCII テキスト。エディタさえあれば今日から書けて、
+              コピペで誰かに渡せる。特別なソフトは要らない。
+            </p>
           </article>
           <article class="card reveal">
-            <p class="card__type mono">TYPE: EXPERIMENTS</p>
-            <h3 class="card__name">実験を覗く</h3>
-            <p class="card__desc">コード、試作、検証の記録。進行形の研究室。</p>
-            <p class="card__action"><a class="textlink" href="works/index.html?type=experiment">Experiments<span aria-hidden="true"> →</span></a></p>
+            <p class="card__type mono">TYPE: GIT</p>
+            <h3 class="card__name">履歴で育つ</h3>
+            <p class="card__desc">
+              譜面は diff を持つ。練習の改変が一行ずつ残り、
+              「先月の自分」との差分がそのまま上達の記録になる。
+            </p>
           </article>
           <article class="card reveal">
-            <p class="card__type mono">TYPE: NOTES</p>
-            <h3 class="card__name">ノートを読む</h3>
-            <p class="card__desc">思考と記録の長文発信。日々のログは LOG へ。</p>
-            <p class="card__action"><a class="textlink" href="works/index.html?type=writing">Notes<span aria-hidden="true"> →</span></a></p>
+            <p class="card__type mono">TYPE: PLAY</p>
+            <h3 class="card__name">貼って即再生</h3>
+            <p class="card__desc">
+              abcjs など対応ツールに貼れば、その場で鳴って絵になる。
+              音と譜面と文字が同じ場所に住む。
+            </p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ============ Worlds ============ -->
-    <section class="section section--worlds" id="worlds" aria-labelledby="worlds-title">
+    <!-- ============ Samples ============ -->
+    <section class="section" id="samples" aria-labelledby="samples-title">
       <div class="container">
-        <h2 class="section__title" id="worlds-title">Worlds<span class="section__sub">三つの体験モード</span></h2>
-        <div class="grid grid--3">
-          <article class="world world--classic reveal">
-            <p class="world__mode mono">MODE 01</p>
-            <h3 class="card__name">Classic OS</h3>
-            <p class="world__path mono">main</p>
-            <p class="card__desc">Mac OS 9 風デスクトップ。触って探索するコンピューティング体験。</p>
-            <p class="card__action"><a class="textlink" href="https://watanabe3ti.com/">Enter main<span aria-hidden="true"> ↗</span></a></p>
-          </article>
-          <article class="world world--tunnel reveal">
-            <p class="world__mode mono">MODE 02</p>
-            <h3 class="card__name">Digital Tunnel</h3>
-            <p class="world__path mono">neo</p>
-            <p class="card__desc">バイナリのトンネル背景に広がる、もう一つの OS 体験。</p>
-            <p class="card__action"><a class="textlink" href="https://watanabe3ti.com/neo/">Enter neo<span aria-hidden="true"> ↗</span></a></p>
-          </article>
-          <article class="world world--mission reveal">
-            <p class="world__mode mono">MODE 03</p>
-            <h3 class="card__name">Mission Control</h3>
-            <p class="world__path mono">next</p>
-            <p class="card__desc">月と宇宙を背景にした思想の入口。「Takeoff to Wonder」。</p>
-            <p class="card__action"><a class="textlink" href="https://watanabe3ti.com/next/">Enter next<span aria-hidden="true"> ↗</span></a></p>
-          </article>
+        <h2 class="section__title" id="samples-title">Samples<span class="section__sub">譜例 — コピーして使う</span></h2>
+        <p class="section__lead">
+          fadd9 の単位はこれ。ABC テキストそのものです。
+          ライブラリ化 (Phase 2) までの間、手書きの譜例をこの場に置いておきます。
+        </p>
+        <div class="boards">
+          <figure class="abc-board reveal">
+            <figcaption class="abc-board__head">
+              <span class="abc-board__file mono">study-01.abc</span>
+              <span class="badge-soft mono">EXERCISE · Fadd9</span>
+            </figcaption>
+            <pre>X:1
+T:Fadd9 Arpeggio Study
+M:4/4
+L:1/8
+Q:1/4=72
+K:F
+|: "F" F A c f a f c A | F A c f a2 f2 :|</pre>
+          </figure>
+          <figure class="abc-board reveal">
+            <figcaption class="abc-board__head">
+              <span class="abc-board__file mono">progression-01.abc</span>
+              <span class="badge-soft mono">PROGRESSION · 王道進行</span>
+            </figcaption>
+            <pre>X:1
+T:Royal Road Progression
+M:4/4
+L:1/4
+K:C
+"C" C E G c | "G" G B d g | "Am" A c e a | "F" F A c f |</pre>
+          </figure>
         </div>
       </div>
     </section>
 
-    <!-- ============ Proof of work / Hubs ============ -->
-    <section class="section" id="hubs" aria-labelledby="hubs-title">
+    <!-- ============ Library ============ -->
+    <section class="section" id="library" aria-labelledby="library-title">
       <div class="container">
-        <h2 class="section__title" id="hubs-title">Proof of work<span class="section__sub">外部拠点</span></h2>
-        <div class="grid grid--hub">
+        <h2 class="section__title" id="library-title">Library<span class="section__sub">カテゴリ — 準備中</span></h2>
+        <div class="grid grid--4">
           <article class="card reveal">
-            <p class="card__type mono">CODE</p>
-            <h3 class="card__name">GitHub</h3>
-            <p class="card__desc">ソースコードと実験のリポジトリ。</p>
-            <p class="card__action"><a class="textlink" href="https://github.com/watanabe3tipapa/">github.com/watanabe3tipapa<span aria-hidden="true"> ↗</span></a></p>
+            <p class="card__type mono">CHORDS <span class="planned">PLANNED</span></p>
+            <h3 class="card__name">コード進行</h3>
+            <p class="card__desc">定番進行から一音変化まで。指板ポジション付きで。</p>
           </article>
           <article class="card reveal">
-            <p class="card__type mono">WRITING</p>
-            <h3 class="card__name">BLOG</h3>
-            <p class="card__desc">思考と記録の長文発信。</p>
-            <p class="card__action"><a class="textlink" href="https://watanabe3ti.txt-nifty.com/">watanabe3ti.txt-nifty.com<span aria-hidden="true"> ↗</span></a></p>
+            <p class="card__type mono">SCALES <span class="planned">PLANNED</span></p>
+            <h3 class="card__name">スケール練習</h3>
+            <p class="card__desc">指慣らしからモードまで。テンポ指定つきエチュード。</p>
           </article>
           <article class="card reveal">
-            <p class="card__type mono">LOG</p>
-            <h3 class="card__name">LOG</h3>
-            <p class="card__desc">日々の作業と出来事のログ。</p>
-            <p class="card__action"><a class="textlink" href="https://log.watanabe3ti.com/">log.watanabe3ti.com<span aria-hidden="true"> ↗</span></a></p>
+            <p class="card__type mono">RIFFS <span class="planned">PLANNED</span></p>
+            <h3 class="card__name">リフ&amp;フレーズ</h3>
+            <p class="card__desc">弾きたくなる短い素材。キーやテンポのバリエーション付き。</p>
           </article>
           <article class="card reveal">
-            <p class="card__type mono">KNOWLEDGE</p>
-            <h3 class="card__name">Wiki</h3>
-            <p class="card__desc">知識とメモの整理場所。</p>
-            <p class="card__action"><a class="textlink" href="https://wiki.watanabe3ti.com/">wiki.watanabe3ti.com<span aria-hidden="true"> ↗</span></a></p>
-          </article>
-          <article class="card reveal">
-            <p class="card__type mono">TOOLBOX</p>
-            <h3 class="card__name">Toolsmith</h3>
-            <p class="card__desc">道具箱とテクノロジーニュース。</p>
-            <p class="card__action"><a class="textlink" href="https://toolsmith.watanabe3ti.com/">toolsmith.watanabe3ti.com<span aria-hidden="true"> ↗</span></a></p>
+            <p class="card__type mono">SONGS <span class="planned">PLANNED</span></p>
+            <h3 class="card__name">曲まるごと</h3>
+            <p class="card__desc">構成ごと区切ったフル譜面。セクションラベルで読みやすく。</p>
           </article>
         </div>
+        <p class="section__more"><a class="textlink" href="updates/index.html">進捗は Updates で追えます<span aria-hidden="true"> →</span></a></p>
+      </div>
+    </section>
+
+    <!-- ============ Roadmap ============ -->
+    <section class="section" id="roadmap" aria-labelledby="roadmap-title">
+      <div class="container">
+        <h2 class="section__title" id="roadmap-title">Roadmap<span class="section__sub">これからの fadd9</span></h2>
+        <ol class="signal-list">
+          <li class="signal-list__item reveal">
+            <time class="mono" datetime="phase-2">PHASE 2</time>
+            <strong>Samples Library</strong>
+            <p>data JSON を正本にした一覧・検索・詳細ページ。旧 Works の仕組みを流用。</p>
+          </li>
+          <li class="signal-list__item reveal">
+            <time class="mono" datetime="phase-3">PHASE 3</time>
+            <strong>Play &amp; Render</strong>
+            <p>ブラウザ内で楽譜描画と再生。abcjs をローカル同梱し、外部通信ゼロを維持。</p>
+          </li>
+          <li class="signal-list__item reveal">
+            <time class="mono" datetime="phase-4">PHASE 4</time>
+            <strong>Reference &amp; Playground</strong>
+            <p>ABC記法チートシート、入力しながら鳴るプレイグラウンド、Fadd9 OS への統合。</p>
+          </li>
+        </ol>
       </div>
     </section>
   </main>
@@ -208,8 +235,8 @@
   <footer class="footer">
     <div class="container footer__inner">
       <div class="footer__brand">
-        <p class="footer__logo mono">WATANABE3TI.COM</p>
-        <p class="footer__tagline">Curiosity, indexed.</p>
+        <p class="footer__logo mono">FADD9</p>
+        <p class="footer__tagline">Guitar, notated.</p>
       </div>
       <nav class="footer__follow" aria-label="SNS">
         <h2 class="footer__heading mono">FOLLOW</h2>
@@ -219,19 +246,14 @@
           <li><a href="https://www.instagram.com/chombo_watanabe3tipapa">Instagram</a></li>
         </ul>
       </nav>
-      <nav class="footer__sites" aria-label="関連サイト">
+      <nav class="footer__sites" aria-label="サイト内ページ">
         <h2 class="footer__heading mono">SITES</h2>
         <ul class="footer__links">
-          <li><a href="works/index.html">Works — 道具の地図</a></li>
-          <li><a href="now/index.html">Now — 現在地</a></li>
-          <li><a href="os/index.html">Atlas OS — デスクトップ体験</a></li>
+          <li><a href="works/index.html">Works — レガシーカタログ(移行中)</a></li>
+          <li><a href="now/index.html">Now — 現在地(移行中)</a></li>
+          <li><a href="os/index.html">Fadd9 OS — デスクトップ体験</a></li>
           <li><a href="updates/index.html">Updates — 更新履歴</a></li>
-          <li><a href="feed.xml">RSS (Atlas)</a></li>
-          <li><a href="https://watanabe3ti.com/">main</a></li>
-          <li><a href="https://watanabe3ti.com/neo/">neo</a></li>
-          <li><a href="https://watanabe3ti.com/next/">next</a></li>
-          <li><a href="https://watanabe3ti.com/beos/">BeOS</a></li>
-          <li><a href="https://toolsmith.watanabe3ti.com/news/">更新情報</a></li>
+          <li><a href="feed.xml">RSS (fadd9)</a></li>
         </ul>
       </nav>
     </div>
@@ -242,7 +264,6 @@
   </footer>
 
   <script src="js/palette.js" defer></script>
-  <script src="js/recent.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>

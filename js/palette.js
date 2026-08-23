@@ -1,5 +1,5 @@
-/* Watanabe3ti Atlas — Command Palette (⌘K / Ctrl+K)
-   全ページ共通。道具・ページ・外部拠点を横断検索して即移動。 */
+/* Watanabe3ti fadd9 — Command Palette (⌘K / Ctrl+K)
+   全ページ共通。譜例・ページ・外部拠点を横断検索して即移動。 */
 (() => {
   "use strict";
 
@@ -16,23 +16,19 @@
 
   /* ---------- 静的インデックス ---------- */
   const staticItems = [
-    { group: "PAGE", label: "HOME — Atlas ホーム", hint: "入口・注目・世界", href: BASE + "index.html" },
-    { group: "PAGE", label: "Works — 道具の地図", hint: "一覧 検索 タグ", href: BASE + "works/index.html" },
-    { group: "PAGE", label: "Works · Tools — ツール", hint: "tool", href: BASE + "works/index.html?type=tool" },
-    { group: "PAGE", label: "Works · Experiments — 実験", hint: "experiment lab", href: BASE + "works/index.html?type=experiment" },
-    { group: "PAGE", label: "Works · Writing — ノート", hint: "writing blog docs", href: BASE + "works/index.html?type=writing" },
-    { group: "PAGE", label: "Now — 現在地", hint: "いま 作っている", href: BASE + "now/index.html" },
+    { group: "PAGE", label: "HOME — fadd9 ホーム", hint: "ABC記法 ギター 譜例", href: BASE + "index.html" },
+    { group: "PAGE", label: "Samples — 譜例", hint: "study progression コピー", href: BASE + "index.html#samples" },
+    { group: "PAGE", label: "Roadmap — これから", hint: "phase 計画 library", href: BASE + "index.html#roadmap" },
+    { group: "PAGE", label: "Works — レガシーカタログ", hint: "旧道具一覧 移行中", href: BASE + "works/index.html" },
+    { group: "PAGE", label: "Now — 現在地(移行中)", hint: "いま 作っている", href: BASE + "now/index.html" },
     { group: "PAGE", label: "Updates — 更新履歴", hint: "release changelog 再訪", href: BASE + "updates/index.html" },
-    { group: "COMMAND", label: "Enter the OS — Atlas OS 体験", hint: "デスクトップ classic", href: BASE + "os/index.html" },
-    { group: "WORLD", label: "main — Classic OS", hint: "Mac OS 9 デスクトップ", href: "https://watanabe3ti.com/" },
-    { group: "WORLD", label: "neo — Digital Tunnel", hint: "バイナリ トンネル", href: "https://watanabe3ti.com/neo/" },
-    { group: "WORLD", label: "next — Mission Control", hint: "Takeoff to Wonder 宇宙", href: "https://watanabe3ti.com/next/" },
+    { group: "COMMAND", label: "Enter the OS — Fadd9 OS 体験", hint: "デスクトップ classic", href: BASE + "os/index.html" },
+    { group: "COMMAND", label: "RSS — feed.xml", hint: "atom 更新 購読", href: BASE + "feed.xml" },
     { group: "HUB", label: "GitHub", hint: "コード リポジトリ", href: "https://github.com/watanabe3tipapa/" },
     { group: "HUB", label: "BLOG", hint: "長文 発信", href: "https://watanabe3ti.txt-nifty.com/" },
     { group: "HUB", label: "LOG", hint: "日々 ログ", href: "https://log.watanabe3ti.com/" },
     { group: "HUB", label: "Wiki", hint: "知識 整理", href: "https://wiki.watanabe3ti.com/" },
-    { group: "HUB", label: "Toolsmith", hint: "道具箱 ニュース tool", href: "https://toolsmith.watanabe3ti.com/" },
-    { group: "HUB", label: "Toolsmith NEWS", hint: "更新情報 news", href: "https://toolsmith.watanabe3ti.com/news/" }
+    { group: "HUB", label: "Toolsmith", hint: "道具箱 ニュース tool", href: "https://toolsmith.watanabe3ti.com/" }
   ];
 
   /* ---------- 道具インデックス（遅延ロード） ---------- */
@@ -74,7 +70,7 @@
     <div class="palette" role="dialog" aria-modal="true" aria-label="コマンドパレット">
       <div class="palette__head">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-        <input id="palette-input" type="text" placeholder="道具・ページ・拠点を検索… (try: ollama, neo)" autocomplete="off" spellcheck="false">
+        <input id="palette-input" type="text" placeholder="ページ・譜例・拠点を検索… (try: fadd9, study)" autocomplete="off" spellcheck="false">
         <kbd class="mono">ESC</kbd>
       </div>
       <ul class="palette__list" id="palette-list" role="listbox"></ul>
@@ -133,7 +129,7 @@
     results = filter(input.value.trim());
     active = Math.min(active, Math.max(0, results.length - 1));
     if (!results.length) {
-      listEl.innerHTML = '<li class="palette__empty">該当なし — try “ollama”, “works”, “next”</li>';
+      listEl.innerHTML = '<li class="palette__empty">該当なし — try “fadd9”, “samples”, “abc”</li>';
       return;
     }
     listEl.innerHTML = results

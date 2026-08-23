@@ -1504,3 +1504,131 @@ body.os-compact .menubar__menus {
   color: var(--ink-dim);
   font-size: 0.9rem;
 }
+
+/* ============================================================
+   fadd9 — hero layout / chord figure / abc boards
+   ============================================================ */
+
+.hero__layout {
+  display: flex;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.hero__body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.hero__chord {
+  flex: 0 0 auto;
+}
+
+.chord-figure {
+  margin: 0;
+  text-align: center;
+}
+
+.chord-figure svg {
+  width: clamp(150px, 17vw, 200px);
+  height: auto;
+  filter: drop-shadow(0 0 28px rgba(45, 212, 191, 0.16));
+}
+
+.chord-figure figcaption {
+  margin-top: 0.6rem;
+  color: var(--ink-dim);
+  font-size: 0.72rem;
+}
+
+.section__lead {
+  color: var(--ink-dim);
+  max-width: 52ch;
+  margin-bottom: 2.25rem;
+}
+
+/* ---- 譜例ボード ---- */
+.boards {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 860px) {
+  .boards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.abc-board {
+  margin: 0;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.abc-board__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.55rem 0.95rem;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.abc-board__file {
+  color: var(--teal);
+  font-size: 0.78rem;
+}
+
+.badge-soft {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.08rem 0.6rem;
+  color: var(--ink-dim);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+.abc-board pre {
+  margin: 0;
+  padding: 1.05rem 1.15rem;
+  overflow-x: auto;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  line-height: 1.75;
+  letter-spacing: 0.02em;
+}
+
+/* ---- ライブラリ grid / PLANNED バッジ ---- */
+.grid--4 {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.planned {
+  display: inline-block;
+  margin-left: 0.4em;
+  border: 1px dashed var(--line);
+  border-radius: 4px;
+  padding: 0 0.45em;
+  color: var(--ink-dim);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  vertical-align: 0.1em;
+}
+
+@media (max-width: 720px) {
+  .hero__layout {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .chord-figure svg {
+    width: clamp(130px, 34vw, 160px);
+  }
+}

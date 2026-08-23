@@ -1,54 +1,28 @@
 {
   "site": {
-    "name": "WATANABE3TI.COM",
-    "tagline": "Curiosity, indexed.",
+    "name": "FADD9",
+    "tagline": "Guitar, notated.",
     "hero": {
-      "en": "I build small systems for following curiosity.",
-      "ja": "ツール、ノート、実験を通して、Web の中の「気になる」を育てています。"
+      "en": "Play guitar. Write it in ABC.",
+      "ja": "ギターの練習素材を、テキストで書く楽譜「ABC記法」で書き残す。独習のための譜例ライブラリ。"
     },
-    "atlasUrl": "https://watanabe3tipapa.github.io/atlas/"
+    "url": "https://watanabe3tipapa.github.io/fadd9/"
   },
-  "featured": [
-    {
-      "slug": "toolsmith",
-      "name": "Toolsmith",
-      "type": "TOOLBOX",
-      "status": "ACTIVE",
-      "updated": "2026-03",
-      "field": ["TOOLS", "NEWS", "LINKS"],
-      "summaryJa": "道具箱の蓋のようなサイト。公開ツールの棚と、テクノロジーのニュース、内外の拠点へのリンクを束ねる拠点。",
-      "url": "https://toolsmith.watanabe3ti.com/"
-    }
+  "concept": [
+    { "type": "TEXT", "nameJa": "そのまま書ける", "summaryJa": "楽譜が ASCII テキスト。エディタがあれば今日から書けて、コピペで渡せる。" },
+    { "type": "GIT", "nameJa": "履歴で育つ", "summaryJa": "譜面は diff を持つ。改変が残り、差分が上達の記録になる。" },
+    { "type": "PLAY", "nameJa": "貼って即再生", "summaryJa": "abcjs など対応ツールに貼れば、その場で鳴って絵になる。" }
   ],
-  "signal": [
-    {
-      "date": "2026-03-26",
-      "title": "Arm AGI CPU",
-      "summaryJa": "エージェントAIクラウド時代のシリコン基盤 — Arm の新アーキテクチャを読む。",
-      "url": "https://toolsmith.watanabe3ti.com/news/archives/29"
-    },
-    {
-      "date": "2025-08-06",
-      "title": "Groq",
-      "summaryJa": "AI推論やデータ分析を加速するために設計された高性能プロセッサ。",
-      "url": "https://toolsmith.watanabe3ti.com/news/archives/28"
-    },
-    {
-      "date": "2024-12-10",
-      "title": "Willow",
-      "summaryJa": "Google の量子チップ。「10億年が5分以内」の計算性能とは。",
-      "url": "https://toolsmith.watanabe3ti.com/news/archives/27"
-    }
+  "libraryCategories": [
+    { "id": "chords", "name": "Chords", "nameJa": "コード進行", "status": "PLANNED" },
+    { "id": "scales", "name": "Scales", "nameJa": "スケール練習", "status": "PLANNED" },
+    { "id": "riffs", "name": "Riffs", "nameJa": "リフ&フレーズ", "status": "PLANNED" },
+    { "id": "songs", "name": "Songs", "nameJa": "曲まるごと", "status": "PLANNED" }
   ],
-  "routes": [
-    { "name": "Tools", "nameJa": "道具を探す", "summaryJa": "公開ツールやエディタの棚。使えるものから選ぶ。", "url": "works/index.html?type=tool" },
-    { "name": "Experiments", "nameJa": "実験を覗く", "summaryJa": "コード、試作、検証の記録。進行形の研究室。", "url": "works/index.html?type=experiment" },
-    { "name": "Notes", "nameJa": "ノートを読む", "summaryJa": "思考と記録の長文発信。日々のログは LOG へ。", "url": "works/index.html?type=writing" }
-  ],
-  "worlds": [
-    { "mode": 1, "label": "Classic OS", "path": "main", "summaryJa": "Mac OS 9 風デスクトップ。触って探索するコンピューティング体験。", "url": "https://watanabe3ti.com/" },
-    { "mode": 2, "label": "Digital Tunnel", "path": "neo", "summaryJa": "バイナリのトンネル背景に広がる、もう一つの OS 体験。", "url": "https://watanabe3ti.com/neo/" },
-    { "mode": 3, "label": "Mission Control", "path": "next", "summaryJa": "月と宇宙を背景にした思想の入口。「Takeoff to Wonder」。", "url": "https://watanabe3ti.com/next/" }
+  "roadmap": [
+    { "phase": 2, "title": "Samples Library", "summaryJa": "data JSON 正本の一覧・検索・詳細ページ。" },
+    { "phase": 3, "title": "Play & Render", "summaryJa": "abcjs ローカル同梱による描画と再生。外部通信ゼロ維持。" },
+    { "phase": 4, "title": "Reference & Playground", "summaryJa": "チートシート、プレイグラウンド、Fadd9 OS 統合。" }
   ],
   "hubs": [
     { "category": "CODE", "name": "GitHub", "summaryJa": "ソースコードと実験のリポジトリ。", "url": "https://github.com/watanabe3tipapa/" },

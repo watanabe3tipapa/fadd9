@@ -1,154 +1,103 @@
-# atlas
+# fadd9
 
-**Curiosity, indexed.**
+**Guitar, notated.**
 
-atlas は、watanabe3ti.com の進化版「Atlas」構想を素の HTML/CSS/JS だけで実装したポータルサイトです。制作した道具・実験・ノートを「地図」として辿れる Works カタログを中心に、Mac OS 9 風のデスクトップ体験（Atlas OS）や ⌘K Command Palette を備えます。
+fadd9 は、ギターを入り口に **ABC記法(テキストで書く楽譜)** を専門的に扱う独習ライブラリです。既存 ABC 記法の弱点である「動くサンプルの少なさ」を埋めることを軸に、コード進行・スケール・リフ・曲をコピーして即使える譜例として公開します。
 
-[![Version](https://img.shields.io/badge/version-v0.1.1-blue.svg)](https://watanabe3tipapa.github.io/atlas/updates/)
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-live-blue.svg)](https://watanabe3tipapa.github.io/atlas/)
-[![GitHub](https://img.shields.io/github/issues/watanabe3tipapa/atlas.svg)](https://github.com/watanabe3tipapa/atlas/issues)
+[![Version](https://img.shields.io/badge/version-v1.0.0--rebuild-blue.svg)](https://watanabe3tipapa.github.io/fadd9/updates/)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-live-blue.svg)](https://watanabe3tipapa.github.io/fadd9/)
+[![GitHub](https://img.shields.io/github/issues/watanabe3tipapa/fadd9.svg)](https://github.com/watanabe3tipapa/fadd9/issues)
 
 ---
 
 ## 概要
 
-atlas は「I build small systems for following curiosity.」（好奇心に従って小さなシステムを作り続ける）をテーマに、GitHub 上の公開リポジトリから厳選した 30 件（Tools 15 / Lab 15）をカタログ化したサイトです。`data/works-*.json` を正本データとして、Atlas UI（一覧・検索・詳細）と Atlas OS（デスクトップ体験）の双方から同じデータを読める構造になっています。
+- **名前の由来**: ギターコードの Fadd9(F・A・C・G)。浮き系の美しい響き。
+- **コンセプト**: 「ギター教室」のような独習環境。商売ではなく、自分(と訪れた独習者)のための練習拠点。
+- **本質**: 楽譜をテキストで持つこと。エディタで書け、Git で diff が見え、abcjs に貼れば即鳴る。
 
-## コンセプト
+## 主な対応
 
-制作物を類型化して「地図」に置くことで、何があるか・いま何を作っているか・次に何をするかがひと目でわかる入口を目指しています。道具は 3 つのタイプとステータスで整理されます:
-
-- **TYPE**: TOOL（ツール）/ EXPERIMENT（実験）/ WRITING（ノート）
-- **STATUS**: ACTIVE / WIP / PROTOTYPE
-
-atlas の主な対応:
-
-- Works — 道具の一覧・検索・タグフィルタ・個別詳細（関連道具の自動選出つき）
-- Now — 現在地（BUILDING / INTERESTED / NEXT）
-- Atlas OS — 同じデータを Mac OS 9 風デスクトップで読む体験モード
-- Updates + Atom feed — 更新の流れを追える履歴
+- Hero — Fadd9 コードダイアグラム(SVG 手描き)+ コンセプト導線
+- Why ABC — テキスト記譜の利点(TEXT / GIT / PLAY)
+- Samples — 手書き譜例ボード(study / progression)。Phase 2 でライブラリ化
+- Library — Chords / Scales / Riffs / Songs カテゴリ(準備中)
+- Roadmap — フェーズ計画
+- Updates + Atom feed — 更新履歴
+- ⌘K Command Palette — 全ページ共通
 
 ---
 
-## 主な特徴
+## 技術スタック
 
-- 素の HTML/CSS/JS。ビルド工程・外部依存なし（外部フォント・外部 JS ライブラリ不使用）
-- ⌘K / Ctrl+K、`/` キー、または右下の検索ボタンで起動する Command Palette（道具・ページ・外部拠点を横断移動）
-- 個別ページは `works/work.html?slug=` で JS レンダリング。関連道具は同タイプ +1 点 / タグ一致 +2 点のスコアリングで上位 4 件を自動選出
-- Atlas OS: ウィンドウのドラッグ・z-index フォーカス管理・Esc で最前面を閉じる。幅 719px 以下では自動で Compact Mode（一覧表示、手動切替も保存）
-- Recent Files: ホームに最新 5 件を `updated` 降順で自動表示
-- sitemap.xml / robots.txt / OGP 画像（og.png 1200×630）/ Atom feed（feed.xml）を同梱
-- アクセシビリティ: セマンティック HTML / skip link / focus-visible / prefers-reduced-motion / noscript フォールバック
-
----
-
-## 前提条件
+素の HTML/CSS/JS。ビルド工程なし・外部フォント/JS ライブラリ不使用(オフライン可)。
 
 | ツール | 必要 | 確認コマンド |
 |---|---|---|
-| Web ブラウザ | 必須（最新版推奨） | — |
-| Git | 任意 (取得・デプロイ時) | `git --version` |
-| Python 3 | 任意 (ローカルプレビュー時) | `python3 --version` |
+| Web ブラウザ | 必須 | — |
+| Git | 任意 | `git --version` |
+| Python 3 | 任意 (ローカルプレビュー) | `python3 --version` |
 
-ビルド工程がないため、上記以外の依存パッケージは不要です。
-
----
-
-## 開始手順（確認できる事実のみ）
-
-1. リポジトリを取得:
+## 開始手順
 
 ```bash
-git clone https://github.com/watanabe3tipapa/atlas.git
-cd atlas
-```
-
-2. ローカルサーバーで確認（静的ファイルなのでそのままブラウザで開いても可）:
-
-```bash
+git clone https://github.com/watanabe3tipapa/fadd9.git
+cd fadd9
 python3 -m http.server 8000
 # http://localhost:8000
 ```
 
-3. 主な操作:
+操作: ⌘K / Ctrl+K / `/` で Command Palette。デプロイは main ブランチへの push で GitHub Pages に自動反映。
 
-- **⌘K / Ctrl+K**（または右下の検索ボタン、`/` キー）: Command Palette で横断移動
-- **Atlas OS**: デスクトップのアイコンをクリックでウィンドウ表示。ドラッグ可。Esc で最前面を閉じる
-- モバイル幅では Atlas OS は自動で Compact Mode。メニューバーから Desktop View に切替可能
+## ロードマップ
 
-4. デプロイ: main ブランチへの push で GitHub Pages に自動反映されます（プロジェクトページ / main ルート配信）。
+| Phase | 内容 | 状態 |
+|---|---|---|
+| 1 | トップページ刷新(fadd9 転換) | ✅ 完了 |
+| 2 | Samples Library(data JSON 正本 + 一覧/検索/詳細) | 着手予定 |
+| 3 | Play & Render(abcjs ローカル同梱、描画と再生) | 計画 |
+| 4 | Reference & Playground(チートシート、Fadd9 OS 統合) | 計画 |
 
----
+## リポジトリ構成(主なファイル)
 
-## バージョン履歴
-
-- **v0.1.1** (2026-08-23) — 「作品」表記を「道具」に統一、TOOL タイプの表示ラベルを「ツール」に変更
-- **Release 4** — Recent Files 自動表示 / Updates ページ / Atom feed / sitemap.xml / OGP 画像
-- **Release 3** — Atlas OS（Mac OS 9 風デスクトップ）/ Command Palette / Compact Mode
-- **Release 2** — Works の地図化（一覧・検索・タグフィルタ・詳細 / Now ページ）
-- **Release 1** — ランディングページ（7 セクション + OGP）
-
-詳細は [Updates ページ](https://watanabe3tipapa.github.io/atlas/updates/) および [DEV-MEMO.md](./DEV-MEMO.md) を参照してください。
-
----
-
-## リポジトリ構成（主なファイル・ディレクトリ）
-
-- index.html — LP 本体（7 セクション + Recent Files）
-- works/index.html — 道具一覧（`?type=tool/experiment/writing` で初期絞り込み可）
-- works/work.html — 個別道具ページ（`?slug=` / 関連道具つき）
-- now/index.html — Now ページ（現在地）
-- os/index.html — Atlas OS（デスクトップ体験）
-- updates/index.html — 更新履歴タイムライン
-- css/style.css — デザイントークン / レスポンシブ / reduced-motion 対応
-- js/main.js — ホーム用 reveal アニメーション
-- js/recent.js — Recent Files（最新 5 件）
-- js/works.js — Works 一覧・詳細のレンダラ
-- js/os.js — ウィンドウマネージャ / Compact Mode
-- js/palette.js — Command Palette（全ページ共通）
-- data.json — サイト設定メタデータ
-- data/works-tools.json / data/works-lab.json — 道具台帳の正本（Tools 15 / Lab 15）
-- feed.xml — Atom feed（Atlas 更新）
-- sitemap.xml / robots.txt — サイトマップとクロール設定
-- og.png — OGP 共有画像 (1200×630)
-- .nojekyll — Jekyll 処理の無効化
-- DEV-MEMO.md — 実装記録（Release 1〜4 の設計決定と既知の制限）
-
----
+```
+fadd9/
+├── index.html          # LP 本体(Hero + Why ABC + Samples + Library + Roadmap)
+├── works/index.html    # レガシーカタログ(Phase 2 でサンプルライブラリへ改修)
+├── works/work.html     # 個別ページ(?slug=)
+├── now/index.html      # Now ページ(移行中)
+├── os/index.html       # Fadd9 OS(旧 Atlas OS、Phase 4 で改修)
+├── updates/index.html  # 更新履歴タイムライン
+├── css/style.css       # デザイントークン / レスポンシブ
+├── js/main.js          # reveal アニメーション / 年表示
+├── js/palette.js       # Command Palette(全ページ共通)
+├── js/works.js         # レガシー一覧・詳細レンダラ
+├── js/os.js            # ウィンドウマネージャ / Compact Mode
+├── js/recent.js        # Recent Files(Phase 2 で再利用予定)
+├── data.json           # サイト設定メタデータ
+├── data/works-*.json   # レガシーデータ(Phase 2 で samples.json へ統合予定)
+├── feed.xml            # Atom feed
+├── sitemap.xml / robots.txt
+└── og.png              # OGP 共有画像(1200×630)
+```
 
 ## 既知の制限
 
-- `works/work.html?slug=` は JS レンダリングのため、クローラによっては詳細本文を取得できない場合があります（title / description は差し替え済み）
-- `feed.xml` は手書きの静的ファイルです。更新時に entry の手動追加が必要です
-- Works 収録は厳選 30 件です。全件（非 fork 約 95 件）への拡張は data JSON の増備のみで対応可能です
-
----
-
-## コントリビューション
-
-コントリビューションは歓迎します。大きな変更は事前に issue を立ててください。
-
-基本的なワークフロー:
-
-1. リポジトリをフォーク
-2. 機能ブランチを作成 (`git checkout -b feature/your-feature`)
-3. 変更をコミット (`git commit -m 'Add your change'`)
-4. ブランチをプッシュし、Pull Request を作成
+- サブページ(works / now / os / updates)は旧 Atlas のまま。Phase 2〜4 で順次改修
+- og.png は旧デザインのまま。差し替え予定
+- Samples の譜例は現在手書き HTML。Phase 2 で data JSON 化
 
 ---
 
 ## 連絡先 / 公開サイト
 
-- GitHub: https://github.com/watanabe3tipapa/atlas
-- 公開サイト (GitHub Pages): https://watanabe3tipapa.github.io/atlas/
+- GitHub: https://github.com/watanabe3tipapa/fadd9
+- 公開サイト (GitHub Pages): https://watanabe3tipapa.github.io/fadd9/
 - 作者サイト: https://watanabe3ti.com/
 - X: https://twitter.com/watanabe3tipapa
-- Facebook: https://www.facebook.com/toru.watanabe3ti
-- Instagram: https://www.instagram.com/chombo_watanabe3tipapa
 
 ---
 
 ## 開発・保守状態
 
-- リポジトリはアーカイブされていません。
-- 最終更新: 2026-08-23 (v0.1.1)
+- 最終更新: 2026-08-24 (Rebuild 1 — fadd9 転換)

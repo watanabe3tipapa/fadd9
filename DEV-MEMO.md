@@ -1,7 +1,52 @@
-# DEV-MEMO — Watanabe3ti Atlas LP
+# DEV-MEMO — FADD9
 
-最終更新: 2026-08-23（Release 4 追録）
-対象: PLAN_bump.md（Atlas 構想書）Release 1〜4 の実装記録
+最終更新: 2026-08-24(Rebuild 1 — fadd9 転換)
+旧 Atlas ポータルからの全面転換以降の設計決定を記録する。Atlas 時代の記録は下部「レガシー記録」に残す。
+
+## Rebuild 1(2026-08-24)— fadd9 転換
+
+### コンセプト決定
+
+| 項目 | 決定 |
+| --- | --- |
+| サイト名 | **fadd9**(ギターコード Fadd9 = F・A・C・G に由来) |
+| 方向性 | 「ギター教室のような独習環境」。商業的な教室サイトではなく独習ライブラリ |
+| 本質 | ギターを入り口に、**ABC 記法を専門的に扱う**。既存 ABC 記法(Chris Walshaw)ベースで独自拡張はしない |
+| 差別化 | 既存 ABC 界の弱点「動くサンプルが少ない」→ 実用的な譜例ライブラリで埋める |
+| タグライン | `Guitar, notated.` |
+
+### フェーズ計画
+
+1. Phase 1 — index.html 全面刷新 ✅
+2. Phase 2 — Samples Library(`data/samples.json` 正本 + 一覧/検索/詳細。works の仕組みを流用)
+3. Phase 3 — Play & Render(abcjs をローカル同梱し描画+再生。ゼロ依存方針は維持=外部通信なし)
+4. Phase 4 — Reference & Playground(チートシート、入力即再生、Fadd9 OS 改修)
+
+### Phase 1 の実装
+
+- Hero: 左にコピー、右に **Fadd9 コードダイアグラム(SVG 手描き)**。押弦位置 x x 3 2 1 3、ドット内に音名 F/A/C/G を直書き。`aria-label` で押弦説明を読み上げ
+- favicon: コード図風 SVG data URI に差し替え
+- Why ABC: TEXT / GIT / PLAY の 3 カード
+- Samples: `.abc-board`(エディタ風パネル)+ 実際に有効な ABC テキストを 2 例(study-01 / progression-01)。`<pre>` 内は手書き直書き
+- Library: Chords/Scales/Riffs/Songs + `PLANNED` バッジ。死んだリンクを作らない(Updates へ導線)
+- Roadmap: signal-list 流用。`time` 要素に PHASE 表記(datetime="phase-2" は非日時だが視覚ラベル優先)
+- palette.js: 静的インデックスを fadd9 構成へ差し替え(WORLD 三兄弟を削除、RSS を追加)。works 遅延ロードはレガシーカタログ閲覧用として維持
+- recent.js: ホームから外した(ファイルは Phase 2 再利用のため温存。`#recent-list` 非存在時は自動無効化される)
+- sitemap.xml / robots.txt / feed.xml / data.json: fadd9 ドメインとコンセプトへ更新。feed は atlas 履歴を破棄し Rebuild 1 エントリのみに
+- CSS 追記: `.hero__layout`, `.chord-figure`, `.abc-board`, `.badge-soft`, `.grid--4`, `.planned`, `.section__lead`。既存トークン(濃紺/ティール/月光黄)は踏襲
+
+### 未消化(次フェーズ以降)
+
+- サブページ works / now / os / updates はまだ旧 Atlas 文言。順次改修
+- og.png 差し替え
+- Samples 譜例の data JSON 化(Phase 2 の種データ)
+
+---
+
+# レガシー記録 — Watanabe3ti Atlas LP(〜 v0.1.1)
+
+最終更新: 2026-08-23(Release 4 追録)
+対象: PLAN_bump.md(Atlas 構想書)Release 1〜4 の実装記録
 
 ## 決定事項
 
