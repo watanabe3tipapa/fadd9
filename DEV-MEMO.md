@@ -1,6 +1,6 @@
 # DEV-MEMO — FADD9
 
-最終更新: 2026-08-24(Phase 2 — Samples Library)
+最終更新: 2026-08-24(Phase 3 — Play & Render)
 旧 Atlas ポータルからの全面転換以降の設計決定を記録する。Atlas 時代の記録は下部「レガシー記録」に残す。
 
 ## Rebuild 1(2026-08-24)— fadd9 転換
@@ -72,6 +72,37 @@
 - 描画・再生なし(abcjs 同梱は Phase 3)
 - og.png 差し替え、updates ページの fadd9 化
 - samples/sample.html の OGP 動的差し替えは title/description のみ
+
+---
+
+## Phase 3(2026-08-24)— Play & Render
+
+### 目的
+
+譜例を「読める」だけでなく「鳴らせる」状態にする。abcjs をローカル同梱し、詳細ページで楽譜描画+合成再生を提供。
+
+### 追加物
+
+| ファイル | 内容 |
+| --- | --- |
+| `js/vendor/abcjs-basic-min.js` | abcjs v6.7.0(500KB, UMD→`ABCJS` グローバル)。jsDelivr から取得し同梱 |
+| `samples/sample.html` 変更 | vendor スクリプトを palette/samples より先に defer 読み込み |
+| `js/samples.js` 変更 | `renderScore()` — renderAbc(responsive:"resize") + SynthController(CreateSynth) |
+
+### 設計上の決定
+
+1. **紙色パネル**: 濃紺テーマ上に楽譜を直接描画すると配色調整が abcjs 内部に依存するため、`#fdfbf4` の紙カードに黒譜面。楽譜=紙という記号性も狙う
+2. **フォールバック三段構成**: abcjs 未読込 → ABC ソースのみ / 描画例外 → fallback メッセージ+ソース / Web Audio 非対応(`ABCJS.synth.supportsAudio()`) → audio-bar を非表示
+3. **WARP 対応**(`displayWarp`): 練習用に速度変更を標準提供。displayLoop/Restart も ON
+4. **setTune の userAction=false**: 自動再生せず、ユーザーが ▶ を押してから発火(自動再生ポリシー回避)
+5. **外部通信ゼロの維持**: 音源は abcjs 同梱の合成音。CDN 参照はランタイムに存在しない
+6. ホーム譜例ボードのファイル名を詳細ページへリンク化、Roadmap PHASE 3 を ✅ 化
+
+### 未消化
+
+- 再生中の音符ハイライト(cursorControl)は未実装
+- og.png 差し替え、updates ページの fadd9 化
+- 一覧ページでのミニスコア描画(重いので見送り)
 
 ---
 

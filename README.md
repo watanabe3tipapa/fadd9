@@ -22,6 +22,7 @@ fadd9 は、ギターを入り口に **ABC記法(テキストで書く楽譜)** 
 - Why ABC — テキスト記譜の利点(TEXT / GIT / PLAY)
 - Samples — 手書き譜例ボード(study / progression)
 - **Samples Library** — `data/samples.json` 正本の譜例 12 件。カテゴリ(練習/コード進行/スケール/リフ/曲)・検索・タグで絞り込み、詳細ページから ABC テキストをワンクリックコピー
+- **Play & Render** — 詳細ページで楽譜を SVG 描画し、ブラウザ内で再生(速度変更 WARP 対応)。abcjs v6 をローカル同梱、外部通信ゼロ
 - Roadmap — フェーズ計画
 - Updates + Atom feed — 更新履歴
 - ⌘K Command Palette — 譜例 12 件も横断検索
@@ -55,7 +56,7 @@ python3 -m http.server 8000
 |---|---|---|
 | 1 | トップページ刷新(fadd9 転換) | ✅ 完了 |
 | 2 | Samples Library(data JSON 正本 + 一覧/検索/詳細) | ✅ 完了 |
-| 3 | Play & Render(abcjs ローカル同梱、描画と再生) | 着手予定 |
+| 3 | Play & Render(abcjs ローカル同梱、描画と再生) | ✅ 完了 |
 | 4 | Reference & Playground(チートシート、Fadd9 OS 統合) | 計画 |
 
 ## リポジトリ構成(主なファイル)
@@ -71,6 +72,7 @@ fadd9/
 ├── os/index.html       # Fadd9 OS(旧 Atlas OS、Phase 4 で改修)
 ├── updates/index.html  # 更新履歴タイムライン
 ├── css/style.css       # デザイントークン / レスポンシブ
+├── js/vendor/abcjs-basic-min.js  # abcjs v6(楽譜描画+合成再生、ローカル同梱)
 ├── js/main.js          # reveal アニメーション / 年表示
 ├── js/palette.js       # Command Palette(譜例を遅延ロードで横断検索)
 ├── js/samples.js       # 譜例一覧・詳細レンダラ(+コピー機能)
@@ -102,7 +104,7 @@ fadd9/
 - サンプル詳細は JS レンダリングのため、クローラによっては本文を取得できない(title/description は差し替え済み)
 - サブページ(works / now / os / updates)は旧 Atlas のまま。順次改修
 - og.png は旧デザインのまま。差し替え予定
-- 楽譜の視覚描画・ブラウザ内再生は Phase 3 で対応
+- 再生は Web Audio 対応ブラウザのみ(Safari など非対応環境では譜面と COPY のみ)
 
 ---
 

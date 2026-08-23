@@ -12,11 +12,20 @@
   </author>
 
   <entry>
+    <title>Phase 3 — Play &amp; Render</title>
+    <link rel="alternate" type="text/html" href="https://watanabe3tipapa.github.io/fadd9/samples/"/>
+    <id>tag:watanabe3ti,2026:fadd9-phase3</id>
+    <published>2026-08-24T16:00:00Z</published>
+    <updated>2026-08-24T16:00:00Z</updated>
+    <summary>詳細ページで楽譜の SVG 描画とブラウザ内再生に対応。abcjs v6 をローカル同梱し、速度変更(WARP)つき。外部通信ゼロは維持。</summary>
+  </entry>
+
+  <entry>
     <title>Phase 2 — Samples Library 公開</title>
     <link rel="alternate" type="text/html" href="https://watanabe3tipapa.github.io/fadd9/samples/"/>
     <id>tag:watanabe3ti,2026:fadd9-phase2</id>
     <published>2026-08-24T14:00:00Z</published>
-    <updated>2026-08-24T14:00:00Z</updated>
+  <updated>2026-08-24T16:00:00Z</updated>
     <summary>data/samples.json を正本にした譜例ライブラリを公開。練習・コード進行・スケール・リフ・曲の 12 譜例。一覧はカテゴリ/検索/タグで絞り込み、詳細ページから ABC テキストをコピー可能。</summary>
   </entry>
 

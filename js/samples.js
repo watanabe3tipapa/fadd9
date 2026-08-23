@@ -178,6 +178,17 @@
       <p class="detail-desc">${esc(s.nameJa)} — ${esc(s.summaryJa)}</p>
       <p class="detail-tags">${s.tags.map((t) => `<span class="chip chip--static mono">#${esc(t)}</span>`).join("")}</p>
 
+      <figure class="score-panel" aria-label="${esc(s.name)} の楽譜">
+        <div id="score-render">
+          <noscript><p class="score-fallback">楽譜の描画には JavaScript が必要です。</p></noscript>
+        </div>
+      </figure>
+
+      <div class="audio-bar" id="audio-panel" hidden>
+        <div id="audio-controls"></div>
+        <p class="audio-hint mono">WARP で速度を落として練習できます。</p>
+      </div>
+
       <figure class="abc-board abc-board--detail">
         <figcaption class="abc-board__head">
           <span class="abc-board__file mono">${esc(s.slug)}.abc</span>
@@ -209,6 +220,8 @@
     const pre = document.getElementById("abc-code");
     pre.textContent = s.abc;
 
+    renderScore(s);
+
     const btn = document.getElementById("copy-btn");
     const note = document.getElementById("copy-note");
     btn.addEventListener("click", async () => {
@@ -229,6 +242,43 @@
         btn.textContent = "COPY";
       }, 2000);
     });
+  }
+
+  /* ---------- 楽譜描画と再生(abcjs) ---------- */
+  function renderScore(s) {
+    const scoreEl = document.getElementById("score-render");
+    const audioPanel = document.getElementById("audio-panel");
+    if (!scoreEl || !window.ABCJS) return; // abcjs 未読込時は ABC ソースのみで成立
+
+    let visualObj;
+    try {
+      visualObj = window.ABCJS.renderAbc(scoreEl, s.abc, {
+        responsive: "resize",
+        paddingtop: 14,
+        paddingbottom: 14,
+        paddingleft: 18,
+        paddingright: 18
+      })[0];
+    } catch (e) {
+      scoreEl.innerHTML = '<p class="score-fallback">この譜面の描画に失敗しました。下の ABC ソースは利用できます。</p>';
+      return;
+    }
+
+    if (!audioPanel || !window.ABCJS.synth.supportsAudio()) return; // 再生非対応環境では譜面だけ
+    audioPanel.hidden = false;
+
+    const synthControl = new window.ABCJS.synth.SynthController();
+    synthControl.load("#audio-controls", null, {
+      displayRestart: true,
+      displayPlay: true,
+      displayProgress: true,
+      displayWarp: true
+    });
+
+    new window.ABCJS.synth.CreateSynth()
+      .init({ visualObj })
+      .then(() => synthControl.setTune(visualObj, false))
+      .catch(() => { audioPanel.hidden = true; });
   }
 
   initIndex();

@@ -1580,6 +1580,11 @@ body.os-compact .menubar__menus {
 .abc-board__file {
   color: var(--teal);
   font-size: 0.78rem;
+  text-decoration: none;
+}
+
+a.abc-board__file:hover {
+  text-decoration: underline;
 }
 
 .badge-soft {
@@ -1648,6 +1653,43 @@ body.os-compact .menubar__menus {
   color: var(--teal);
   font-size: 0.75rem;
   margin-top: 0.6rem;
+}
+
+/* ---- 楽譜パネル(紙)と再生コントロール ---- */
+.score-panel {
+  margin: 2rem 0 0;
+  max-width: 720px;
+  background: #fdfbf4;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.score-panel svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.score-fallback {
+  padding: 1.5rem 1.25rem;
+  color: var(--ink-dim);
+  font-size: 0.85rem;
+}
+
+.audio-bar {
+  max-width: 720px;
+  margin-top: 0.75rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.65rem 0.9rem;
+}
+
+.audio-hint {
+  margin-top: 0.35rem;
+  color: var(--ink-dim);
+  font-size: 0.68rem;
 }
 
 @media (max-width: 720px) {
