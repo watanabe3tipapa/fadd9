@@ -1,6 +1,6 @@
 # DEV-MEMO — FADD9
 
-最終更新: 2026-08-24(Phase 4 — Reference & Playground)
+最終更新: 2026-08-24(修正記録 — コピー成功のスクリーンリーダー通知)
 旧 Atlas ポータルからの全面転換以降の設計決定を記録する。Atlas 時代の記録は下部「レガシー記録」に残す。
 
 ## Rebuild 1(2026-08-24)— fadd9 転換
@@ -148,6 +148,31 @@
 - 再生中の音符ハイライト(cursorControl)
 - 軽量計測(方針決定後に GoatCounter 等を検討)
 - 譜例の増強(指弾き・スライド・モード別スケール)
+
+---
+
+## 修正記録(2026-08-24)— コピー成功のスクリーンリーダー通知
+
+### 背景
+
+外部分析レポート(bump2.md)の「要対応・高」4件を検証したところ、2件は誤報だった:
+
+| 指摘 | 検証結果 |
+| --- | --- |
+| CSS が `.foot` で切断 | 誤報(style.css は 1801 行で完結、`.footer` 群も正常) |
+| HTML セマンティクス不足 | ほぼ対応済み(index.html は figure/aria-label 完備) |
+| aria 属性の不足 | **一部実在**(下記対応) |
+| playground.js のエスケープ漏れ | 誤報(createElement + textContent で安全、innerHTML 不使用) |
+
+### 対応
+
+1. `js/playground.js` — COPY 成功時、既存の `#pg-status`(role="status")に「ABC をクリップボードにコピーしました」を表示し 1.5 秒後にクリア。ボタンラベル swap のみだった通知をライブリージョンで読み上げ可能に
+2. `js/samples.js` — 詳細ページ `#copy-note` に `role="status"` を付与(hidden トグル時に読み上げされる)
+3. `samples/index.html` — 絞り込み件数 `#filtered-count` の `<p>` に `role="status"` を付与(検索・フィルタ結果を通知)
+
+### 教訓
+
+分析レポートの指摘は必ずコードで検証してから着手する。レポーターは「.foot で切断」のように見た目由来の誤検知や、DOM API vs innerHTML の違いを見落とすことがある。
 
 ---
 

@@ -196,7 +196,7 @@
         </figcaption>
         <pre id="abc-code"></pre>
       </figure>
-      <p class="copy-note mono" id="copy-note" hidden>Copied to clipboard ✓ — abcjs editor などに貼ってすぐ鳴ります。</p>
+      <p class="copy-note mono" id="copy-note" role="status" hidden>Copied to clipboard ✓ — abcjs editor などに貼ってすぐ鳴ります。</p>
 
       <section class="tips" aria-labelledby="tips-title">
         <h2 class="section__title" id="tips-title">How to practice<span class="section__sub">練習のヒント</span></h2>

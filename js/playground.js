@@ -105,7 +105,11 @@
     }
     const btn = document.getElementById("pg-copy");
     btn.textContent = "COPIED";
-    setTimeout(() => { btn.textContent = "COPY"; }, 1500);
+    statusEl.textContent = "ABC をクリップボードにコピーしました";
+    setTimeout(() => {
+      btn.textContent = "COPY";
+      statusEl.textContent = "";
+    }, 1500);
   });
 
   document.getElementById("pg-clear").addEventListener("click", () => {
