@@ -176,6 +176,34 @@
 
 ---
 
+## 修正記録(2026-08-24)— Atlas 関係の全面オミット
+
+### 判断
+
+fadd9 への転換が完了したため、旧ポータル(watanabe3tipapa/atlas)に関する公開記述・レガシーカタログをすべて削除した。works の canonical/og:url が `github.io/atlas/` を指したまま残存しており、実害になりうる状態だった。
+
+### 削除
+
+- `works/index.html` / `works/work.html`(レガシー道具カタログ。JS レンダラごと廃止)
+- `js/works.js` / `js/recent.js`(recent.js は参照元が皆無のデッドコードだった)
+- `data/works-tools.json` / `data/works-lab.json`(Atlas 時代の正本データ。fadd9 の正本は `data/samples.json` のみ)
+
+### 改修
+
+- `index.html` — footer SITES の Works 行を削除
+- `js/palette.js` — Works をインデックスから削除。「Now — 現在地(移行中)」→「Now — 練習の現在地」へ(移行完了済みのため)
+- `sitemap.xml` — `/works/` を削除
+- `updates/index.html` / `feed.xml` — 「旧 Atlas ポータル」を「旧ポータル」に文言修正(履歴事実は保持)
+- `css/style.css` — 先頭コメントを「FADD9 — style.css」へ、「Release 3 — Atlas OS」→「Fadd9 OS」
+- `README.md` — 既知の制限から works 行を削除
+
+### 保持したもの
+
+- DEV-MEMO 下部の「レガシー記録」は設計判断(OGP 生成手法・palette 設計など)のアーカイブとして内部資料にのみ保持。公開サイトからは完全に除去済み。
+- CSS の `.work-card` 等のクラス名は Samples UI が流用しているため改名せず。
+
+---
+
 # レガシー記録 — Watanabe3ti Atlas LP(〜 v0.1.1)
 
 最終更新: 2026-08-23(Release 4 追録)
