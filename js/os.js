@@ -45,7 +45,7 @@
   const linkRow = (l) => `
     <a class="file-row" href="${esc(l.url)}"${l.ext ? ' target="_blank" rel="noopener"' : ""}>
       <span class="file-row__name">${esc(l.name)}${l.ext ? '<span aria-hidden="true"> ↗</span>' : ""}</span>
-      <span class="file-row__meta mono">${l.ext ? "ALIAS" : "ALIAS"}</span>
+      <span class="file-row__meta mono">ALIAS</span>
     </a>`;
 
   const startBody = () => `

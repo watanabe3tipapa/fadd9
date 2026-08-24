@@ -75,16 +75,18 @@
     <div class="palette" role="dialog" aria-modal="true" aria-label="コマンドパレット">
       <div class="palette__head">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-        <input id="palette-input" type="text" placeholder="ページ・譜例・拠点を検索… (try: fadd9, study)" autocomplete="off" spellcheck="false">
+        <input id="palette-input" type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" placeholder="ページ・譜例・拠点を検索… (try: fadd9, study)" autocomplete="off" spellcheck="false">
         <kbd class="mono">ESC</kbd>
       </div>
-      <ul class="palette__list" id="palette-list" role="listbox"></ul>
+      <ul class="palette__list" id="palette-list" role="listbox" aria-label="検索結果"></ul>
+      <p class="palette__empty mono" id="palette-empty" role="status" hidden>該当なし — try “fadd9”, “samples”, “abc”</p>
       <p class="palette__foot mono">↑↓ 移動 · ↵ 開く · ESC 閉じる · ⌘K or / で呼び出し</p>
     </div>`;
   document.body.appendChild(overlay);
 
   const input = overlay.querySelector("#palette-input");
   const listEl = overlay.querySelector("#palette-list");
+  const emptyEl = overlay.querySelector("#palette-empty");
   let results = [];
   let active = 0;
   let lastFocus = null;
@@ -134,19 +136,23 @@
     results = filter(input.value.trim());
     active = Math.min(active, Math.max(0, results.length - 1));
     if (!results.length) {
-      listEl.innerHTML = '<li class="palette__empty">該当なし — try “fadd9”, “samples”, “abc”</li>';
+      listEl.innerHTML = "";
+      emptyEl.hidden = false;
+      input.removeAttribute("aria-activedescendant");
       return;
     }
+    emptyEl.hidden = true;
     listEl.innerHTML = results
       .map(
         (it, i) => `
-      <li role="option" aria-selected="${i === active}" class="${i === active ? "is-active" : ""}" data-i="${i}">
+      <li role="option" id="palette-opt-${i}" aria-selected="${i === active}" class="${i === active ? "is-active" : ""}" data-i="${i}">
         <span class="palette__group mono">${esc(it.group)}</span>
         <span class="palette__label">${esc(it.label)}</span>
         <span class="palette__hint">${esc(it.hint || "")}</span>
       </li>`
       )
       .join("");
+    input.setAttribute("aria-activedescendant", `palette-opt-${active}`);
   }
 
   function go(it) {

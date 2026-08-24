@@ -204,6 +204,16 @@ fadd9 への転換が完了したため、旧ポータル(watanabe3tipapa/atlas)
 
 ---
 
+## 修正記録(2026-08-24)— 監査残課題の解消
+
+全コード監査で判明した実在問題の残りを処理。
+
+1. `index.html` — Samples リードの stale 文言(「ライブラリ化 (Phase 2) までの間…」)を現状に合わせ修正。Roadmap に PHASE 4 ✅ を付与し、PHASE 5(Grow the Library: 譜例増強・音符ハイライト)を追加
+2. `js/palette.js` — listbox の ARIA を補完: 入力欄を `role="combobox"` + `aria-controls` + `aria-activedescendant` 化、option に固定 id、空状態を `<li>`(listbox 直下の不正な子)から listbox 外の `role="status"` の `<p>` へ移動。CSS の `.palette__empty` は要素非依存なので流用
+3. `js/os.js` — `linkRow` の `${l.ext ? "ALIAS" : "ALIAS"}` デッド三項演算子を除去
+
+---
+
 # レガシー記録 — Watanabe3ti Atlas LP(〜 v0.1.1)
 
 最終更新: 2026-08-23(Release 4 追録)
