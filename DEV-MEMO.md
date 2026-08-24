@@ -214,6 +214,34 @@ fadd9 への転換が完了したため、旧ポータル(watanabe3tipapa/atlas)
 
 ---
 
+## 修正記録(2026-08-24)— Play/Pause ボタンの再設計
+
+### 症状
+
+譜例詳細・Playground の再生ボタンが「とても使いにくい」。原因は **abcjs が再生UIの見た目をページ側 CSS に委ねている**こと。プロジェクト側に一切スタイルがなく、▶(play)⏸(pause)◌(loading)の 3 SVG が同時に重なって表示され、黒塗りで判別不能だった。
+
+### abcjs v6.7.0 の実装(ベンダー調査)
+
+- Start ボタン(`.abcjs-midi-start`)内に 3 SVG を同梱: `.abcjs-play-svg` / `.abcjs-pause-svg` / `.abcjs-loading-svg`
+- 状態はクラスで管理: 再生中 = ボタンに `.abcjs-pushed` / 音源準備中 = コンテナ(`.abcjs-inline-audio`)に `.abcjs-loading`
+- シークバーは `.abcjs-midi-progress-background`(相対位置親)の中で JS が indicator の `left` を px 指定。クリックでシーク可
+- WARP は `<input type="number">` + `%` ラベル
+- loading 円テンプレートには stroke 色がなく、そのままでは不可視
+
+### 対応(css/style.css に専用セクション新設)
+
+1. Play/Pause/Restart を **52px のティール円形ボタン**化(タップ領域確保・hover/active/focus-visible)
+2. 状態クラスに応じたアイコン切替(pushed→⏸、loading→回転◌)。`prefers-reduced-motion` で停止
+3. シークバーを暗色テーマに調和(トラック半透明・インジケータ月光黄)。`position: relative` 必須
+4. WARP 入力をモノフォント+ダーク入力欄に整形
+5. 落とし穴回避: `.abcjs-btn svg { fill }` が loading 円の `fill="none"` を上書きするため、`.abcjs-loading-svg` 側で `fill:none; stroke` を再指定
+
+### 教訓
+
+abcjs-basic は JS バンドルのみ配布で CSS 同梱なし。SynthController を使うなら状態クラス(pushed/loading)と progress DOM 構造の再現 CSS が必須。
+
+---
+
 # レガシー記録 — Watanabe3ti Atlas LP(〜 v0.1.1)
 
 最終更新: 2026-08-23(Release 4 追録)

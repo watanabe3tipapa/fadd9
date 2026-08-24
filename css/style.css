@@ -1683,13 +1683,151 @@ a.abc-board__file:hover {
   background: var(--bg-elevated);
   border: 1px solid var(--line);
   border-radius: 8px;
-  padding: 0.65rem 0.9rem;
+  padding: 0.85rem 1rem;
 }
 
 .audio-hint {
   margin-top: 0.35rem;
   color: var(--ink-dim);
   font-size: 0.68rem;
+}
+
+/* ---- abcjs 再生コントロール(Play/Pause) ----
+   abcjs は DOM だけ出して見た目はページ側に委ねているため、
+   CSS 未定義だと ▶⏸⏳ の 3 SVG が重なって表示される。
+   状態クラス: 再生中=.abcjs-pushed(ボタン) / 準備中=.abcjs-loading(コンテナ) */
+.audio-bar .abcjs-inline-audio {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.audio-bar .abcjs-btn {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 52px;
+  height: 52px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--teal);
+  cursor: pointer;
+  transition: filter 0.12s ease, transform 0.12s ease;
+}
+
+.audio-bar .abcjs-btn:hover {
+  filter: brightness(1.15);
+}
+
+.audio-bar .abcjs-btn:active {
+  transform: scale(0.93);
+}
+
+.audio-bar .abcjs-btn:focus-visible {
+  outline: 2px solid var(--moonlight);
+  outline-offset: 3px;
+}
+
+.audio-bar .abcjs-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: #06222c;
+}
+
+/* アイコン状態切替(既定は ▶、再生中は ⏸、準備中は ◌) */
+.audio-bar .abcjs-pause-svg,
+.audio-bar .abcjs-loading-svg {
+  display: none;
+}
+
+/* loading 円はテンプレに stroke 色が無く、fill:none も .abcjs-btn svg より
+   復活させておかないと純円につぶれるためここで両方指定 */
+.audio-bar .abcjs-loading-svg {
+  fill: none;
+  stroke: #06222c;
+}
+
+.audio-bar .abcjs-pushed .abcjs-play-svg {
+  display: none;
+}
+
+.audio-bar .abcjs-pushed .abcjs-pause-svg {
+  display: block;
+}
+
+.audio-bar .abcjs-loading .abcjs-play-svg,
+.audio-bar .abcjs-loading .abcjs-pause-svg {
+  display: none;
+}
+
+.audio-bar .abcjs-loading .abcjs-loading-svg {
+  display: block;
+  animation: abcjs-spin 0.9s linear infinite;
+}
+
+@keyframes abcjs-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* シークバー(JS が indicator の left を px 指定するため relative 必須) */
+.audio-bar .abcjs-midi-progress-background {
+  position: relative;
+  flex: 1 1 140px;
+  min-width: 120px;
+  height: 10px;
+  padding: 0;
+  border: none;
+  border-radius: 5px;
+  background: rgba(232, 236, 244, 0.14);
+  cursor: pointer;
+}
+
+.audio-bar .abcjs-midi-progress-indicator {
+  position: absolute;
+  left: 0;
+  top: -3px;
+  width: 4px;
+  height: 16px;
+  border-radius: 2px;
+  background: var(--moonlight);
+}
+
+/* WARP(速度変更)入力 */
+.audio-bar .abcjs-tempo-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--ink-dim);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+}
+
+.audio-bar .abcjs-midi-tempo {
+  width: 3.6em;
+  padding: 0.28rem 0.35rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  text-align: right;
+}
+
+.audio-bar .abcjs-midi-tempo:focus-visible {
+  outline: 1px solid var(--teal);
+  outline-offset: 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .audio-bar .abcjs-loading .abcjs-loading-svg {
+    animation: none;
+  }
 }
 
 /* ---- Reference チートシート ---- */
