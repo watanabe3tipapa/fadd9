@@ -57,7 +57,10 @@
       try {
         const visualObj = ABCJS.renderAbc("*", demo.abc)[0];
         const synth = new ABCJS.synth.CreateSynth();
-        await synth.init({ visualObj });
+        await synth.init({
+          visualObj,
+          options: { program: 24 }
+        });
         await synth.start();
         synth.onEnded(() => {
           btn.textContent = "PLAY";
