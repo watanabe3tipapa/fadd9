@@ -23,7 +23,23 @@
     arpeggio:
       "X:1\nT:\nM:4/4\nL:1/8\nK:C\n\"C\" C E G c E G c | \"Am\" A c e a c e a c |",
     slur:
-      "X:1\nT:\nM:4/4\nL:1/8\nK:C\n(C D E F) (G A B c) | (c B A G) (F E D C) |"
+      "X:1\nT:\nM:4/4\nL:1/8\nK:C\n(C D E F) (G A B c) | (c B A G) (F E D C) |",
+    rests:
+      "X:1\nT:\nM:4/4\nL:1/8\nK:C\nC z C z | C2 z2 C z z z |",
+    ties:
+      "X:1\nT:\nM:4/4\nL:1/4\nK:C\nC- C C- C | D- D D- D |",
+    decorations:
+      "X:1\nT:\nM:4/4\nL:1/4\nK:C\n!trill! C D E F | !turn! G A B c | !fermata! c4 |",
+    lyrics:
+      "X:1\nT:Example with Lyrics\nM:4/4\nL:1/8\nK:C\nw: Do Re Mi Fa Sol La Ti Do\nC D E F G A B c |",
+    voices:
+      "X:1\nT:Two Voices\nM:4/4\nL:1/8\nK:C\nV:1 clef=treble\nV:2 clef=bass\nV:1\nC E G c | G E C G |\nV:2\nC,, E,, G,, C, | G,, E,, C,, G,, |",
+    dynamics:
+      "X:1\nT:\nM:4/4\nL:1/4\nK:C\n!pp! C D E F | !mf! G A B c | !ff! c B A G |",
+    capo:
+      "X:1\nT:Capo 2nd Fret\nM:4/4\nL:1/4\nK:G\n%%MIDI program 25\n\"G\" G B d g | \"C\" c e g c' | \"D\" d ^f a d' |",
+    strum:
+      "X:1\nT:Strumming Pattern\nM:4/4\nL:1/8\nK:C\n\"C\" C2 E2 G2 c2 | \"G\" G2 B2 d2 g2 |"
   };
 
   document.querySelectorAll("[data-demo]").forEach((el) => {

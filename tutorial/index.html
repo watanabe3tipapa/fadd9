@@ -35,6 +35,8 @@
       <li><a href="#pitch">音高</a></li>
       <li><a href="#length">音長</a></li>
       <li><a href="#chords">和音</a></li>
+      <li><a href="#decorations">装飾</a></li>
+      <li><a href="#instruments">楽器</a></li>
       <li><a href="#guitar">ギター記譜</a></li>
       <li><a href="#practice">練習</a></li>
     </ul>
@@ -160,10 +162,12 @@ C2 D E F   (二分・四分・四分・四分)</pre>
           <div class="ref-item reveal">
             <h3 class="card__name">z が休符</h3>
             <p class="card__desc">音符と同じ文法で長さを変えられる(<span class="mono">z2</span>、<span class="mono">z/2</span>)。</p>
+            <figure class="ref-demo" data-demo="rests"></figure>
           </div>
           <div class="ref-item reveal">
             <h3 class="card__name">- でタイ、() でスラー</h3>
             <p class="card__desc"><span class="mono">C-C</span> 同音タイ。<span class="mono">(CDE)</span> でレガート。</p>
+            <figure class="ref-demo" data-demo="ties"></figure>
           </div>
         </div>
       </div>
@@ -191,6 +195,61 @@ C2 D E F   (二分・四分・四分・四分)</pre>
             <p class="card__desc"><strong>|:</strong> 前反復、<strong>:|</strong> 後反復。</p>
             <pre class="ref-code mono">|: C D E F | G A B c :|</pre>
             <figure class="ref-demo" data-demo="repeats"></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Decorations ============ -->
+    <section class="section" id="decorations" aria-labelledby="decorations-title">
+      <div class="container">
+        <h2 class="section__title" id="decorations-title">装飾と伝統音楽の表現<span class="section__sub">音に表情をつける</span></h2>
+        <p class="section__lead">
+          ABC記法には、音に装飾をつけるための豊富な記法があります。フォークや伝統音楽でよく使われる表現を学びましょう。
+        </p>
+        <div class="ref-grid">
+          <div class="ref-item reveal">
+            <h3 class="card__name">!trill! トリル</h3>
+            <p class="card__desc">隣接する音を急速に交互に鳴らす。装飾音の基本。</p>
+            <pre class="ref-code mono">!trill! C D E F</pre>
+            <figure class="ref-demo" data-demo="decorations"></figure>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">!turn! ターン</h3>
+            <p class="card__desc">主音の上下の音で回り込む装飾。</p>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">!fermata! フェルマータ</h3>
+            <p class="card__desc">音を伸ばす記号。终止式などで使用。</p>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">!accent! アクセント</h3>
+            <p class="card__desc">音を強調する記号。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Instruments ============ -->
+    <section class="section" id="instruments" aria-labelledby="instruments-title">
+      <div class="container">
+        <h2 class="section__title" id="instruments-title">楽器ごとの書き方<span class="section__sub">楽器に合わせた表記</span></h2>
+        <p class="section__lead">
+          ABC記法は楽器非依存ですが、楽器によって便利な表記パターンがあります。
+        </p>
+        <div class="ref-grid">
+          <div class="ref-item reveal">
+            <h3 class="card__name">%%MIDI program で音色指定</h3>
+            <p class="card__desc">MIDI音色を指定。ギターは25(Acoustic Guitar, steel)。</p>
+            <pre class="ref-code mono">%%MIDI program 25</pre>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">V: で複数ボイス</h3>
+            <p class="card__desc">ポリフォニックな楽譜に。異なる楽器のパートを記述可能。</p>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">%%MIDI channel でチャンネル指定</h3>
+            <p class="card__desc">MIDIチャンネルを指定。複数楽器の演奏に使用。</p>
           </div>
         </div>
       </div>
@@ -238,6 +297,35 @@ C2 D E F   (二分・四分・四分・四分)</pre>
             <h3 class="card__name">!pp! 力づけ記号</h3>
             <p class="card__desc">!pp!(!p!,!mp!,!mf!,!f!,!ff!)で強弱。</p>
             <pre class="ref-code mono">!pp! C D E F | !ff! G A B c</pre>
+            <figure class="ref-demo" data-demo="dynamics"></figure>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">カポ（カポタスト）の指定</h3>
+            <p class="card__desc">%%MIDI program で音色を変更。ギターは25(Acoustic Guitar, steel)。</p>
+            <pre class="ref-code mono">%%MIDI program 25
+"G" G B d g | "C" c e g c' |</pre>
+            <figure class="ref-demo" data-demo="capo"></figure>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">ストロークと奏法記号</h3>
+            <p class="card__desc">和音を均等なリズムで弾くストロークパターン。</p>
+            <pre class="ref-code mono">"C" C2 E2 G2 c2 | "G" G2 B2 d2 g2</pre>
+            <figure class="ref-demo" data-demo="strum"></figure>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">フィンガーピッキングと多声部</h3>
+            <p class="card__desc">複数の声部を同時に書く。V:フィールドでボイスを定義。</p>
+            <pre class="ref-code mono">V:1 clef=treble
+V:2 clef=bass</pre>
+            <figure class="ref-demo" data-demo="voices"></figure>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">ギターのタブ譜風表記</h3>
+            <p class="card__desc">ABC記法は標準譜表。タブ譜は直接サポートされないが、音符列で表現可能。</p>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">ギター向けの調号と音域</h3>
+            <p class="card__desc">ギターの音域はE2(32.7Hz)から。K:で調号を指定すると、 Pharmaceuticalsが自動的に適用される。</p>
           </div>
         </div>
       </div>

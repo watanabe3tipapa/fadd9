@@ -186,7 +186,8 @@ T:An Alternative Title</pre>
           </div>
           <div class="ref-item reveal">
             <h3 class="card__name">4.5 休符（Rests）</h3>
-            <p class="card__desc"><span class="mono">z</span> で休符。音符と同じ文法で長さを変えられる。</p>
+            <p class="card__desc"><span class="mono">z</span> で休符。音符と同じ文法で長さを変えられる。<span class="mono">z2</span> で2拍、<span class="mono">z/</span> で半拍。</p>
+            <figure class="ref-demo" data-demo="rests"></figure>
           </div>
           <div class="ref-item reveal">
             <h3 class="card__name">4.8 反復（Repeats）</h3>
@@ -195,11 +196,13 @@ T:An Alternative Title</pre>
           </div>
           <div class="ref-item reveal">
             <h3 class="card__name">4.11 Ties and Slurs</h3>
-            <p class="card__desc"><span class="mono">-</span> でタイ（同音結合）、<span class="mono">()</span> でスラー（レガート）。</p>
+            <p class="card__desc"><span class="mono">-</span> でタイ（同音結合）、<span class="mono">()</span> でスラー（レガート）。タイは音を継続、スラーは滑らかに繋ぐ。</p>
+            <figure class="ref-demo" data-demo="ties"></figure>
           </div>
           <div class="ref-item reveal">
             <h3 class="card__name">4.14 Decorations</h3>
-            <p class="card__desc"><span class="mono">!trill!</span>、<span class="mono">!turn!</span>、<span class="mono">!fermata!</span> などの装飾記号。</p>
+            <p class="card__desc"><span class="mono">!trill!</span>、<span class="mono">!turn!</span>、<span class="mono">!fermata!</span> などの装飾記号。音に表情をつける。</p>
+            <figure class="ref-demo" data-demo="decorations"></figure>
           </div>
           <div class="ref-item reveal">
             <h3 class="card__name">4.17 Chords and Unisons</h3>
@@ -222,23 +225,25 @@ T:An Alternative Title</pre>
         <div class="ref-grid">
           <div class="ref-item reveal">
             <h3 class="card__name">5. Lyrics（歌詞）</h3>
-            <p class="card__desc">w:フィールドで歌詞を記述。音符と対応させて配置。</p>
+            <p class="card__desc">w:フィールドで歌詞を記述。音符と対応させて配置。スペースで音符と文字を合わせる。</p>
+            <figure class="ref-demo" data-demo="lyrics"></figure>
           </div>
           <div class="ref-item reveal">
             <h3 class="card__name">7. Multiple Voices</h3>
-            <p class="card__desc">V:フィールドで複数ボイスを定義。ポリフォニックな楽譜に。</p>
+            <p class="card__desc">V:フィールドで複数ボイスを定義。ポリフォニックな楽譜に。 clef=treble で譜表を変更。</p>
+            <figure class="ref-demo" data-demo="voices"></figure>
           </div>
           <div class="ref-item reveal">
             <h3 class="card__name">9. Macros</h3>
-            <p class="card__desc">P:フィールドでマクロを定義。繰り返しパターンの省略に。</p>
+            <p class="card__desc">P:フィールドでマクロを定義。繰り返しパターンの省略に。例: P:chorus</p>
           </div>
           <div class="ref-item reveal">
             <h3 class="card__name">11. Stylesheet Directives</h3>
-            <p class="card__desc">%%directive で書式を制御。ページサイズ、フォント、余白など。</p>
+            <p class="card__desc">%%directive で書式を制御。ページサイズ、フォント、余白など。%%pagewidth で用紙サイズ指定。</p>
           </div>
           <div class="ref-item reveal">
             <h3 class="card__name">13. Transposition</h3>
-            <p class="card__desc">移調楽器向けの移調指定。v2.2で新機能追加。</p>
+            <p class="card__desc">移調楽器向けの移調指定。v2.2で新機能追加。%%MIDI program で音色も変更可能。</p>
           </div>
         </div>
       </div>
