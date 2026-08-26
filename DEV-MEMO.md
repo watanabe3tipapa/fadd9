@@ -621,3 +621,64 @@ ABC記法の学習コンテンツを3階層に整理し、独習者の理解を�
 - `tutorial/index.html` のCOPYボタンは `data-copy` 属性のバックスラッシュ変換のみ。より堅牢なエスケープ処理が必要な場合は後日改善
 - `standard/index.html` は公式全15セクションのうち主要6セクションのみ網羅。残りは必要に応じて追加
 - `js/reference.js` のデモは描画のみ。再生機能は将来的に追加検討
+
+---
+
+## LP Restructure & Quality Improvements (2026-08-26)
+
+### LP全面再構成
+
+| セクション | 変更 |
+| --- | --- |
+| Hero | 維持。CTAを「今すぐ試す」に変更 |
+| What（ABC記法とは） | 新設。初学者向け説明 + コード例 |
+| Try（今すぐ試す） | 新設。3譜面をabcjs描画、PLAYボタンで再生 |
+| Learn（学ぶ） | 新設。Tutorial/Reference/Standardへの導線 |
+| Samples | 改善。カテゴリ別件数表示 |
+| Practice（練習する） | 新設。Worksheets/Playground/Fadd9 OSへの導線 |
+| Library | 削除（Samplesに統合） |
+| Roadmap | 削除（開発者情報のため） |
+
+### 新規ファイル
+
+| ファイル | 役割 |
+| --- | --- |
+| `js/landing.js` | LP上の譜面描画・PLAYボタン再生 |
+| `support/index.html` | Support (FAQ) ページ。FAQ 6件 + バグ報告/機能要望リンク |
+
+### MIDI Program 変更
+
+| 項目 | 変更前 | 変更後 |
+| --- | --- | --- |
+| program | 25 (Acoustic Guitar, steel) | 24 (Acoustic Guitar, nylon) |
+| 対象ファイル | landing.js, samples.js, playground.js, reference.js, tutorial, standard, README | 全て program 24 に統一 |
+
+### 表記統一
+
+- `譜body` → `譜面本体`（standard/index.html, DEV-MEMO.md）
+
+### アクセシビリティ改善
+
+- PLAYボタンに `aria-label`（曲名付き）追加
+- SVGコードダイアグラムは既に `role="img"` + `aria-label` あり
+
+### SEO改善
+
+- structured data (JSON-LD WebSite + SearchAction) を `index.html` に追加
+
+### フォールバック
+
+- `noscript` でJavaScript無効時メッセージ表示
+- `.reveal` の強制表示
+
+### サイトマップ・ナビゲーション
+
+- sitemap.xml に `/support/` 追加
+- フッターに Support リンク追加
+- LP localnav を What/Try/Learn/Samples/Practice/Playground/Updates に再編
+
+### 既知の制限（既存）
+
+- `tutorial/index.html` のCOPYボタンは `data-copy` 属性のバックスラッシュ変換のみ
+- `standard/index.html` は公式全15セクションのうち主要6セクションのみ
+- `js/reference.js` のデモは描画のみ。再生機能は将来的に追加検討
