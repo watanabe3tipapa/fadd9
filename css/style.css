@@ -520,6 +520,14 @@ img {
   color: var(--teal);
 }
 
+.footer__desc {
+  font-size: 0.72rem;
+  color: var(--ink-dim);
+  opacity: 0.7;
+  margin: 0 0 0.4rem 0;
+  line-height: 1.4;
+}
+
 .footer__bottom {
   display: flex;
   justify-content: space-between;
