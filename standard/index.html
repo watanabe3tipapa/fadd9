@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Standard — ABC記法標準 v2.2 | fadd9</title>
-  <meta name="description" content="ABC記法の公式標準仕様 v2.2 の解説。ファイル構造、情報フィールド、譜bodyの記法を網羅的に解説します。">
+  <meta name="description" content="ABC記法の公式標準仕様 v2.2 の解説。ファイル構造、情報フィールド、譜面本体の記法を網羅的に解説します。">
   <meta property="og:title" content="Standard — ABC記法標準 v2.2 | fadd9">
   <meta property="og:description" content="ABC記法の公式標準仕様 v2.2 の解説。">
   <meta property="og:url" content="https://watanabe3tipapa.github.io/fadd9/standard/">
@@ -33,7 +33,7 @@
       <li><a href="#intro">はじめに</a></li>
       <li><a href="#structure">ファイル構造</a></li>
       <li><a href="#fields">情報フィールド</a></li>
-      <li><a href="#body">譜body</a></li>
+      <li><a href="#body">譜面本体</a></li>
       <li><a href="#advanced">上級記法</a></li>
       <li><a href="#app">付録</a></li>
     </ul>
@@ -72,7 +72,7 @@
       <div class="container">
         <h2 class="section__title" id="structure-title">ファイル構造<span class="section__sub">ABCファイルの構成</span></h2>
         <p class="section__lead">
-          ABCファイルは、1つ以上の「曲（tune）」で構成されます。各曲はヘッダフィールドと譜bodyで構成されています。
+          ABCファイルは、1つ以上の「曲（tune）」で構成されます。各曲はヘッダフィールドと譜面本体で構成されています。
         </p>
         <div class="ref-grid">
           <div class="ref-item reveal">
@@ -84,7 +84,7 @@
             <p class="card__desc">X:、T:、M:、L:、Q:、K:などの情報フィールド。K:は必須で末尾。</p>
           </div>
           <div class="ref-item reveal">
-            <h3 class="card__name">譜body</h3>
+            <h3 class="card__name">譜面本体</h3>
             <p class="card__desc">K:の後に続く音符列。小節線で区切られます。</p>
           </div>
           <div class="ref-item reveal">
@@ -159,7 +159,7 @@ T:An Alternative Title</pre>
     <!-- ============ Tune Body ============ -->
     <section class="section" id="body" aria-labelledby="body-title">
       <div class="container">
-        <h2 class="section__title" id="body-title">譜body<span class="section__sub">音符と記号</span></h2>
+        <h2 class="section__title" id="body-title">譜面本体<span class="section__sub">音符と記号</span></h2>
         <p class="section__lead">
           K:の後に続く音符列。音高、音長、リズム、装飾などを記述します。
         </p>

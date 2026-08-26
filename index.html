@@ -31,24 +31,21 @@
           fadd9 は独習のための譜例ライブラリです。コード進行もリフも、すべて文字で。
         </p>
         <div class="hero__cta">
-          <a class="btn btn--primary" href="#samples">譜例を見る<span aria-hidden="true"> →</span></a>
-          <a class="btn btn--ghost" href="#about">Why ABC?<span aria-hidden="true"> ↓</span></a>
+          <a class="btn btn--primary" href="#try">今すぐ試す<span aria-hidden="true"> →</span></a>
+          <a class="btn btn--ghost" href="#what">ABC記法とは<span aria-hidden="true"> ↓</span></a>
         </div>
         <p class="hero__tagline mono">X:1 &nbsp;T:fadd9 &nbsp;M:4/4 &nbsp;L:1/8 &nbsp;K:F</p>
       </div>
 
       <figure class="chord-figure hero__chord">
         <svg viewBox="0 0 200 240" role="img" aria-label="Fadd9 のコードダイアグラム（6弦5弦をミュートし、4弦3フレット・3弦2フレット・2弦1フレット・1弦3フレットを押弦）">
-          <!-- frets -->
           <g stroke="#233047" stroke-width="3" stroke-linecap="round">
             <line x1="14" y1="76" x2="186" y2="76"/>
             <line x1="14" y1="116" x2="186" y2="116"/>
             <line x1="14" y1="156" x2="186" y2="156"/>
             <line x1="14" y1="196" x2="186" y2="196"/>
           </g>
-          <!-- nut -->
           <rect x="12" y="31" width="176" height="6" rx="3" fill="#2dd4bf"/>
-          <!-- strings -->
           <g stroke="#e8ecf4" stroke-width="2" opacity="0.75">
             <line x1="20" y1="37" x2="20" y2="210"/>
             <line x1="52" y1="37" x2="52" y2="210"/>
@@ -57,14 +54,12 @@
             <line x1="148" y1="37" x2="148" y2="210"/>
             <line x1="180" y1="37" x2="180" y2="210"/>
           </g>
-          <!-- muted strings -->
           <g stroke="#9aa5bd" stroke-width="2.5" stroke-linecap="round">
             <line x1="14" y1="14" x2="26" y2="26"/>
             <line x1="26" y1="14" x2="14" y2="26"/>
             <line x1="46" y1="14" x2="58" y2="26"/>
             <line x1="58" y1="14" x2="46" y2="26"/>
           </g>
-          <!-- dots: F A C G -->
           <g>
             <circle cx="84" cy="136" r="13" fill="#fde68a"/>
             <circle cx="116" cy="96" r="13" fill="#fde68a"/>
@@ -77,7 +72,6 @@
               <text x="180" y="141">G</text>
             </g>
           </g>
-          <!-- string labels -->
           <g fill="#9aa5bd" font-family="Menlo, monospace" font-size="11" text-anchor="middle">
             <text x="20" y="230">E</text>
             <text x="52" y="230">A</text>
@@ -94,13 +88,11 @@
 
   <nav class="localnav" aria-label="ページ内リンク">
     <ul class="container localnav__list">
-      <li><a href="#about">About</a></li>
+      <li><a href="#what">ABC記法とは</a></li>
+      <li><a href="#try">試す</a></li>
+      <li><a href="#learn">学ぶ</a></li>
       <li><a href="#samples">譜例</a></li>
-      <li><a href="samples/index.html">Library</a></li>
-      <li><a href="tutorial/index.html">Tutorial</a></li>
-      <li><a href="reference/index.html">Reference</a></li>
-      <li><a href="standard/index.html">Standard</a></li>
-      <li><a href="worksheets/index.html">Worksheets</a></li>
+      <li><a href="#practice">練習</a></li>
       <li><a href="playground/index.html">Playground</a></li>
       <li><a href="updates/index.html">Updates</a></li>
     </ul>
@@ -108,13 +100,18 @@
 
   <main id="main">
 
-    <!-- ============ About ============ -->
-    <section class="section" id="about" aria-labelledby="about-title">
+    <!-- ============ What ============ -->
+    <section class="section section--flush-top" id="what" aria-labelledby="what-title">
       <div class="container">
-        <h2 class="section__title" id="about-title">Why ABC<span class="section__sub">なぜテキストで楽譜なのか</span></h2>
+        <h2 class="section__title" id="what-title">ABC記法とは<span class="section__sub">テキストで書く楽譜</span></h2>
+        <p class="section__lead">
+          ABC記法は、ASCII文字だけで楽譜を書く記譜法です。1991年に Chris Walshaw が開発し、
+          フォーク・伝統音楽のコミュニティで広く使われています。ギターのリフからオーケストラまで、
+          テキスト1行で音楽を記述できます。
+        </p>
         <div class="grid grid--3">
           <article class="card reveal">
-            <p class="card__type mono">TYPE: TEXT</p>
+            <p class="card__type mono">TEXT</p>
             <h3 class="card__name">そのまま書ける</h3>
             <p class="card__desc">
               楽譜が ASCII テキスト。エディタさえあれば今日から書けて、
@@ -122,7 +119,7 @@
             </p>
           </article>
           <article class="card reveal">
-            <p class="card__type mono">TYPE: GIT</p>
+            <p class="card__type mono">GIT</p>
             <h3 class="card__name">履歴で育つ</h3>
             <p class="card__desc">
               譜面は diff を持つ。練習の改変が一行ずつ残り、
@@ -130,12 +127,89 @@
             </p>
           </article>
           <article class="card reveal">
-            <p class="card__type mono">TYPE: PLAY</p>
+            <p class="card__type mono">PLAY</p>
             <h3 class="card__name">貼って即再生</h3>
             <p class="card__desc">
               abcjs など対応ツールに貼れば、その場で鳴って絵になる。
               音と譜面と文字が同じ場所に住む。
             </p>
+          </article>
+        </div>
+        <figure class="abc-board ref-board reveal" style="margin-top:1.5rem">
+          <figcaption class="abc-board__head">
+            <span class="abc-board__file mono">こんなふうに書きます</span>
+            <span class="badge-soft mono">ABC</span>
+          </figcaption>
+          <pre>X:1
+T:Fadd9 Arpeggio
+M:4/4
+L:1/8
+Q:1/4=72
+K:F
+|: "F" F A c f a f c A | F A c f a2 f2 :|</pre>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ Try ============ -->
+    <section class="section" id="try" aria-labelledby="try-title">
+      <div class="container">
+        <h2 class="section__title" id="try-title">今すぐ試す<span class="section__sub">このページで描画・再生</span></h2>
+        <p class="section__lead">
+          以下の譜面はabcjsでブラウザ上で描画されています。PLAYボタンで音を鳴らせてみましょう。
+          ABCコードをコピーすれば、自分のエディタでも使えます。
+        </p>
+        <div class="grid grid--3">
+          <article class="card reveal">
+            <p class="card__type mono">EXERCISE</p>
+            <h3 class="card__name">Cメジャースケール</h3>
+            <div id="demo-scale" class="landing-demo"></div>
+            <p class="card__desc">基本の音階。音の並びを覚えよう。</p>
+            <button type="button" class="btn btn--primary btn--sm" data-landing-play="demo-scale">PLAY</button>
+          </article>
+          <article class="card reveal">
+            <p class="card__type mono">PROGRESSION</p>
+            <h3 class="card__name">王道進行</h3>
+            <div id="demo-chords" class="landing-demo"></div>
+            <p class="card__desc">C → G → Am → F。J-POPの定番。</p>
+            <button type="button" class="btn btn--primary btn--sm" data-landing-play="demo-chords">PLAY</button>
+          </article>
+          <article class="card reveal">
+            <p class="card__type mono">RIFF</p>
+            <h3 class="card__name">ブルーズシャッフル</h3>
+            <div id="demo-riff" class="landing-demo"></div>
+            <p class="card__desc">E上的ブルーズ。broken rhythm で揺れる。</p>
+            <button type="button" class="btn btn--primary btn--sm" data-landing-play="demo-riff">PLAY</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Learn ============ -->
+    <section class="section" id="learn" aria-labelledby="learn-title">
+      <div class="container">
+        <h2 class="section__title" id="learn-title">学ぶ<span class="section__sub">入口は三つ</span></h2>
+        <p class="section__lead">
+          知りたい深さに合わせて、三つの学習ページから選べます。
+        </p>
+        <div class="grid grid--3">
+          <article class="card reveal">
+            <p class="card__type mono">TUTORIAL</p>
+            <h3 class="card__name">チュートリアル</h3>
+            <p class="card__desc">ABC記法をゼロからステップバイステップで学ぶ。鳴る実例つき。初めての人に最適。</p>
+            <p class="card__action"><a class="textlink" href="tutorial/index.html">Tutorial を開く<span aria-hidden="true"> →</span></a></p>
+          </article>
+          <article class="card reveal">
+            <p class="card__type mono">REFERENCE</p>
+            <h3 class="card__name">チートシート</h3>
+            <p class="card__desc">記法の要点を一覧で確認。各項目に鳴る実例がある。書くときに Popup 開く用。</p>
+            <p class="card__action"><a class="textlink" href="reference/index.html">Reference を開く<span aria-hidden="true"> →</span></a></p>
+          </article>
+          <article class="card reveal">
+            <p class="card__type mono">STANDARD</p>
+            <h3 class="card__name">公式標準 v2.2</h3>
+            <p class="card__desc">ABC記法の詳細リファレンス。上級記法・歌詞・複数ボイスまで網羅。</p>
+            <p class="card__action"><a class="textlink" href="standard/index.html">Standard を開く<span aria-hidden="true"> →</span></a></p>
           </article>
         </div>
       </div>
@@ -144,104 +218,72 @@
     <!-- ============ Samples ============ -->
     <section class="section" id="samples" aria-labelledby="samples-title">
       <div class="container">
-        <h2 class="section__title" id="samples-title">Samples<span class="section__sub">譜例 — コピーして使う</span></h2>
+        <h2 class="section__title" id="samples-title">Samples<span class="section__sub">譜例 — 15件の実物</span></h2>
         <p class="section__lead">
-          fadd9 の単位はこれ。ABC テキストそのものです。
-          ライブラリの譜例は、詳細ページで描画・再生・コピーできます。
+          fadd9 の核心は譜例。すべて ABC テキストそのものです。
+          カテゴリ・検索・タグで絞り込み、詳細ページで描画・再生・コピーできます。
         </p>
-        <div class="boards">
-          <figure class="abc-board reveal">
-            <figcaption class="abc-board__head">
-              <a class="abc-board__file mono" href="samples/sample.html?slug=study-01-fadd9-arpeggio">study-01.abc</a>
-              <span class="badge-soft mono">EXERCISE · Fadd9</span>
-            </figcaption>
-            <pre>X:1
-T:Fadd9 Arpeggio Study
-M:4/4
-L:1/8
-Q:1/4=72
-K:F
-|: "F" F A c f a f c A | F A c f a2 f2 :|</pre>
-          </figure>
-          <figure class="abc-board reveal">
-            <figcaption class="abc-board__head">
-              <a class="abc-board__file mono" href="samples/sample.html?slug=chords-01-royal-road">progression-01.abc</a>
-              <span class="badge-soft mono">PROGRESSION · 王道進行</span>
-            </figcaption>
-            <pre>X:1
-T:Royal Road Progression
-M:4/4
-L:1/4
-K:C
-"C" C E G c | "G" G B d g | "Am" A c e a | "F" F A c f |</pre>
-          </figure>
+        <div class="grid grid--4">
+          <article class="card reveal">
+            <p class="card__type mono">EXERCISE · 4件</p>
+            <h3 class="card__name"><a class="work-card__link" href="samples/index.html?category=exercise">練習</a></h3>
+            <p class="card__desc">ウォームアップ、フィンガリング、ピッキング。毎日の土台。</p>
+          </article>
+          <article class="card reveal">
+            <p class="card__type mono">CHORDS · 3件</p>
+            <h3 class="card__name"><a class="work-card__link" href="samples/index.html?category=chords">コード進行</a></h3>
+            <p class="card__desc">王道進行・カノン進行・ダイアトニック。理論と指板を結ぶ。</p>
+          </article>
+          <article class="card reveal">
+            <p class="card__type mono">SCALES · 3件</p>
+            <h3 class="card__name"><a class="work-card__link" href="samples/index.html?category=scales">スケール</a></h3>
+            <p class="card__desc">メジャーからペンタトニックまで。即興の語彙を増やす。</p>
+          </article>
+          <article class="card reveal">
+            <p class="card__type mono">RIFFS · 3件</p>
+            <h3 class="card__name"><a class="work-card__link" href="samples/index.html?category=riffs">リフ</a></h3>
+            <p class="card__desc">ブルーズシャッフル、パワーコード。弾きたくなる短い素材。</p>
+          </article>
+          <article class="card reveal">
+            <p class="card__type mono">SONGS · 2件</p>
+            <h3 class="card__name"><a class="work-card__link" href="samples/index.html?category=songs">曲</a></h3>
+            <p class="card__desc">パブリックドメインの名曲を ABC で。6/8 拍子など拍子の勉強に。</p>
+          </article>
         </div>
         <p class="section__more"><a class="textlink" href="samples/index.html">すべての譜例を見る(15件)<span aria-hidden="true"> →</span></a></p>
       </div>
     </section>
 
-    <!-- ============ Library ============ -->
-    <section class="section" id="library" aria-labelledby="library-title">
+    <!-- ============ Practice ============ -->
+    <section class="section" id="practice" aria-labelledby="practice-title">
       <div class="container">
-        <h2 class="section__title" id="library-title">Library<span class="section__sub">カテゴリ別の入口</span></h2>
-        <div class="grid grid--4">
+        <h2 class="section__title" id="practice-title">練習する<span class="section__sub">書く・印刷する・改造する</span></h2>
+        <p class="section__lead">
+          学んだことを実践に変えましょう。ツールは3つ。
+        </p>
+        <div class="grid grid--3">
           <article class="card reveal">
-            <p class="card__type mono">EXERCISE</p>
-            <h3 class="card__name"><a class="work-card__link" href="samples/index.html?category=exercise">練習</a></h3>
-            <p class="card__desc">ウォームアップ、フィンガリング、ピッキング。毎日の土台。</p>
+            <p class="card__type mono">PLAYGROUND</p>
+            <h3 class="card__name">プレイグラウンド</h3>
+            <p class="card__desc">テキストを書くと即描画・即再生。下書きは自動保存。譜例を読み込んで改造も可能。</p>
+            <p class="card__action"><a class="textlink" href="playground/index.html">開く<span aria-hidden="true"> →</span></a></p>
           </article>
           <article class="card reveal">
-            <p class="card__type mono">CHORDS</p>
-            <h3 class="card__name"><a class="work-card__link" href="samples/index.html?category=chords">コード進行</a></h3>
-            <p class="card__desc">王道進行・カノン進行・ダイアトニック。理論と指板を結ぶ。</p>
+            <p class="card__type mono">WORKSHEETS</p>
+            <h3 class="card__name">採譜ワークシート</h3>
+            <p class="card__desc">印刷して使うテンプレート6種類。音を聞きながら書き留める。</p>
+            <p class="card__action"><a class="textlink" href="worksheets/index.html">テンプレート一覧<span aria-hidden="true"> →</span></a></p>
           </article>
           <article class="card reveal">
-            <p class="card__type mono">SCALES</p>
-            <h3 class="card__name"><a class="work-card__link" href="samples/index.html?category=scales">スケール練習</a></h3>
-            <p class="card__desc">メジャーからペンタトニックまで。即興の語彙を増やす。</p>
-          </article>
-          <article class="card reveal">
-            <p class="card__type mono">RIFFS</p>
-            <h3 class="card__name"><a class="work-card__link" href="samples/index.html?category=riffs">リフ&amp;フレーズ</a></h3>
-            <p class="card__desc">ブルーズシャッフル、パワーコード。弾きたくなる短い素材。</p>
-          </article>
-          <article class="card reveal">
-            <p class="card__type mono">SONGS</p>
-            <h3 class="card__name"><a class="work-card__link" href="samples/index.html?category=songs">曲まるごと</a></h3>
-            <p class="card__desc">パブリックドメインの名曲を ABC で。6/8 拍子など拍子の勉強に。</p>
+            <p class="card__type mono">FADD9 OS</p>
+            <h3 class="card__name">練習室デスクトップ</h3>
+            <p class="card__desc">譜例データをデスクトップのメタファーで読む。Mac OS 9 風。</p>
+            <p class="card__action"><a class="textlink" href="os/index.html">OS を起動<span aria-hidden="true"> →</span></a></p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ============ Roadmap ============ -->
-    <section class="section" id="roadmap" aria-labelledby="roadmap-title">
-      <div class="container">
-        <h2 class="section__title" id="roadmap-title">Roadmap<span class="section__sub">これからの fadd9</span></h2>
-        <ol class="signal-list">
-          <li class="signal-list__item reveal">
-            <time class="mono" datetime="phase-2">PHASE 2</time>
-            <strong>Samples Library ✅</strong>
-            <p>data/samples.json を正本にした一覧・検索・詳細ページを公開(15 譜例)。</p>
-          </li>
-          <li class="signal-list__item reveal">
-            <time class="mono" datetime="phase-3">PHASE 3</time>
-            <strong>Play &amp; Render ✅</strong>
-            <p>詳細ページで楽譜描画と再生。abcjs v6 をローカル同梱し、外部通信ゼロを維持。</p>
-          </li>
-          <li class="signal-list__item reveal">
-            <time class="mono" datetime="phase-4">PHASE 4</time>
-            <strong>Reference &amp; Playground ✅</strong>
-            <p>ABC記法チートシート、入力しながら鳴るプレイグラウンド、Fadd9 OS への統合。</p>
-          </li>
-          <li class="signal-list__item reveal">
-            <time class="mono" datetime="phase-5">PHASE 5</time>
-            <strong>Utilization Enhancement ✅</strong>
-            <p>Tutorial・Standard・Worksheets を新設。ギター音色化・再生中ハイライト・印刷機能を追加。</p>
-          </li>
-        </ol>
-      </div>
-    </section>
   </main>
 
   <!-- ============ Footer ============ -->
@@ -281,7 +323,9 @@ K:C
     </div>
   </footer>
 
+  <script src="js/vendor/abcjs-basic-min.js" defer></script>
   <script src="js/palette.js" defer></script>
   <script src="js/main.js" defer></script>
+  <script src="js/landing.js" defer></script>
 </body>
 </html>
