@@ -37,7 +37,7 @@
     dynamics:
       "X:1\nT:\nM:4/4\nL:1/4\nK:C\n!pp! C D E F | !mf! G A B c | !ff! c B A G |",
     capo:
-      "X:1\nT:Capo 2nd Fret\nM:4/4\nL:1/4\nK:G\n%%MIDI program 25\n\"G\" G B d g | \"C\" c e g c' | \"D\" d ^f a d' |",
+      "X:1\nT:Capo 2nd Fret\nM:4/4\nL:1/4\nK:G\n%%MIDI program 24\n\"G\" G B d g | \"C\" c e g c' | \"D\" d ^f a d' |",
     strum:
       "X:1\nT:Strumming Pattern\nM:4/4\nL:1/8\nK:C\n\"C\" C2 E2 G2 c2 | \"G\" G2 B2 d2 g2 |"
   };

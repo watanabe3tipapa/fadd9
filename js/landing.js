@@ -8,15 +8,15 @@
   const demos = [
     {
       id: "demo-scale",
-      abc: 'X:1\nT:C Major Scale\nM:4/4\nL:1/8\nQ:1/4=80\nK:C\nC D E F G A B c | c B A G F E D C |'
+      abc: 'X:1\nT:C Major Scale\nM:4/4\nL:1/8\nQ:1/4=80\n%%MIDI program 24\nK:C\nC D E F G A B c | c B A G F E D C |'
     },
     {
       id: "demo-chords",
-      abc: 'X:1\nT:Royal Road Progression\nM:4/4\nL:1/4\nQ:1/4=90\nK:C\n"C" C E G c | "G" G B d g | "Am" A c e a | "F" F A c f |'
+      abc: 'X:1\nT:Royal Road Progression\nM:4/4\nL:1/4\nQ:1/4=90\n%%MIDI program 24\nK:C\n"C" C E G c | "G" G B d g | "Am" A c e a | "F" F A c f |'
     },
     {
       id: "demo-riff",
-      abc: 'X:1\nT:Blues Shuffle\nM:4/4\nL:1/8\nQ:1/4=120\nK:E\n|: E>E G>E A>E G>E | E>E G>E B>A G>E :|'
+      abc: 'X:1\nT:Blues Shuffle\nM:4/4\nL:1/8\nQ:1/4=120\n%%MIDI program 24\nK:E\n|: E>E G>E A>E G>E | E>E G>E B>A G>E :|'
     }
   ];
 

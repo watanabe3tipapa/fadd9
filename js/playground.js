@@ -101,7 +101,7 @@
       displayPlay: true,
       displayProgress: true,
       displayWarp: true,
-      program: 25
+      program: 24
     });
     audioReady = true;
   }

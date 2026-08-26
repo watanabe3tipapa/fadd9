@@ -313,7 +313,7 @@
       .init({
         visualObj,
         options: {
-          program: 25
+          program: 24
         }
       })
       .then(() => synthControl.setTune(visualObj, false))
