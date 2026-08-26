@@ -48,6 +48,7 @@
     try {
       visualObj = window.ABCJS.renderAbc(scoreEl, abc, {
         responsive: "resize",
+        add_classes: true,
         paddingtop: 14,
         paddingbottom: 14,
         paddingleft: 18,
@@ -72,12 +73,35 @@
   function initAudio() {
     if (audioReady || !window.ABCJS.synth.supportsAudio()) return;
     audioPanel.hidden = false;
+
+    const cursorControl = {
+      onReady() {},
+      onStart() {},
+      onBeat() {},
+      onEvent(ev) {
+        scoreEl.querySelectorAll(".abcjs-note_selected").forEach(el => {
+          el.classList.remove("abcjs-note_selected");
+        });
+        if (ev && ev.elements) {
+          ev.elements.forEach(group => {
+            group.forEach(el => el.classList.add("abcjs-note_selected"));
+          });
+        }
+      },
+      onFinished() {
+        scoreEl.querySelectorAll(".abcjs-note_selected").forEach(el => {
+          el.classList.remove("abcjs-note_selected");
+        });
+      }
+    };
+
     synthControl = new window.ABCJS.synth.SynthController();
-    synthControl.load("#pg-controls", null, {
+    synthControl.load("#pg-controls", cursorControl, {
       displayRestart: true,
       displayPlay: true,
       displayProgress: true,
-      displayWarp: true
+      displayWarp: true,
+      program: 25
     });
     audioReady = true;
   }
@@ -110,6 +134,10 @@
       btn.textContent = "COPY";
       statusEl.textContent = "";
     }, 1500);
+  });
+
+  document.getElementById("pg-print").addEventListener("click", () => {
+    window.print();
   });
 
   document.getElementById("pg-clear").addEventListener("click", () => {

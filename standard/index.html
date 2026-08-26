@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Standard — ABC記法標準 v2.2 | fadd9</title>
+  <meta name="description" content="ABC記法の公式標準仕様 v2.2 の解説。ファイル構造、情報フィールド、譜bodyの記法を網羅的に解説します。">
+  <meta property="og:title" content="Standard — ABC記法標準 v2.2 | fadd9">
+  <meta property="og:description" content="ABC記法の公式標準仕様 v2.2 の解説。">
+  <meta property="og:url" content="https://watanabe3tipapa.github.io/fadd9/standard/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://watanabe3tipapa.github.io/fadd9/og.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://watanabe3tipapa.github.io/fadd9/standard/">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%230a0e1a'/><path d='M28 30v46M46 30v46M64 30v46M82 30v46' stroke='%23e8ecf4' stroke-width='4'/><path d='M16 34h78M16 54h78M16 74h78' stroke='%232dd4bf' stroke-width='4'/><circle cx='46' cy='64' r='8' fill='%23fde68a'/></svg>">
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へスキップ</a>
+
+  <header class="page-head">
+    <div class="container">
+      <nav class="crumbs mono" aria-label="パンくず">
+        <a href="../index.html">HOME</a> / <span>STANDARD</span>
+      </nav>
+      <h1 class="page-title">Standard<span class="section__sub">ABC記法標準 v2.2</span></h1>
+      <p class="page-lead">ABC記法の公式標準仕様 v2.2 を、日本語で解説。各セクションには鳴る実例付き。</p>
+    </div>
+  </header>
+
+  <nav class="localnav" aria-label="セクション">
+    <ul class="container localnav__list">
+      <li><a href="#intro">はじめに</a></li>
+      <li><a href="#structure">ファイル構造</a></li>
+      <li><a href="#fields">情報フィールド</a></li>
+      <li><a href="#body">譜body</a></li>
+      <li><a href="#advanced">上級記法</a></li>
+      <li><a href="#app">付録</a></li>
+    </ul>
+  </nav>
+
+  <main id="main">
+    <!-- ============ Introduction ============ -->
+    <section class="section section--flush-top" id="intro" aria-labelledby="intro-title">
+      <div class="container">
+        <h2 class="section__title" id="intro-title">はじめに<span class="section__sub">ABC記法とは何か</span></h2>
+        <p class="section__lead">
+          ABC記法は、ASCII文字だけで楽譜を書くための記譜法です。フォーク・伝統音楽のコミュニティで広く使われており、本標準仕様はv2.2（2024年）が最新です。
+        </p>
+        <div class="grid grid--3">
+          <article class="card reveal">
+            <p class="card__type mono">ORIGIN</p>
+            <h3 class="card__name">歴史</h3>
+            <p class="card__desc">1991年にChris Walshawが開発。テキストベースの楽譜交換为目的として生まれました。</p>
+          </article>
+          <article class="card reveal">
+            <p class="card__type mono">PHILOSOPHY</p>
+            <h3 class="card__name">設計思想</h3>
+            <p class="card__desc">「人間が読みやすく、かつ機械が処理できる」楽譜フォーマット。</p>
+          </article>
+          <article class="card reveal">
+            <p class="card__type mono">ECOSYSTEM</p>
+            <h3 class="card__name">エコシステム</h3>
+            <p class="card__desc">abcjs、EasyABC、ABC2MIDIなど多数のツールが存在。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ File Structure ============ -->
+    <section class="section" id="structure" aria-labelledby="structure-title">
+      <div class="container">
+        <h2 class="section__title" id="structure-title">ファイル構造<span class="section__sub">ABCファイルの構成</span></h2>
+        <p class="section__lead">
+          ABCファイルは、1つ以上の「曲（tune）」で構成されます。各曲はヘッダフィールドと譜bodyで構成されています。
+        </p>
+        <div class="ref-grid">
+          <div class="ref-item reveal">
+            <h3 class="card__name">ファイル識別</h3>
+            <p class="card__desc">X:フィールドが各曲の先頭にあり、ファイル内の曲を識別します。</p>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">ヘッダフィールド</h3>
+            <p class="card__desc">X:、T:、M:、L:、Q:、K:などの情報フィールド。K:は必須で末尾。</p>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">譜body</h3>
+            <p class="card__desc">K:の後に続く音符列。小節線で区切られます。</p>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">フィールド継続</h3>
+            <p class="card__desc">長いフィールドは次の行に継続できます（空白で始まる行）。</p>
+          </div>
+        </div>
+        <figure class="abc-board ref-board reveal">
+          <figcaption class="abc-board__head">
+            <span class="abc-board__file mono">ファイル構造の例</span>
+            <span class="badge-soft mono">STRUCTURE</span>
+          </figcaption>
+          <pre>X:1
+T:Example Tune
+C:Composer Name
+M:4/4
+L:1/8
+Q:1/4=120
+K:G
+|: G A B c | d e f g | g f e d | c B A G :|</pre>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ Information Fields ============ -->
+    <section class="section" id="fields" aria-labelledby="fields-title">
+      <div class="container">
+        <h2 class="section__title" id="fields-title">情報フィールド<span class="section__sub">ヘッダの各項目</span></h2>
+        <p class="section__lead">
+          ABC記法には多くの情報フィールドがあります。以下は主要なフィールドです。
+        </p>
+        <div class="ref-grid">
+          <div class="ref-item reveal">
+            <h3 class="card__name">X: 曲番号（必須）</h3>
+            <p class="card__desc">ファイル内の曲を識別する番号。先頭に必須。</p>
+            <pre class="ref-code mono">X:1</pre>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">T: 曲名</h3>
+            <p class="card__desc">曲のタイトル。複数可。2行目以降はサブタイトル。</p>
+            <pre class="ref-code mono">T:Example Tune
+T:An Alternative Title</pre>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">C: 作者</h3>
+            <p class="card__desc">作曲者名。</p>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">M: 拍子</h3>
+            <p class="card__desc">M:4/4（4/4拍子）、M:3/4（ワルツ）、M:6/8（複合2拍子）。</p>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">L: 基準音価</h3>
+            <p class="card__desc">L:1/8なら音符は標準で8分音符。小節の長さの計算に使用。</p>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">Q: テンポ</h3>
+            <p class="card__desc">Q:1/4=120でBPM120。Q:1/4=80でBPM80。</p>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">K: 調性（必須・末尾）</h3>
+            <p class="card__desc">K:CでC長調、K:AmでAマイナー、K:GmixでGミクソリディア。</p>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">%%MIDI program</h3>
+            <p class="card__desc">MIDI音色の指定（0-based）。25=Acoustic Guitar (steel)。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Tune Body ============ -->
+    <section class="section" id="body" aria-labelledby="body-title">
+      <div class="container">
+        <h2 class="section__title" id="body-title">譜body<span class="section__sub">音符と記号</span></h2>
+        <p class="section__lead">
+          K:の後に続く音符列。音高、音長、リズム、装飾などを記述します。
+        </p>
+        <div class="ref-grid">
+          <div class="ref-item reveal">
+            <h3 class="card__name">4.1 音高（Pitch）</h3>
+            <p class="card__desc">C D E F G A B（大文字=中央）、c d e f g a b（小文字=1オクターブ上）。<span class="mono">,</span> で下、<span class="mono">'</span> で上。</p>
+            <figure class="ref-demo" data-demo="octaves"></figure>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">4.2 臨時記号（Accidentals）</h3>
+            <p class="card__desc"><span class="mono">^</span> シャープ、<span class="mono">_</span> フラット、<span class="mono">=</span> ナチュラル。音名の直前。</p>
+            <figure class="ref-demo" data-demo="accidentals"></figure>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">4.3 音長（Note Lengths）</h3>
+            <p class="card__desc">数字で倍、<span class="mono">/</span> で半分。<span class="mono">C2</span> は2倍、<span class="mono">C/</span> は半分。</p>
+            <figure class="ref-demo" data-demo="durations"></figure>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">4.4 Broken Rhythm</h3>
+            <p class="card__desc"><span class="mono">&gt;</span> は前の音を付点、次の音を半分。シャッフルに使用。</p>
+            <figure class="ref-demo" data-demo="broken"></figure>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">4.5 休符（Rests）</h3>
+            <p class="card__desc"><span class="mono">z</span> で休符。音符と同じ文法で長さを変えられる。</p>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">4.8 反復（Repeats）</h3>
+            <p class="card__desc"><span class="mono">|:</span> 前反復、<span class="mono">:|</span> 後反復、<span class="mono">|1</span> <span class="mono">:|2</span> で1番/2番。</p>
+            <figure class="ref-demo" data-demo="repeats"></figure>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">4.11 Ties and Slurs</h3>
+            <p class="card__desc"><span class="mono">-</span> でタイ（同音結合）、<span class="mono">()</span> でスラー（レガート）。</p>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">4.14 Decorations</h3>
+            <p class="card__desc"><span class="mono">!trill!</span>、<span class="mono">!turn!</span>、<span class="mono">!fermata!</span> などの装飾記号。</p>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">4.17 Chords and Unisons</h3>
+            <p class="card__desc"><span class="mono">[CEG]</span> で和音。<span class="mono">[EG]</span> でパワーコード。</p>
+            <figure class="ref-demo" data-demo="dyad"></figure>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">4.18 Chord Symbols</h3>
+            <p class="card__desc">ダブルクォートで囲むとコード名が表示される。</p>
+            <figure class="ref-demo" data-demo="chordsym"></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Advanced ============ -->
+    <section class="section" id="advanced" aria-labelledby="advanced-title">
+      <div class="container">
+        <h2 class="section__title" id="advanced-title">上級記法<span class="section__sub">より高度な機能</span></h2>
+        <div class="ref-grid">
+          <div class="ref-item reveal">
+            <h3 class="card__name">5. Lyrics（歌詞）</h3>
+            <p class="card__desc">w:フィールドで歌詞を記述。音符と対応させて配置。</p>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">7. Multiple Voices</h3>
+            <p class="card__desc">V:フィールドで複数ボイスを定義。ポリフォニックな楽譜に。</p>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">9. Macros</h3>
+            <p class="card__desc">P:フィールドでマクロを定義。繰り返しパターンの省略に。</p>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">11. Stylesheet Directives</h3>
+            <p class="card__desc">%%directive で書式を制御。ページサイズ、フォント、余白など。</p>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">13. Transposition</h3>
+            <p class="card__desc">移調楽器向けの移調指定。v2.2で新機能追加。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Appendix ============ -->
+    <section class="section" id="app" aria-labelledby="app-title">
+      <div class="container">
+        <h2 class="section__title" id="app-title">付録<span class="section__sub">リファレンス</span></h2>
+        <p class="section__lead">
+          ABC記法の詳細については、以下のリソースを参照してください。
+        </p>
+        <div class="grid grid--hub">
+          <article class="card reveal">
+            <p class="card__type mono">ORIGINAL</p>
+            <h3 class="card__name">公式標準仕様</h3>
+            <p class="card__desc">ABC Music Notation Standard v2.2 の原文（英語）。</p>
+            <p class="card__action"><a class="textlink" href="https://abcnotation.com/wiki/abc:standard:v2.2" target="_blank" rel="noopener">abcnotation.com<span aria-hidden="true"> ↗</span></a></p>
+          </article>
+          <article class="card reveal">
+            <p class="card__type mono">TUTORIAL</p>
+            <h3 class="card__name">チュートリアル</h3>
+            <p class="card__desc">ABC記法をステップバイステップで学ぶ入門ページ。</p>
+            <p class="card__action"><a class="textlink" href="../tutorial/index.html">Tutorial<span aria-hidden="true"> →</span></a></p>
+          </article>
+          <article class="card reveal">
+            <p class="card__type mono">REFERENCE</p>
+            <h3 class="card__name">チートシート</h3>
+            <p class="card__desc">要点だけを素早く確認できるリファレンス。</p>
+            <p class="card__action"><a class="textlink" href="../reference/index.html">Reference<span aria-hidden="true"> →</span></a></p>
+          </article>
+          <article class="card reveal">
+            <p class="card__type mono">SAMPLES</p>
+            <h3 class="card__name">実物の譜例</h3>
+            <p class="card__desc">15件の譜例でABC記法の実践例を確認。</p>
+            <p class="card__action"><a class="textlink" href="../samples/index.html">Samples<span aria-hidden="true"> →</span></a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__bottom footer__bottom--solo">
+      <p><small>&copy; 2026 watanabe3ti — <a class="textlink" href="../index.html">fadd9 HOME</a></small></p>
+      <p class="footer__rss-note">Guitar, notated.</p>
+    </div>
+  </footer>
+
+  <script src="../js/vendor/abcjs-basic-min.js" defer></script>
+  <script src="../js/palette.js" defer></script>
+  <script src="../js/reference.js" defer></script>
+</body>
+</html>

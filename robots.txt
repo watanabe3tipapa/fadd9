@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /ABC-wiki.html
+Disallow: /ABC記法チュートリアル_v3.html
+Disallow: /data.json
 
 Sitemap: https://watanabe3tipapa.github.io/fadd9/sitemap.xml

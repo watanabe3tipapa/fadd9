@@ -4,7 +4,7 @@
 
 fadd9 は、ギターを入り口に **ABC記法(テキストで書く楽譜)** を専門的に扱う独習ライブラリです。既存 ABC 記法の弱点である「動くサンプルの少なさ」を埋めることを軸に、コード進行・スケール・リフ・曲をコピーして即使える譜例として公開します。
 
-[![Version](https://img.shields.io/badge/version-v1.0.0--rebuild-blue.svg)](https://watanabe3tipapa.github.io/fadd9/updates/)
+[![Version](https://img.shields.io/badge/version-v1.1.0-blue.svg)](https://watanabe3tipapa.github.io/fadd9/updates/)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-live-blue.svg)](https://watanabe3tipapa.github.io/fadd9/)
 [![GitHub](https://img.shields.io/github/issues/watanabe3tipapa/fadd9.svg)](https://github.com/watanabe3tipapa/fadd9/issues)
 
@@ -20,16 +20,25 @@ fadd9 は、ギターを入り口に **ABC記法(テキストで書く楽譜)** 
 
 - Hero — Fadd9 コードダイアグラム(SVG 手描き)+ コンセプト導線
 - Why ABC — テキスト記譜の利点(TEXT / GIT / PLAY)
-- Samples — 手書き譜例ボード(study / progression)
-- **Samples Library** — `data/samples.json` 正本の譜例 12 件。カテゴリ(練習/コード進行/スケール/リフ/曲)・検索・タグで絞り込み、詳細ページから ABC テキストをワンクリックコピー
+- **Samples Library** — `data/samples.json` 正本の譜例 15 件。カテゴリ(練習/コード進行/スケール/リフ/曲)・検索・タグで絞り込み、詳細ページから ABC テキストをワンクリックコピー
 - **Play & Render** — 詳細ページで楽譜を SVG 描画し、ブラウザ内で再生(速度変更 WARP 対応)。abcjs v6 をローカル同梱、外部通信ゼロ
+- **Tutorial** — ABC記法チュートリアル。ステップバイステップで学習。鳴る実例付き
 - **Reference** — ABC記法チートシート。各記法要素に「鳴る実例」をその場で描画
+- **Standard** — ABC記法標準 v2.2 の詳細リファレンス。公式仕様を日本語で解説
 - **Playground** — テキストを書くと即描画・即再生のエディタ。下書きは localStorage 自動保存、譜例を読み込んで改造可能
+- **Worksheets** — 採譜ワークシート。印刷して使うテンプレート集(6種類)
 - **Fadd9 OS** — 譜例データをデスクトップのメタファーで読む練習室ビュー(Mac OS 9 風)
 - Now — 練習の現在地
 - Roadmap — フェーズ計画
 - Updates + Atom feed — 更新履歴
-- ⌘K Command Palette — 譜例 12 件も横断検索
+- ⌘K Command Palette — 譜例も横断検索
+
+### v1.1.0 の追加機能
+
+- **ギター音色化** — 再生音をピアノから Acoustic Guitar (steel) に変更(MIDI program 25)
+- **再生中の音符ハイライト** — 再生時に該当する音符がティール色にハイライト
+- **印刷機能** — Playground/Worksheet から楽譜を印刷可能
+- **ギター用記法リファレンス** — パワーコード、アルペジオ、スラー等のギター特有の記法を解説
 
 ---
 
@@ -62,37 +71,41 @@ python3 -m http.server 8000
 | 2 | Samples Library(data JSON 正本 + 一覧/検索/詳細) | ✅ 完了 |
 | 3 | Play & Render(abcjs ローカル同梱、描画と再生) | ✅ 完了 |
 | 4 | Reference & Playground(チートシート、入力即再生、Fadd9 OS 改修) | ✅ 完了 |
+| 5 | Utilization Enhancement(Tutorial/Standard/Worksheets、ギター音色化、音符ハイライト) | ✅ 完了 |
 
 ## リポジトリ構成(主なファイル)
 
 ```
 fadd9/
-├── index.html          # LP 本体(Hero + Why ABC + Samples + Library + Roadmap)
-├── samples/index.html  # 譜例ライブラリ一覧(?category=exercise/chords/scales/riffs/songs)
-├── samples/sample.html # 譜例詳細(?slug=)+ 楽譜描画/再生 + ABC コピー + 関連譜例
-├── reference/index.html# ABC記法チートシート(鳴る実例つき)
-├── playground/index.html # 入力即描画・即再生のエディタ
-├── works/index.html    # レガシーカタログ(Phase 後半で改修)
-├── works/work.html     # 個別ページ(?slug=)
-├── now/index.html      # Now ページ(練習の現在地)
-├── os/index.html       # Fadd9 OS — 譜例データの練習室デスクトップ
-├── updates/index.html  # 更新履歴タイムライン
-├── css/style.css       # デザイントークン / レスポンシブ
-├── js/vendor/abcjs-basic-min.js  # abcjs v6(楽譜描画+合成再生、ローカル同梱)
-├── js/main.js          # reveal アニメーション / 年表示
-├── js/palette.js       # Command Palette(譜例を遅延ロードで横断検索)
-├── js/samples.js       # 譜例一覧・詳細レンダラ(+コピー・描画・再生)
-├── js/reference.js     # チートシートの実例スコア描画
-├── js/playground.js    # Playground エディタ(live render / 再生 / 下書き保存)
-├── js/works.js         # レガシー一覧・詳細レンダラ
-├── js/os.js            # ウィンドウマネージャ / Compact Mode(samples.json 正本)
-├── data.json           # サイト設定メタデータ
-├── data/samples.json   # 譜例台帳の正本(12 譜例)
-├── data/works-*.json   # レガシーデータ
-├── tools/validate_abc.py # ABC 小節長バリデータ(小節拍数を機械検算)
-├── feed.xml            # Atom feed
+├── index.html              # LP 本体(Hero + Why ABC + Samples + Library + Roadmap)
+├── samples/index.html      # 譜例ライブラリ一覧(?category=exercise/chords/scales/riffs/songs)
+├── samples/sample.html     # 譜例詳細(?slug=)+ 楽譜描画/再生 + ABC コピー + 関連譜例
+├── tutorial/index.html     # ABC記法チュートリアル(ステップバイステップ)
+├── reference/index.html    # ABC記法チートシート(鳴る実例つき)
+├── standard/index.html     # ABC記法標準 v2.2(詳細リファレンス)
+├── playground/index.html   # 入力即描画・即再生のエディタ
+├── worksheets/index.html   # 採譜ワークシート一覧
+├── worksheets/worksheet.html # 個別ワークシート(印刷対応)
+├── now/index.html          # Now ページ(練習の現在地)
+├── os/index.html           # Fadd9 OS — 譜例データの練習室デスクトップ
+├── updates/index.html      # 更新履歴タイムライン
+├── css/style.css           # デザイントークン / レスポンシブ / 印刷用スタイル
+├── js/vendor/abcjs-basic-min.js # abcjs v6(楽譜描画+合成再生、ローカル同梱)
+├── js/main.js              # reveal アニメーション / 年表示
+├── js/palette.js           # Command Palette(譜例を遅延ロードで横断検索)
+├── js/samples.js           # 譜例一覧・詳細レンダラ(+コピー・描画・再生・音符ハイライト)
+├── js/reference.js         # チートシートの実例スコア描画
+├── js/playground.js        # Playground エディタ(live render / 再生 / 下書き保存 / 印刷)
+├── js/tutorial.js          # チュートリアル用 COPY ボタン処理
+├── js/worksheets.js        # ワークシート一覧の描画
+├── js/os.js                # ウィンドウマネージャ / Compact Mode(samples.json 正本)
+├── data.json               # サイト設定メタデータ
+├── data/samples.json       # 譜例台帳の正本(15 譜例)
+├── tools/validate_abc.py   # ABC 小節長バリデータ(小節拍数を機械検算)
+├── tools/generate_og.py    # OGP 画像生成スクリプト
+├── feed.xml                # Atom feed
 ├── sitemap.xml / robots.txt
-└── og.png              # OGP 共有画像(1200×630、fadd9 デザイン)
+└── og.png                  # OGP 共有画像(1200×630、fadd9 デザイン)
 ```
 
 ## samples.json のスキーマ
@@ -112,6 +125,7 @@ fadd9/
 
 - サンプル詳細は JS レンダリングのため、クローラによっては本文を取得できない(title/description は差し替え済み)
 - 再生は Web Audio 対応ブラウザのみ(Safari など非対応環境では譜面と COPY のみ)
+- Standard ページは公式全 15 セクションのうち主要 6 セクションのみ網羅
 
 ---
 
@@ -126,4 +140,4 @@ fadd9/
 
 ## 開発・保守状態
 
-- 最終更新: 2026-08-24 (Phase 4 — Reference & Playground)
+- 最終更新: 2026-08-25 (Phase 5 — Utilization Enhancement)

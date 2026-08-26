@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Worksheets — 採譜ワークシート | fadd9</title>
+  <meta name="description" content="ABC記法で採譜するためのワークシート集。テンプレートを印刷して、音を聞きながら書き留めましょう。">
+  <meta property="og:title" content="Worksheets — 採譜ワークシート | fadd9">
+  <meta property="og:description" content="ABC記法で採譜するためのワークシート集。">
+  <meta property="og:url" content="https://watanabe3tipapa.github.io/fadd9/worksheets/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://watanabe3tipapa.github.io/fadd9/og.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://watanabe3tipapa.github.io/fadd9/worksheets/">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%230a0e1a'/><path d='M28 30v46M46 30v46M64 30v46M82 30v46' stroke='%23e8ecf4' stroke-width='4'/><path d='M16 34h78M16 54h78M16 74h78' stroke='%232dd4bf' stroke-width='4'/><circle cx='46' cy='64' r='8' fill='%23fde68a'/></svg>">
+  <style>
+    .worksheet-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 1.5rem;
+      background: var(--bg-elevated);
+    }
+    .worksheet-card h3 {
+      margin: 0 0 0.5rem;
+    }
+    .worksheet-card p {
+      margin: 0 0 1rem;
+      color: var(--ink-muted);
+      font-size: 0.9rem;
+    }
+    .worksheet-card .card__action {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へスキップ</a>
+
+  <header class="page-head">
+    <div class="container">
+      <nav class="crumbs mono" aria-label="パンくず">
+        <a href="../index.html">HOME</a> / <span>WORKSHEETS</span>
+      </nav>
+      <h1 class="page-title">Worksheets<span class="section__sub">採譜ワークシート</span></h1>
+      <p class="page-lead">音を聞きながらABC記法で書き留めるためのテンプレート集。印刷して使えば、デジタルと紙の両方で採譜を楽しめます。</p>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section section--flush-top">
+      <div class="container">
+        <div class="grid grid--3" id="worksheet-grid">
+          <!-- JavaScript で埋め込む -->
+          <noscript>
+            <p class="works-error">JavaScript を有効にするとワークシート一覧が表示されます。</p>
+          </noscript>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__bottom footer__bottom--solo">
+      <p><small>&copy; 2026 watanabe3ti — <a class="textlink" href="../index.html">fadd9 HOME</a></small></p>
+      <p class="footer__rss-note">Guitar, notated.</p>
+    </div>
+  </footer>
+
+  <script src="../js/palette.js" defer></script>
+  <script src="../js/worksheets.js" defer></script>
+</body>
+</html>

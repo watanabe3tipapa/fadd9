@@ -179,6 +179,51 @@
       "summaryJa": "イングランド古謡。6/8 拍子の「2+1」の揺れ(強弱弱)を掴むのに最適な一曲。",
       "tipsJa": "6/8 は 8 分音符 6 個を「タン タタ タン タタ」の二拍子感で。c2 d のように付点っぽく伸ばす箇所が民謡らしい味になる。",
       "abc": "X:1\nT:Greensleeves (Excerpt)\nC:Traditional (Public Domain)\nM:6/8\nL:1/8\nQ:1/4=55\nK:Am\nA | c2 d e2 f | e2 d2 B2 | A2 B c2 A | G2 F2 E2 |"
+    },
+    {
+      "slug": "exercise-04-fingerpicking",
+      "name": "Fingerpicking Pattern in C",
+      "nameJa": "指弾きパターン(C)",
+      "category": "exercise",
+      "level": "INTERMEDIATE",
+      "key": "C",
+      "tempo": "1/4=80",
+      "meter": "4/4",
+      "tags": ["fingerpicking", "pattern", "arpeggio"],
+      "updated": "2026-08-25",
+      "summaryJa": "親指(p)・人差し指(i)・中指(m)・薬指(a)を使った基本的な指弾きパターン。Cコードのアルペジオを安定したリズムで。",
+      "tipsJa": "親指は常にベース音(5・6弦)、人差し指〜薬指は1〜3弦を担当。各指の役割を固定し、リズムを崩さないこと。まずスローで。",
+      "abc": "X:1\nT:Fingerpicking Pattern in C\nM:4/4\nL:1/8\nQ:1/4=80\nK:C\n\"C\" C E c e c e c e | \"G/B\" B D d f d f d f |\n\"Am\" A c e a e a e a | \"F\" F A c f c f c f |"
+    },
+    {
+      "slug": "riff-03-slide-lick",
+      "name": "Slide Lick in G",
+      "nameJa": "スライドリフ(G)",
+      "category": "riffs",
+      "level": "INTERMEDIATE",
+      "key": "G",
+      "tempo": "1/4=100",
+      "meter": "4/4",
+      "tags": ["slide", "blues", "expression"],
+      "updated": "2026-08-25",
+      "summaryJa": "スライドを使った表現豊かなリフ。ABC記法では装飾音(grace notes)でスライド感を表現する。",
+      "tipsJa": "実際のスライドは弦を押さえ直さずにフレットを移動。abcjsでは装飾音で近い表現が可能。スライドの入りと出しのニュアンスを意識。",
+      "abc": "X:1\nT:Slide Lick in G\nM:4/4\nL:1/8\nQ:1/4=100\nK:G\n|: G>g G>g | d>g d>g | B>d B>d | G2 z2 :|"
+    },
+    {
+      "slug": "scales-03-d-dorian",
+      "name": "D Dorian Mode Scale",
+      "nameJa": "D ドリアンスケール",
+      "category": "scales",
+      "level": "INTERMEDIATE",
+      "key": "Dm",
+      "tempo": "1/4=80",
+      "meter": "4/4",
+      "tags": ["mode", "dorian", "scale"],
+      "updated": "2026-08-25",
+      "summaryJa": "マイナー系のモード・ドリアン(B♭ナチュラルマイナーの6音目から開始)。明るすぎず暗すぎない独特の響き。",
+      "tipsJa": "Cメジャーと同じ鍵盤使だが、Dから始まるためB♭が自然に入る。Dmのコードの上ならドリアンがai时、Dm7の上では特に響く。",
+      "abc": "X:1\nT:D Dorian Mode Scale\nM:4/4\nL:1/8\nQ:1/4=80\nK:Dm\n|: D E F G A B c d | d c B A G F E D :|"
     }
   ]
 }

@@ -17,7 +17,13 @@
     dyad:
       "X:1\nT:\nM:4/4\nL:1/8\nK:E\n|: [EG] z [EG] z [EG] [EA] [EG] z :|",
     chordsym:
-      "X:1\nT:\nM:4/4\nL:1/4\nK:C\n\"C\" C E G c | \"G\" G B d g | \"Am\" A c e a |"
+      "X:1\nT:\nM:4/4\nL:1/4\nK:C\n\"C\" C E G c | \"G\" G B d g | \"Am\" A c e a |",
+    powerchord:
+      "X:1\nT:\nM:4/4\nL:1/8\nK:E\n|: [EG] z [EG] z [EG] [EA] [EG] z :|",
+    arpeggio:
+      "X:1\nT:\nM:4/4\nL:1/8\nK:C\n\"C\" C E G c E G c | \"Am\" A c e a c e a c |",
+    slur:
+      "X:1\nT:\nM:4/4\nL:1/8\nK:C\n(C D E F) (G A B c) | (c B A G) (F E D C) |"
   };
 
   document.querySelectorAll("[data-demo]").forEach((el) => {

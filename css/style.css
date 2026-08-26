@@ -1937,3 +1937,92 @@ a.abc-board__file:hover {
     width: clamp(130px, 34vw, 160px);
   }
 }
+
+/* 再生中の音符ハイライト */
+.score-panel .abcjs-note_selected {
+  fill: var(--teal);
+  transition: fill 0.1s ease;
+}
+
+/* ワークシート */
+.worksheet-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1.5rem;
+  background: var(--bg-elevated);
+}
+
+.worksheet-card h3 {
+  margin: 0 0 0.5rem;
+}
+
+.worksheet-card p {
+  margin: 0 0 1rem;
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+}
+
+.worksheet-card .card__action {
+  margin: 0;
+}
+
+/* 印刷用スタイル */
+@media print {
+  .no-print,
+  .skip-link,
+  .localnav,
+  .page-head,
+  .footer,
+  .audio-bar,
+  .playground__toolbar,
+  .filters,
+  .btn,
+  .btn-copy,
+  .work-card__action,
+  .section__more {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+    font-size: 12pt;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .score-panel {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .abc-board {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .audio-bar {
+    display: none !important;
+  }
+
+  .playground__score {
+    border: 1px solid #ccc;
+    padding: 1rem;
+  }
+
+  a[href]::after {
+    content: none;
+  }
+
+  .card {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+}

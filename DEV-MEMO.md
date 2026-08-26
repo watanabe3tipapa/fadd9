@@ -447,3 +447,177 @@ PLAN Release 2 の完了条件「主要な制作物を一覧・検索・詳細�
 `hidden` 属性を使う要素に author 側で display を指定する場合は
 `.x[hidden] { display: none }` を必ず併記する。
 （Release 3 の `.compact[hidden]` では正しく対応済みだった。片方だけ抜けたパターン）
+
+---
+
+## Phase 5(2026-08-25)— Utilization Enhancement
+
+### 目的
+
+「ギターを主体としたABC記法・採譜のサイト」として、利用価値を高める機能を追加。採譜ワークシート、ギター用記法リファレンス、印刷用楽譜生成の3つを段階的に実装する。
+
+### 実装内容
+
+#### 1. 採譜ワークシート（新規ページ）
+
+| ファイル | 役割 |
+| --- | --- |
+| `worksheets/index.html` | ワークシート一覧。6種類のテンプレートをカード表示 |
+| `worksheets/worksheet.html` | 個別テンプレート（`?type=` で切り替え）。印刷対応 |
+| `js/worksheets.js` | テンプレート一覧の描画 |
+
+**テンプレート一覧:**
+- Warm-up Template — 毎日のウォームアップ記録用
+- Chord Progression Template — コード進行記入用
+- Melody Transcription — メロディ採譜用
+- Riff & Phrase Template — リフ・フレーズ記入用
+- Scale Practice Template — スケール練習用
+- General Worksheet — 汎用テンプレート
+
+**デザイン:**
+- 各テンプレートにはタイトル・アーティスト・キー・テンポの記入欄
+- ABC記法の記入欄（罫線付き）
+- メモ欄
+- 印刷ボタン（`@media print` でUI要素を非表示）
+- Playgroundで開くリンク（将来対応）
+
+**修正ファイル:**
+- `index.html` — localnav に Worksheets 追加、footer SITES にWorksheets追加
+- `css/style.css` — `.worksheet-card` スタイル追記
+
+### 未消化（次フェーズ以降）
+
+1. **ギター用記法リファレンス** — Reference ページにギター特有のABC記法を追加
+   - パワーコード、アルペジオ記法、指番号
+   - コードダイアグラムのABC表記
+   - スライド・ハンマリング・プリングの記法例
+
+2. **印刷用楽譜生成** — Playground/詳細ページから印刷用レイアウトを生成
+   - 複数譜例のまとめて印刷
+   - フィンガリング表示付きの印刷
+   - PDF出力（ブラウザの印刷機能活用）
+
+3. **進捗トラッキング** — Nowページに練習記録機能を追加
+   - 練習した譜例の記録（localStorage）
+   - 習熟度レベルの可視化
+
+4. **コード変換ツール** — 新規ページ
+   - コードネーム→ABC記法変換
+   - ABC記法→コードダイアグラム変換
+   - 音程計算ツール（フレット位置↔音名）
+
+### 2. ギター用記法リファレンス（Reference強化）
+
+`reference/index.html` に「Guitar Notation」セクションを追加。以下の記法要素を解説：
+
+| 記法 | 内容 |
+| --- | --- |
+| `[EG]` | パワーコード（ルート+5度の重音） |
+| アルペジオ | コードを分散させる記法パターン |
+| `()` スラー | レガート演奏（ハンマリング/プリングの近い表現） |
+| `~` ティルダー | ビブラート指示（演奏メモ用） |
+| `!pp!` 等 | 力づけ記号（ピッキング強度のメモ） |
+| `x` | ミュート音（ガンッ） |
+
+**追加ファイル:**
+- `js/reference.js` — powerchord/arpeggio/slur のデモ追加
+
+### 3. 印刷用楽譜生成機能
+
+Playground とワークシートに印刷機能を追加。
+
+**修正ファイル:**
+- `playground/index.html` — ツールバーに PRINT ボタン追加
+- `js/playground.js` — PRINT ボタンのクリックハンドラ（`window.print()`）
+- `css/style.css` — `@media print` セクション追記
+  - UI要素（ナビ、フッター、コントロール）を非表示
+  - スコア・ABCボードに罫線+余白
+  - 白地黒字の印刷レイアウト
+
+### 教訓
+
+ABC記法は楽器非依存だが、ギターで使うときに便利な表記パターン（パワーコード、アルペジオ、スラー等）を「辞書」として整理すると、独習者の理解が深まる。Reference ページは「必要なものだけ」に絞り、 mỗi 記法に鳴る実例を添える方針を維持。
+
+
+---
+
+## 修正記録(2026-08-25)— ギター音色化
+
+### 背景
+
+fadd9 はギターを主体としたABC記法サイトであるため、再生音を abcjs デフォルトのピアノからギターに変更する。`fadd9-guitar-implementation-guide.html` のガイドに準拠。
+
+### 対応
+
+1. `js/samples.js` — `CreateSynth().init()` に `options: { program: 25 }` を追加（Acoustic Guitar, steel）
+2. `js/playground.js` — `SynthController.load()` の options に `program: 25` を追加
+
+### 未対応
+
+- `js/reference.js` — 現時点ではデモに再生機能がないため未対応。将来的にSynth初期化を追加する場合は同様の変更を行う
+
+### 教訓
+
+abcjs v6 では `SynthController.load()` の options に `program` を渡すことで、以降の `setTune()` で音色が適用される。`CreateSynth().init()` に直接渡す方法も確実。
+
+---
+
+## Phase 5(2026-08-25)— Learning Content Expansion
+
+### 目的
+
+ABC記法の学習コンテンツを3階層に整理し、独習者の理解を深める。既存のReference（チートシート）に加え、Tutorial（チュートリアル）とStandard（標準仕様）を新設。
+
+### 新規ファイル
+
+| ファイル | 役割 |
+| --- | --- |
+| `tutorial/index.html` | ABC記法チュートリアル。ステップバイステップで学習。鳴る実例付き |
+| `js/tutorial.js` | チュートリアル用COPYボタン処理 |
+| `standard/index.html` | ABC記法標準v2.2の詳細リファレンス。公式仕様を日本語で解説 |
+
+### チュートリアル構成（tutorial/index.html）
+
+1. **ABC記法とは** — テキスト楽譜の利点（エディタ/Git/再生）
+2. **基本の構造** — X:からK:までのヘッダフィールド解説
+3. **音高** — 大文字/小文字、オクターブ、臨時記号
+4. **音長** — 数字倍、/半分、broken rhythm、休符、タイ
+5. **和音** — 重音[CEG]、コード記号、反復
+6. **ギター記譜** — コード進行、パワーコード、アルペジオ、スラー、ミュート、力づけ
+7. **練習** — テンプレート付き、Playground/Standard/Samplesへの導線
+
+### 標準ページ構成（standard/index.html）
+
+1. **はじめに** — 歴史、設計思想、エコシステム
+2. **ファイル構造** — ファイル識別、ヘッダ、譜body
+3. **情報フィールド** — X:/T:/C:/M:/L:/Q:/K:/%%MIDI program
+4. **譜body** — 音高、臨時記号、音長、broken rhythm、休符、反復、スラー、装飾、和音、コード記号
+5. **上級記法** — 歌詞、複数ボイス、マクロ、書式指定、移調
+6. **付録** — 公式標準、チュートリアル、チートシート、譜例への導線
+
+### 修正ファイル
+
+- `index.html` — localnav/tutorial/standard追加、footer SITES更新
+- `reference/index.html` — Try it セクションにTutorial/Standard追加
+
+### コンテンツ活用元
+
+| 元ファイル | 活用内容 |
+| --- | --- |
+| `ABC記法チュートリアル_v3.html` | チュートリアルのセクション構成、練習問題、コード例 |
+| `ABC-wiki.html` | 標準ページのセクション構成、公式仕様の解説 |
+| `ABC Notation Standard v2.2（まとめ）.md` | HTMLコードブロック、用語集 |
+
+### 設計上の決定
+
+1. **外部フォント不使用** — fadd9方針（ゼロ依存）を維持。CSS変数は既存スタイルを流用
+2. **3階層構造** — Reference（簡潔）→ Tutorial（学習）→ Standard（詳細）。ニーズに応じた入口を選べる
+3. **鳴る実例を各セクションに追加** — abcjs描画で「読む→聴く→書く」のループ
+4. **練習問題はPlaygroundにリンク** — 学んだことを即実践できる動線
+5. **外部リンクは `target="_blank"`** — 公式標準への参照は新規タブで開く
+
+### 既知の制限
+
+- `tutorial/index.html` のCOPYボタンは `data-copy` 属性のバックスラッシュ変換のみ。より堅牢なエスケープ処理が必要な場合は後日改善
+- `standard/index.html` は公式全15セクションのうち主要6セクションのみ網羅。残りは必要に応じて追加
+- `js/reference.js` のデモは描画のみ。再生機能は将来的に追加検討

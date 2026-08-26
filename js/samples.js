@@ -155,6 +155,18 @@
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.setAttribute("content", s.summaryJa);
 
+    // OGP タグの動的差し替え
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute("content", `${s.name} — fadd9 譜例`);
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute("content", s.summaryJa);
+    const ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) ogUrl.setAttribute("content", `https://watanabe3tipapa.github.io/fadd9/samples/sample.html?slug=${encodeURIComponent(s.slug)}`);
+    const ogType = document.querySelector('meta[property="og:type"]');
+    if (ogType) ogType.setAttribute("content", "article");
+    const twitterCard = document.querySelector('meta[name="twitter:card"]');
+    if (twitterCard) twitterCard.setAttribute("content", "summary");
+
     const related = samples
       .filter((x) => x.slug !== s.slug)
       .map((x) => ({ x, score:
@@ -254,6 +266,7 @@
     try {
       visualObj = window.ABCJS.renderAbc(scoreEl, s.abc, {
         responsive: "resize",
+        add_classes: true,
         paddingtop: 14,
         paddingbottom: 14,
         paddingleft: 18,
@@ -264,11 +277,32 @@
       return;
     }
 
-    if (!audioPanel || !window.ABCJS.synth.supportsAudio()) return; // 再生非対応環境では譜面だけ
+    if (!audioPanel || !window.ABCJS.synth.supportsAudio()) return; // 再生非対非対応環境では譜面だけ
     audioPanel.hidden = false;
 
+    const cursorControl = {
+      onReady() {},
+      onStart() {},
+      onBeat() {},
+      onEvent(ev) {
+        scoreEl.querySelectorAll(".abcjs-note_selected").forEach(el => {
+          el.classList.remove("abcjs-note_selected");
+        });
+        if (ev && ev.elements) {
+          ev.elements.forEach(group => {
+            group.forEach(el => el.classList.add("abcjs-note_selected"));
+          });
+        }
+      },
+      onFinished() {
+        scoreEl.querySelectorAll(".abcjs-note_selected").forEach(el => {
+          el.classList.remove("abcjs-note_selected");
+        });
+      }
+    };
+
     const synthControl = new window.ABCJS.synth.SynthController();
-    synthControl.load("#audio-controls", null, {
+    synthControl.load("#audio-controls", cursorControl, {
       displayRestart: true,
       displayPlay: true,
       displayProgress: true,
@@ -276,7 +310,12 @@
     });
 
     new window.ABCJS.synth.CreateSynth()
-      .init({ visualObj })
+      .init({
+        visualObj,
+        options: {
+          program: 25
+        }
+      })
       .then(() => synthControl.setTune(visualObj, false))
       .catch(() => { audioPanel.hidden = true; });
   }

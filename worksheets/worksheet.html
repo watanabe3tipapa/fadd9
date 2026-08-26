@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Worksheet — fadd9</title>
+  <meta name="description" content="ABC記法で採譜するためのワークシート。">
+  <meta property="og:title" content="Worksheet — fadd9">
+  <meta property="og:description" content="ABC記法で採譜するためのワークシート。">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://watanabe3tipapa.github.io/fadd9/og.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%230a0e1a'/><path d='M28 30v46M46 30v46M64 30v46M82 30v46' stroke='%23e8ecf4' stroke-width='4'/><path d='M16 34h78M16 54h78M16 74h78' stroke='%232dd4bf' stroke-width='4'/><circle cx='46' cy='64' r='8' fill='%23fde68a'/></svg>">
+  <style>
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white; color: black; }
+      .worksheet { border: none; box-shadow: none; margin: 0; padding: 1rem; }
+      .worksheet__line { border-bottom: 1px solid #ccc; }
+    }
+    .worksheet {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--bg-elevated);
+    }
+    .worksheet__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--teal);
+    }
+    .worksheet__title {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+    .worksheet__meta {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .worksheet__field {
+      display: flex;
+      flex-direction: column;
+    }
+    .worksheet__label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+      margin-bottom: 0.25rem;
+    }
+    .worksheet__line {
+      border: none;
+      border-bottom: 1px solid var(--ink-muted);
+      background: transparent;
+      color: var(--ink);
+      font-family: var(--mono);
+      padding: 0.25rem 0;
+    }
+    .worksheet__abc {
+      margin: 2rem 0;
+    }
+    .worksheet__abc-label {
+      font-family: var(--mono);
+      font-size: 0.875rem;
+      color: var(--teal);
+      margin-bottom: 0.5rem;
+    }
+    .worksheet__abc-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .worksheet__abc-line {
+      height: 1px;
+      background: var(--ink-muted);
+      opacity: 0.3;
+    }
+    .worksheet__notes {
+      margin-top: 2rem;
+    }
+    .worksheet__notes-label {
+      font-family: var(--mono);
+      font-size: 0.875rem;
+      color: var(--teal);
+      margin-bottom: 0.5rem;
+    }
+    .worksheet__notes-area {
+      min-height: 100px;
+      border: 1px dashed var(--ink-muted);
+      border-radius: 4px;
+      padding: 1rem;
+      opacity: 0.3;
+    }
+    .worksheet__actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へスキップ</a>
+
+  <header class="page-head page-head--slim no-print">
+    <div class="container">
+      <nav class="crumbs mono" aria-label="パンくず">
+        <a href="../index.html">HOME</a> / <a href="index.html">WORKSHEETS</a> / <span id="worksheet-name">Worksheet</span>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section section--flush-top">
+      <div class="container">
+        <div class="worksheet" id="worksheet">
+          <div class="worksheet__header">
+            <h1 class="worksheet__title" id="title">Worksheet</h1>
+            <p class="mono" id="category">—</p>
+          </div>
+
+          <div class="worksheet__meta">
+            <div class="worksheet__field">
+              <span class="worksheet__label">TITLE</span>
+              <input type="text" class="worksheet__line" placeholder="曲名を書く">
+            </div>
+            <div class="worksheet__field">
+              <span class="worksheet__label">ARTIST</span>
+              <input type="text" class="worksheet__line" placeholder="アーティスト名">
+            </div>
+            <div class="worksheet__field">
+              <span class="worksheet__label">KEY</span>
+              <input type="text" class="worksheet__line" placeholder="K:C">
+            </div>
+            <div class="worksheet__field">
+              <span class="worksheet__label">TEMPO</span>
+              <input type="text" class="worksheet__line" placeholder="Q:1/4=120">
+            </div>
+          </div>
+
+          <div class="worksheet__abc">
+            <p class="worksheet__abc-label">ABC NOTATION</p>
+            <div class="worksheet__abc-lines">
+              <div class="worksheet__abc-line"></div>
+              <div class="worksheet__abc-line"></div>
+              <div class="worksheet__abc-line"></div>
+              <div class="worksheet__abc-line"></div>
+              <div class="worksheet__abc-line"></div>
+              <div class="worksheet__abc-line"></div>
+              <div class="worksheet__abc-line"></div>
+              <div class="worksheet__abc-line"></div>
+            </div>
+          </div>
+
+          <div class="worksheet__notes">
+            <p class="worksheet__notes-label">NOTES</p>
+            <div class="worksheet__notes-area"></div>
+          </div>
+        </div>
+
+        <div class="worksheet__actions no-print">
+          <button type="button" class="btn btn--primary" onclick="window.print()">印刷する</button>
+          <a class="btn btn--ghost" href="index.html">一覧へ戻る</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer no-print">
+    <div class="container footer__bottom footer__bottom--solo">
+      <p><small>&copy; 2026 watanabe3ti — <a class="textlink" href="../index.html">fadd9 HOME</a></small></p>
+      <p class="footer__rss-note">Guitar, notated.</p>
+    </div>
+  </footer>
+
+  <script>
+    // URL パラメータからテンプレート情報を取得
+    const params = new URLSearchParams(location.search);
+    const type = params.get('type') || 'general';
+    
+    const templates = {
+      general: { title: 'General Worksheet', category: 'GENERAL' },
+      warmup: { title: 'Warm-up Template', category: 'WARM-UP' },
+      chords: { title: 'Chord Progression Template', category: 'CHORDS' },
+      melody: { title: 'Melody Transcription', category: 'MELODY' },
+      riff: { title: 'Riff & Phrase Template', category: 'RIFFS' },
+      scale: { title: 'Scale Practice Template', category: 'SCALES' }
+    };
+    
+    const tmpl = templates[type] || templates.general;
+    document.getElementById('title').textContent = tmpl.title;
+    document.getElementById('category').textContent = tmpl.category;
+    document.getElementById('worksheet-name').textContent = tmpl.title;
+    document.title = `${tmpl.title} — fadd9 Worksheets`;
+  </script>
+</body>
+</html>
