@@ -15,6 +15,20 @@
   <meta name="twitter:site" content="@watanabe3tipapa">
   <link rel="canonical" href="https://watanabe3tipapa.github.io/fadd9/">
   <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "fadd9",
+    "description": "ギターの練習素材を、テキストで書く楽譜「ABC記法」で書き残す独習ライブラリ。",
+    "url": "https://watanabe3tipapa.github.io/fadd9/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://watanabe3tipapa.github.io/fadd9/samples/index.html?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%230a0e1a'/><path d='M28 30v46M46 30v46M64 30v46M82 30v46' stroke='%23e8ecf4' stroke-width='4'/><path d='M16 34h78M16 54h78M16 74h78' stroke='%232dd4bf' stroke-width='4'/><circle cx='46' cy='64' r='8' fill='%23fde68a'/></svg>">
 </head>
 <body>
@@ -98,6 +112,13 @@
     </ul>
   </nav>
 
+  <noscript>
+    <style>.reveal{opacity:1!important;transform:none!important}</style>
+    <div style="background:#1a1f2e;color:#e8ecf4;padding:1rem;text-align:center;font-family:monospace">
+      このページは JavaScript が必要です。再生機能はブラウザの JavaScript を有効にしてください。
+    </div>
+  </noscript>
+
   <main id="main">
 
     <!-- ============ What ============ -->
@@ -165,21 +186,21 @@ K:F
             <h3 class="card__name">Cメジャースケール</h3>
             <div id="demo-scale" class="landing-demo"></div>
             <p class="card__desc">基本の音階。音の並びを覚えよう。</p>
-            <button type="button" class="btn btn--primary btn--sm" data-landing-play="demo-scale">PLAY</button>
+            <button type="button" class="btn btn--primary btn--sm" data-landing-play="demo-scale" aria-label="Cメジャースケールを再生">PLAY</button>
           </article>
           <article class="card reveal">
             <p class="card__type mono">PROGRESSION</p>
             <h3 class="card__name">王道進行</h3>
             <div id="demo-chords" class="landing-demo"></div>
             <p class="card__desc">C → G → Am → F。J-POPの定番。</p>
-            <button type="button" class="btn btn--primary btn--sm" data-landing-play="demo-chords">PLAY</button>
+            <button type="button" class="btn btn--primary btn--sm" data-landing-play="demo-chords" aria-label="王道進行を再生">PLAY</button>
           </article>
           <article class="card reveal">
             <p class="card__type mono">RIFF</p>
             <h3 class="card__name">ブルーズシャッフル</h3>
             <div id="demo-riff" class="landing-demo"></div>
             <p class="card__desc">E上的ブルーズ。broken rhythm で揺れる。</p>
-            <button type="button" class="btn btn--primary btn--sm" data-landing-play="demo-riff">PLAY</button>
+            <button type="button" class="btn btn--primary btn--sm" data-landing-play="demo-riff" aria-label="ブルーズシャッフルを再生">PLAY</button>
           </article>
         </div>
       </div>
@@ -313,6 +334,7 @@ K:F
           <li><a href="updates/index.html">Updates — 更新履歴</a></li>
           <li><a href="os/index.html">Fadd9 OS — 練習室デスクトップ</a></li>
           <li><a href="now/index.html">Now — 練習の現在地</a></li>
+          <li><a href="support/index.html">Support — よくある質問</a></li>
           <li><a href="feed.xml">RSS (fadd9)</a></li>
         </ul>
       </nav>

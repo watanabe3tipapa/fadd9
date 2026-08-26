@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — よくある質問 | fadd9</title>
+  <meta name="description" content="fadd9のよくある質問。ABC記法の書き方、再生環境、バグ報告など。">
+  <meta property="og:title" content="Support — よくある質問 | fadd9">
+  <meta property="og:description" content="fadd9のよくある質問。ABC記法の書き方、再生環境、バグ報告など。">
+  <meta property="og:url" content="https://watanabe3tipapa.github.io/fadd9/support/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://watanabe3tipapa.github.io/fadd9/og.png">
+  <link rel="canonical" href="https://watanabe3tipapa.github.io/fadd9/support/">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%230a0e1a'/><path d='M28 30v46M46 30v46M64 30v46M82 30v46' stroke='%23e8ecf4' stroke-width='4'/><path d='M16 34h78M16 54h78M16 74h78' stroke='%232dd4bf' stroke-width='4'/><circle cx='46' cy='64' r='8' fill='%23fde68a'/></svg>">
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へスキップ</a>
+
+  <header class="page-head">
+    <div class="container">
+      <nav class="crumbs mono" aria-label="パンくず">
+        <a href="../index.html">HOME</a> / <span>SUPPORT</span>
+      </nav>
+      <h1 class="page-title">Support<span class="section__sub">よくある質問</span></h1>
+    </div>
+  </header>
+
+  <nav class="localnav" aria-label="セクション">
+    <ul class="container localnav__list">
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </nav>
+
+  <main id="main">
+    <section class="section section--flush-top" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <h2 class="section__title" id="faq-title">FAQ<span class="section__sub">よくある質問</span></h2>
+        <div class="ref-grid">
+          <div class="ref-item reveal">
+            <h3 class="card__name">Q. ABC記法とは何ですか？</h3>
+            <p class="card__desc">ASCII文字だけで楽譜を書く記譜法です。テキストエディタで書け、Gitで管理でき、abcjsなどのツールで描画・再生できます。<a class="textlink" href="../tutorial/index.html">チュートリアル</a>で詳しく学べます。</p>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">Q. 再生されないのですが…</h3>
+            <p class="card__desc">再生にはWeb Audio API対応ブラウザが必要です。Chrome、Firefox、Edge推奨。Safariは制限がある場合があります。</p>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">Q. 音色を変更できますか？</h3>
+            <p class="card__desc">デフォルトはギター（Acoustic Guitar, nylon）。Playgroundでは %%MIDI program で音色を変更できます。</p>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">Q. 自分の譜例を追加したいのですが…</h3>
+            <p class="card__desc">GitHubリポジトリの Issues で報告してください。data/samples.jsonに追加します。</p>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">Q. オフラインで使えますか？</h3>
+            <p class="card__desc">はい。外部フォント・JSライブラリ不使用のため、一度読み込み後はオフラインで動作します。</p>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">Q. 印刷できますか？</h3>
+            <p class="card__desc">PlaygroundとWorksheetsには印刷機能付きです。Ctrl+P / Cmd+P で印刷できます。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <h2 class="section__title" id="contact-title">お問い合わせ<span class="section__sub">バグ報告・機能要望</span></h2>
+        <p class="section__lead">
+          バグの報告や機能の要望は、GitHub Issues で受付けています。
+        </p>
+        <div class="grid grid--hub">
+          <article class="card reveal">
+            <p class="card__type mono">BUG REPORT</p>
+            <h3 class="card__name">バグを報告する</h3>
+            <p class="card__desc">不具合の発生条件とブラウザ環境を記載してください。</p>
+            <p class="card__action"><a class="textlink" href="https://github.com/watanabe3tipapa/fadd9/issues" target="_blank" rel="noopener">GitHub Issues<span aria-hidden="true"> ↗</span></a></p>
+          </article>
+          <article class="card reveal">
+            <p class="card__type mono">FEATURE</p>
+            <h3 class="card__name">機能を提案する</h3>
+            <p class="card__desc">追加してほしい機能や改善点を遠慮なく。</p>
+            <p class="card__action"><a class="textlink" href="https://github.com/watanabe3tipapa/fadd9/issues" target="_blank" rel="noopener">GitHub Issues<span aria-hidden="true"> ↗</span></a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__bottom footer__bottom--solo">
+      <p><small>&copy; 2026 watanabe3ti — <a class="textlink" href="../index.html">fadd9 HOME</a></small></p>
+      <p class="footer__rss-note">Guitar, notated.</p>
+    </div>
+  </footer>
+
+  <script src="../js/palette.js" defer></script>
+  <script src="../js/main.js" defer></script>
+</body>
+</html>
