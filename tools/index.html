@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tools — コード変換ツール | fadd9</title>
+  <meta name="description" content="ギターコード・ABC記法・フレット位置を相互変換するツール。">
+  <meta property="og:title" content="Tools — コード変換ツール | fadd9">
+  <meta property="og:description" content="コード名→フレット、ABC→音名、フレット→音名。">
+  <meta property="og:url" content="https://watanabe3tipapa.github.io/fadd9/tools/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://watanabe3tipapa.github.io/fadd9/og.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://watanabe3tipapa.github.io/fadd9/tools/">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%230a0e1a'/><path d='M28 30v46M46 30v46M64 30v46M82 30v46' stroke='%23e8ecf4' stroke-width='4'/><path d='M16 34h78M16 54h78M16 74h78' stroke='%232dd4bf' stroke-width='4'/><circle cx='46' cy='64' r='8' fill='%23fde68a'/></svg>">
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へスキップ</a>
+
+  <header class="page-head">
+    <div class="container">
+      <nav class="crumbs mono" aria-label="パンくず">
+        <a href="../index.html">HOME</a> / <span>TOOLS</span>
+      </nav>
+      <h1 class="page-title">Tools<span class="section__sub">コード変換ツール</span></h1>
+      <p class="page-lead">ギターコード・ABC記法・フレット位置を相互変換。<span class="mono page-lead__updated">UPDATED: 2026-08</span></p>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section section--flush-top">
+      <div class="container" data-converter>
+
+        <!-- Tab Bar -->
+        <div class="converter-tabs">
+          <button class="converter-tab is-active" data-tab="chord-fret" type="button">コード → フレット</button>
+          <button class="converter-tab" data-tab="abc-note" type="button">ABC ↔ 音名</button>
+          <button class="converter-tab" data-tab="fret-note" type="button">フレット ↔ 音名</button>
+        </div>
+
+        <!-- Tab 1: Chord → Fret -->
+        <div class="converter-panel" data-panel="chord-fret">
+          <h2 class="converter-panel__title">コード名 → フレット位置</h2>
+          <p class="converter-panel__desc">コード名を入力すると、標準チューニングでの各弦のフレット位置を表示します。</p>
+          <div class="converter-input-row">
+            <input id="cf-input" type="text" class="converter-input" placeholder="例: C, Am7, Gadd9" autocomplete="off">
+            <button id="cf-btn" class="btn btn--primary">変換</button>
+          </div>
+          <div id="cf-out" class="converter-output"></div>
+        </div>
+
+        <!-- Tab 2: ABC ↔ Notes -->
+        <div class="converter-panel" data-panel="abc-note" hidden>
+          <h2 class="converter-panel__title">ABC記法 ↔ 音名</h2>
+          <p class="converter-panel__desc">ABC記法の音符を音名に、または音名をABC記法に変換します。</p>
+          <div class="converter-input-row">
+            <select id="an-dir" class="converter-select">
+              <option value="abc2note">ABC → 音名</option>
+              <option value="note2abc">音名 → ABC</option>
+            </select>
+            <input id="an-input" type="text" class="converter-input" placeholder="ABC: C D E F G A B c | 音名: C4 D4 E4" autocomplete="off">
+            <button id="an-btn" class="btn btn--primary">変換</button>
+          </div>
+          <div id="an-out" class="converter-output"></div>
+        </div>
+
+        <!-- Tab 3: Fret ↔ Note -->
+        <div class="converter-panel" data-panel="fret-note" hidden>
+          <h2 class="converter-panel__title">フレット → 音名</h2>
+          <p class="converter-panel__desc">各弦のフレット番号を入力して音名を取得、または音名からフレット位置を検索。</p>
+
+          <!-- Fret → Note -->
+          <div class="converter-sub">
+            <h3 class="converter-sub__title">フレット → 音名</h3>
+            <div class="converter-input-row converter-input-row--wrap">
+              <label class="converter-label">6弦
+                <input type="number" class="fn-fret-input converter-input converter-input--sm" min="0" max="12" value="0">
+              </label>
+              <label class="converter-label">5弦
+                <input type="number" class="fn-fret-input converter-input converter-input--sm" min="0" max="12" value="0">
+              </label>
+              <label class="converter-label">4弦
+                <input type="number" class="fn-fret-input converter-input converter-input--sm" min="0" max="12" value="0">
+              </label>
+              <label class="converter-label">3弦
+                <input type="number" class="fn-fret-input converter-input converter-input--sm" min="0" max="12" value="0">
+              </label>
+              <label class="converter-label">2弦
+                <input type="number" class="fn-fret-input converter-input converter-input--sm" min="0" max="12" value="0">
+              </label>
+              <label class="converter-label">1弦
+                <input type="number" class="fn-fret-input converter-input converter-input--sm" min="0" max="12" value="0">
+              </label>
+              <button id="fn-btn" class="btn btn--primary">音名を取得</button>
+            </div>
+            <div id="fn-out" class="converter-output"></div>
+          </div>
+
+          <!-- Note → Fret -->
+          <div class="converter-sub">
+            <h3 class="converter-sub__title">音名 → フレット</h3>
+            <div class="converter-input-row">
+              <input id="fn-reverse-input" type="text" class="converter-input" placeholder="例: C, F#, Bb" autocomplete="off">
+              <button id="fn-reverse-btn" class="btn btn--primary">フレットを検索</button>
+            </div>
+            <div id="fn-reverse-out" class="converter-output"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__bottom footer__bottom--solo">
+      <p><small>&copy; 2026 watanabe3ti — <a class="textlink" href="../index.html">fadd9 HOME</a> / <a class="textlink" href="../samples/index.html">Samples</a></small></p>
+      <p class="footer__rss-note">Guitar, notated.</p>
+    </div>
+  </footer>
+
+  <script src="../js/palette.js" defer></script>
+  <script src="../js/converter.js" defer></script>
+</body>
+</html>

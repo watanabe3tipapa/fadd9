@@ -682,3 +682,93 @@ ABC記法の学習コンテンツを3階層に整理し、独習者の理解を�
 - `tutorial/index.html` のCOPYボタンは `data-copy` 属性のバックスラッシュ変換のみ
 - `standard/index.html` は公式全15セクションのうち主要6セクションのみ
 - `js/reference.js` のデモは描画のみ。再生機能は将来的に追加検討
+
+---
+
+## Phase 6(2026-08-27)— Completion & Enhancement ✅ 完了
+
+### 目的
+
+fadd9 を「完成された独習環境」にする。SoundFont ローカル同梱による外部通信ゼロの達成、Standard ページの公式仕様網羅、練習記録機能、コード変換ツール、譜例増強を含む。
+
+### 実装内容
+
+#### 1. SoundFont ローカル同梱化 ✅
+
+「外部通信ゼロ・オフライン可」の最後のピース。abcjs のデフォルト SoundFont(paulrosen.github.io)への外部通信を排除した。
+
+| ファイル | 役割 |
+| --- | --- |
+| `soundfont/FluidR3_GM/acoustic_guitar_nylon-mp3.js` | program 24 用ギター音源(1.8MB) |
+| `soundfont/FluidR3_GM/acoustic_guitar_steel-mp3.js` | program 25 用ギター音源(1.9MB) |
+
+**修正ファイル:**
+- `js/samples.js` — `CreateSynth().init()` に `soundFontUrl: "../soundfont/FluidR3_GM/"` 追加
+- `js/playground.js` — `SynthController.load()` の options に `soundFontUrl` 追加
+- `js/landing.js` — `CreateSynth().init()` に `soundFontUrl` 追加
+- `README.md` — オフライン動作の説明追記
+
+#### 2. 譜例5件追加 (計20件) ✅
+
+| slug | カテゴリ | キー | 内容 |
+| --- | --- | --- | --- |
+| `exercise-05-fingerpicking-am` | exercise | Am | Am指弾きアルペジオ |
+| `riff-04-slide-lick-g` | riffs | G | スライドブルーズリフ |
+| `scales-04-e-pentatonic-major` | scales | E | Eメジャーペンタトニック |
+| `chords-04-jazz-ii-v-i` | chords | C | ジャズII-V-I進行 |
+| `scales-05-g-mixolydian` | scales | G | Gミクソリディアモード |
+
+**修正:** `index.html` のカテゴリ件数・合計件数(15→20)を更新
+
+#### 3. Standard 残り9セクション追記 ✅
+
+公式 v2.2 の全セクションを網羅。localnav は全セクションにリンク。
+
+| # | セクション | 内容 |
+| --- | --- | --- |
+| 5 | Lyrics | w: フィールド、音節対応、特殊文字(*,-,~,_) |
+| 6 | Typesetting & Playback | 行区切り($,!)、スペース追加(y)、再生(Q:) |
+| 7 | Multiple Voices | V: フィールド、ボイスオーバーレイ(&) |
+| 8 | ABC Data Format | UTF-8推奨、テキストエスケープ |
+| 9 | Macros | U: 静的マクロ、移調マクロ |
+| 11 | Stylesheet Directives | %%MIDI、%%pageformat、%%score、%%staffsep |
+| 13 | Transposition | transpose=、移調楽器表記 |
+
+**注:** Outdated Syntax(10), Dialects(12) は重要度が低いため省略。必要な場合は後日追記可能。
+
+#### 4. 進捗トラッキング (Now ページ) ✅
+
+| ファイル | 役割 |
+| --- | --- |
+| `js/practice.js` | 練習記録のCRUD。localStorage保存。連続日数ストリーク計算 |
+
+**修正:**
+- `now/index.html` — 「練習ログ」セクション追加(フォーム+一覧+統計)
+- `css/style.css` — `.practice-*` スタイル追記
+
+#### 5. コード変換ツール (フレット計算付き) ✅
+
+| ファイル | 役割 |
+| --- | --- |
+| `tools/index.html` | 3タブUI: コード→フレット / ABC↔音名 / フレット↔音名 |
+| `js/converter.js` | コード辞書(16種) + フレットマップ + カポ対応 |
+
+**修正:**
+- `index.html` — footer にTools リンク追加、samples件数更新
+- `sitemap.xml` — `/tools/` 追加
+- `css/style.css` — `.converter-*` スタイル追記
+
+### 修正した既存バグ
+
+- `riff-03-slide-lick` — 小節長の不整合を修正(各Bar 2/4→4/4に統一)
+- `scales-04-e-pentatonic-major` — 修正: 破節リズムで4/4に整合
+
+### 計測について
+
+ GoatCounter 導入を見送り。「外部通信ゼロ」コンセプト維持。必要に応じて後日アカウント作成→スクリプト1行追加で対応可能。
+
+### 既知の制限（継続）
+
+- `tutorial/index.html` のCOPYボタンは `data-copy` 属性のバックスラッシュ変換のみ
+- `js/reference.js` のデモは描画のみ。再生機能は将来的に追加検討
+- `file://` プロトコルでは SoundFont の読み込みに CORS 制限あり（localhost 起動が必要）

@@ -5,6 +5,16 @@
 
   if (!window.ABCJS) return;
 
+  /* Safari 対策: AudioContext を再利用して resume */
+  let sharedCtx = null;
+  function getAudioContext() {
+    if (!sharedCtx) {
+      sharedCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (sharedCtx.state === "suspended") sharedCtx.resume();
+    return sharedCtx;
+  }
+
   const demos = [
     {
       id: "demo-scale",
@@ -56,10 +66,12 @@
 
       try {
         const visualObj = ABCJS.renderAbc("*", demo.abc)[0];
+        const ctx = getAudioContext();
         const synth = new ABCJS.synth.CreateSynth();
         await synth.init({
           visualObj,
-          options: { program: 24 }
+          options: { program: 24, soundFontUrl: "soundfont/FluidR3_GM/" },
+          audioContext: ctx
         });
         await synth.start();
         synth.onEnded(() => {

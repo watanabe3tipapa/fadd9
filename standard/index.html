@@ -34,7 +34,13 @@
       <li><a href="#structure">ファイル構造</a></li>
       <li><a href="#fields">情報フィールド</a></li>
       <li><a href="#body">譜面本体</a></li>
-      <li><a href="#advanced">上級記法</a></li>
+      <li><a href="#lyrics">歌詞</a></li>
+      <li><a href="#typesetting">書式設定</a></li>
+      <li><a href="#voices">複数ボイス</a></li>
+      <li><a href="#dataformat">データ形式</a></li>
+      <li><a href="#macros">マクロ</a></li>
+      <li><a href="#stylesheet">書式指定</a></li>
+      <li><a href="#transposition">移調</a></li>
       <li><a href="#app">付録</a></li>
     </ul>
   </nav>
@@ -218,32 +224,190 @@ T:An Alternative Title</pre>
       </div>
     </section>
 
-    <!-- ============ Advanced ============ -->
-    <section class="section" id="advanced" aria-labelledby="advanced-title">
+    <!-- ============ Lyrics ============ -->
+    <section class="section" id="lyrics" aria-labelledby="lyrics-title">
       <div class="container">
-        <h2 class="section__title" id="advanced-title">上級記法<span class="section__sub">より高度な機能</span></h2>
+        <h2 class="section__title" id="lyrics-title">Lyrics<span class="section__sub">歌詞 — w: フィールド</span></h2>
+        <p class="section__lead">
+          歌詞は w: フィールドで記述し、直前の音符行に対応させます。音符と文字を対応させる記法です。
+        </p>
         <div class="ref-grid">
           <div class="ref-item reveal">
-            <h3 class="card__name">5. Lyrics（歌詞）</h3>
-            <p class="card__desc">w:フィールドで歌詞を記述。音符と対応させて配置。スペースで音符と文字を合わせる。</p>
+            <h3 class="card__name">5.1 対応付け</h3>
+            <p class="card__desc">音符と歌詞の音節を対応。ハイフン <span class="mono">-</span> で音節を分割。<span class="mono">*</span> で音符をスキップ。<span class="mono">_</span> で延长(melisma)。</p>
+            <pre class="ref-code mono">ed cd B2 A2 |
+w: This is the first line</pre>
             <figure class="ref-demo" data-demo="lyrics"></figure>
           </div>
           <div class="ref-item reveal">
-            <h3 class="card__name">7. Multiple Voices</h3>
-            <p class="card__desc">V:フィールドで複数ボイスを定義。ポリフォニックな楽譜に。 clef=treble で譜表を変更。</p>
+            <h3 class="card__name">5.2 複数節</h3>
+            <p class="card__desc">複数行の w: で複数節を記述。番号付きでも可能。</p>
+            <pre class="ref-code mono">w:1.~First verse words
+w:2.~Second verse words</pre>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">特殊文字</h3>
+            <p class="card__desc"><span class="mono">*</span> スキップ、<span class="mono">-</span> 音節継続、<span class="mono">~</span> 非改行スペース、<span class="mono">_</span> 延長。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Typesetting ============ -->
+    <section class="section" id="typesetting" aria-labelledby="typesetting-title">
+      <div class="container">
+        <h2 class="section__title" id="typesetting-title">Typesetting &amp; Playback<span class="section__sub">書式設定と再生</span></h2>
+        <p class="section__lead">
+          ABC記法はテキスト楽譜を五線譜に自動変換するために設計されています。書式と再生の基本を解説します。
+        </p>
+        <div class="ref-grid">
+          <div class="ref-item reveal">
+            <h3 class="card__name">6.1 行区切り</h3>
+            <p class="card__desc"><span class="mono">$</span> で強制改行、<span class="mono">!</span> で改行禁止。譜面の見栄えを制御。</p>
+            <pre class="ref-code mono">C D E F $ G A B c</pre>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">6.2 スペース追加</h3>
+            <p class="card__desc"><span class="mono">y</span> で小スペース、<span class="mono">y2</span> で大スペース。小節間の余白調整に。</p>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">6.3 再生</h3>
+            <p class="card__desc"><span class="mono">Q:</span> でテンポ指定。<span class="mono">%%MIDI program</span> で音色変更。abc2midi 等で再生可能。</p>
+            <figure class="ref-demo" data-demo="dynamics"></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Multiple Voices ============ -->
+    <section class="section" id="voices" aria-labelledby="voices-title">
+      <div class="container">
+        <h2 class="section__title" id="voices-title">Multiple Voices<span class="section__sub">複数ボイス</span></h2>
+        <p class="section__lead">
+          V: フィールドで複数の声部を定義し、ポリフォニックな楽譜を書けます。
+        </p>
+        <div class="ref-grid">
+          <div class="ref-item reveal">
+            <h3 class="card__name">7.1 ボイス定義</h3>
+            <p class="card__desc">ヘッダで V:1, V:2 等を定義。clef, name, stem 等の属性を指定。</p>
+            <pre class="ref-code mono">V:1 clef=treble name="Melody"
+V:2 clef=bass name="Bass"</pre>
             <figure class="ref-demo" data-demo="voices"></figure>
           </div>
           <div class="ref-item reveal">
-            <h3 class="card__name">9. Macros</h3>
-            <p class="card__desc">P:フィールドでマクロを定義。繰り返しパターンの省略に。例: P:chorus</p>
+            <h3 class="card__name">7.2 インライン切替</h3>
+            <p class="card__desc"><span class="mono">[V:1]</span> で行内でボイスを切り替え。小節線は共有。</p>
+            <pre class="ref-code mono">[V:1] abc | [V:2] cde |</pre>
           </div>
           <div class="ref-item reveal">
-            <h3 class="card__name">11. Stylesheet Directives</h3>
-            <p class="card__desc">%%directive で書式を制御。ページサイズ、フォント、余白など。%%pagewidth で用紙サイズ指定。</p>
+            <h3 class="card__name">7.3 ボイスオーバーレイ</h3>
+            <p class="card__desc"><span class="mono">&amp;</span> で一時的な多声部。和音とは異なり、各音に独立したリズムを付けられる。</p>
+            <pre class="ref-code mono">abc &amp; cde |</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABC Data Format ============ -->
+    <section class="section" id="dataformat" aria-labelledby="dataformat-title">
+      <div class="container">
+        <h2 class="section__title" id="dataformat-title">ABC Data Format<span class="section__sub">データ形式</span></h2>
+        <p class="section__lead">
+          ABCファイルのエンコーディングとデータ形式に関する仕様。
+        </p>
+        <div class="ref-grid">
+          <div class="ref-item reveal">
+            <h3 class="card__name">8.1 エンコーディング</h3>
+            <p class="card__desc">UTF-8 が推奨。ASCII互換也可以。日本語の曲名や歌詞にも対応。</p>
           </div>
           <div class="ref-item reveal">
-            <h3 class="card__name">13. Transposition</h3>
-            <p class="card__desc">移調楽器向けの移調指定。v2.2で新機能追加。%%MIDI program で音色も変更可能。</p>
+            <h3 class="card__name">8.2 テキストエスケープ</h3>
+            <p class="card__desc">バックスラッシュで特殊文字をエスケープ。<span class="mono">\n</span> 改行、<span class="mono">\\</span> バックスラッシュ自身。</p>
+            <pre class="ref-code mono">T:Title with \n newline</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Macros ============ -->
+    <section class="section" id="macros" aria-labelledby="macros-title">
+      <div class="container">
+        <h2 class="section__title" id="macros-title">Macros<span class="section__sub">マクロ — テキスト置換</span></h2>
+        <p class="section__lead">
+          U: フィールドでマクロを定義し、繰り返しパターンを省力化します。
+        </p>
+        <div class="ref-grid">
+          <div class="ref-item reveal">
+            <h3 class="card__name">9.1 静的マクロ</h3>
+            <p class="card__desc"><span class="mono">U:T = !trill!</span> のように定義。譜面中の T が !trill! に置換される。</p>
+            <pre class="ref-code mono">U:T = !trill!
+K:C
+T C D E F</pre>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">9.2 移調マクロ</h3>
+            <p class="card__desc">マクロ展開時に音程を自動移調できる。複調的な楽曲に便利。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Stylesheet Directives ============ -->
+    <section class="section" id="stylesheet" aria-labelledby="stylesheet-title">
+      <div class="container">
+        <h2 class="section__title" id="stylesheet-title">Stylesheet Directives<span class="section__sub">書式指定 — %% ディレクティブ</span></h2>
+        <p class="section__lead">
+          %% で始まるディレクティブで、出力の見栄えを制御します。実装依存ですが広くサポートされています。
+        </p>
+        <div class="ref-grid">
+          <div class="ref-item reveal">
+            <h3 class="card__name">%%MIDI</h3>
+            <p class="card__desc">MIDI 出力を制御。音色指定、和音音色、ボリューム等。</p>
+            <pre class="ref-code mono">%%MIDI program 24
+%%MIDI chordprog 25</pre>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">%%pageformat</h3>
+            <p class="card__desc">ページサイズ・マージン指定。<span class="mono">%%pagewidth</span>、<span class="mono">%%topmargin</span> 等。</p>
+            <pre class="ref-code mono">%%pagewidth 21cm
+%%leftmargin 2cm</pre>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">%%font / %%staffsep</h3>
+            <p class="card__desc">フォント指定や譜表間隔の調整。</p>
+            <pre class="ref-code mono">%%titlefont Times-Bold 16
+%%staffsep 30</pre>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">%%score</h3>
+            <p class="card__desc">ボイスの譜表配置を制御。括弧でグループ化。</p>
+            <pre class="ref-code mono">%%score (1 2) (3 4)</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Transposition ============ -->
+    <section class="section" id="transposition" aria-labelledby="transposition-title">
+      <div class="container">
+        <h2 class="section__title" id="transposition-title">Transposition<span class="section__sub">移調 — v2.2 新機能</span></h2>
+        <p class="section__lead">
+          v2.2 から追加された移調機能。移調楽器の譜面を自動的に変換します。
+        </p>
+        <div class="ref-grid">
+          <div class="ref-item reveal">
+            <h3 class="card__name">13.1 移調オペレータ</h3>
+            <p class="card__desc"><span class="mono">transpose=2</span> で2半音上に移調。<span class="mono">transpose=-3</span> で3半音下。</p>
+            <pre class="ref-code mono">K:C transpose=2
+V:1 clef=treble transpose=-3</pre>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">13.2 移調楽器の表記</h3>
+            <p class="card__desc"><span class="mono">transpose=Bb</span> のように楽器名で指定可能。B♭楽器(クラリネット等)に対応。</p>
+          </div>
+          <div class="ref-item reveal">
+            <h3 class="card__name">13.3 ファイル単位の移調</h3>
+            <p class="card__desc"><span class="mono">I:transpose 2</span> でファイル全体を移調。コンサートピッチで記譜し楽器ごとに自動変換。</p>
           </div>
         </div>
       </div>

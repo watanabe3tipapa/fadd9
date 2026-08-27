@@ -313,7 +313,8 @@
       .init({
         visualObj,
         options: {
-          program: 24
+          program: 24,
+          soundFontUrl: "../soundfont/FluidR3_GM/"
         }
       })
       .then(() => synthControl.setTune(visualObj, false))

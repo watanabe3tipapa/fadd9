@@ -2050,3 +2050,305 @@ a.abc-board__file:hover {
   font-size: 0.8rem;
   padding: 0.35rem 0.9rem;
 }
+
+/* ---- Practice Log ---- */
+.practice-summary {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.practice-stat {
+  display: flex;
+  flex-direction: column;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--teal);
+}
+.practice-stat small {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--ink-dim);
+  letter-spacing: 0.08em;
+}
+
+.practice-form {
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.practice-form__row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+.practice-form__actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+.practice-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--ink-dim);
+  flex: 1;
+  min-width: 120px;
+}
+.practice-input {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  padding: 0.45rem 0.6rem;
+}
+.practice-input:focus {
+  outline: none;
+  border-color: var(--teal);
+}
+.practice-input--sm {
+  max-width: 120px;
+}
+.practice-input::placeholder {
+  color: var(--ink-dim);
+  opacity: 0.6;
+}
+
+.practice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.practice-entry {
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+}
+.practice-meta {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.3rem;
+}
+.practice-date {
+  font-size: 0.8rem;
+  color: var(--teal);
+}
+.practice-bpm,
+.practice-dur {
+  font-size: 0.75rem;
+  color: var(--moonlight);
+}
+.practice-what {
+  font-weight: 500;
+}
+.practice-note {
+  font-size: 0.85rem;
+  margin-top: 0.15rem;
+}
+.practice-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.4rem;
+}
+.textlink--danger {
+  color: #f87171;
+}
+.textlink--danger:hover {
+  color: #fca5a5;
+}
+
+.muted {
+  color: var(--ink-dim);
+}
+
+/* ---- Converter Tool ---- */
+.converter-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+.converter-tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--ink-dim);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+.converter-tab:hover {
+  color: var(--ink);
+}
+.converter-tab.is-active {
+  color: var(--teal);
+  border-bottom-color: var(--teal);
+}
+
+.converter-panel {
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+.converter-panel__title {
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+.converter-panel__desc {
+  font-size: 0.85rem;
+  color: var(--ink-dim);
+  margin-bottom: 1rem;
+}
+
+.converter-input-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin-bottom: 1rem;
+}
+.converter-input-row--wrap {
+  flex-wrap: wrap;
+}
+.converter-input {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  padding: 0.45rem 0.65rem;
+  flex: 1;
+  min-width: 160px;
+}
+.converter-input:focus {
+  outline: none;
+  border-color: var(--teal);
+}
+.converter-input--sm {
+  max-width: 72px;
+  min-width: 56px;
+  flex: 0 0 auto;
+  text-align: center;
+}
+.converter-select {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  padding: 0.45rem 0.5rem;
+}
+.converter-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.7rem;
+  color: var(--ink-dim);
+  letter-spacing: 0.05em;
+}
+
+.converter-output {
+  min-height: 2rem;
+}
+.converter-output:empty {
+  display: none;
+}
+
+.converter-sub {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+.converter-sub:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+.converter-sub__title {
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+
+/* chord→fret results */
+.cf-result {
+  margin-bottom: 0.6rem;
+  padding: 0.6rem 0.8rem;
+  background: var(--bg);
+  border-radius: 4px;
+}
+.cf-capo {
+  font-size: 0.85rem;
+  color: var(--teal);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.cf-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.cf-cell {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+
+/* fret→note results */
+.fn-note {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  margin-right: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+@media (max-width: 640px) {
+  .converter-tabs {
+    flex-direction: column;
+  }
+  .converter-tab {
+    border-bottom: none;
+    border-left: 2px solid transparent;
+    text-align: left;
+  }
+  .converter-tab.is-active {
+    border-left-color: var(--teal);
+    border-bottom-color: transparent;
+  }
+  .converter-input-row {
+    flex-direction: column;
+  }
+  .converter-input,
+  .converter-input--sm {
+    max-width: 100%;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .practice-form__row {
+    flex-direction: column;
+  }
+  .practice-input--sm {
+    max-width: 100%;
+  }
+  .practice-summary {
+    gap: 1rem;
+  }
+  .practice-stat {
+    font-size: 1.5rem;
+  }
+}

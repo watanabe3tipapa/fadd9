@@ -101,7 +101,8 @@
       displayPlay: true,
       displayProgress: true,
       displayWarp: true,
-      program: 24
+      program: 24,
+      soundFontUrl: "../soundfont/FluidR3_GM/"
     });
     audioReady = true;
   }

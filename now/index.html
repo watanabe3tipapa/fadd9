@@ -64,11 +64,45 @@
           <ul class="plainlist plainlist--lg">
             <li>譜例の拡充 — 指弾きアルペジオ、スライド、モード別スケール。</li>
             <li>Fadd9 OS から直接再生できる統合。</li>
-            <li>練習ログページ — 「いつ・何を・何 BPM」を ABC と一緒に記録する仕組み。</li>
+            <li class="done">練習ログページ — 「いつ・何を・何 BPM」を ABC と一緒に記録する仕組み。</li>
           </ul>
           <p class="card__action"><a class="btn btn--primary" href="../samples/index.html">Samples を見る<span aria-hidden="true"> →</span></a></p>
         </article>
 
+      </div>
+    </section>
+
+    <!-- Practice Log -->
+    <section class="section" aria-labelledby="practice-title">
+      <div class="container" data-practice>
+        <h2 class="section__title" id="practice-title">Practice Log<span class="section__sub">練習記録</span></h2>
+        <div class="practice-summary" data-practice-summary></div>
+
+        <form class="practice-form" data-practice-form>
+          <div class="practice-form__row">
+            <label class="practice-label">日付
+              <input type="date" name="date" class="practice-input" required>
+            </label>
+            <label class="practice-label">BPM
+              <input type="number" name="bpm" class="practice-input practice-input--sm" placeholder="例: 80" min="20" max="300">
+            </label>
+            <label class="practice-label">時間(分)
+              <input type="number" name="duration" class="practice-input practice-input--sm" placeholder="例: 15" min="1" max="240">
+            </label>
+          </div>
+          <label class="practice-label">練習内容
+            <input type="text" name="what" class="practice-input" placeholder="例: スケール練習、譜例コード進行" required>
+          </label>
+          <label class="practice-label">メモ
+            <input type="text" name="note" class="practice-input" placeholder="所感・気づきなど(任意)">
+          </label>
+          <div class="practice-form__actions">
+            <button type="submit" class="btn btn--primary">記録する</button>
+            <button type="reset" class="btn btn--ghost" onclick="editingIdx=null">リセット</button>
+          </div>
+        </form>
+
+        <div class="practice-list" data-practice-list></div>
       </div>
     </section>
   </main>
@@ -81,5 +115,6 @@
   </footer>
 
   <script src="../js/palette.js" defer></script>
+  <script src="../js/practice.js" defer></script>
 </body>
 </html>

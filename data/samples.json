@@ -208,7 +208,7 @@
       "updated": "2026-08-25",
       "summaryJa": "スライドを使った表現豊かなリフ。ABC記法では装飾音(grace notes)でスライド感を表現する。",
       "tipsJa": "実際のスライドは弦を押さえ直さずにフレットを移動。abcjsでは装飾音で近い表現が可能。スライドの入りと出しのニュアンスを意識。",
-      "abc": "X:1\nT:Slide Lick in G\nM:4/4\nL:1/8\nQ:1/4=100\nK:G\n|: G>g G>g | d>g d>g | B>d B>d | G2 z2 :|"
+      "abc": "X:1\nT:Slide Lick in G\nM:4/4\nL:1/8\nQ:1/4=100\nK:G\n|: G>g G>g d>g d>g | B>d B>d G2 z2 :|"
     },
     {
       "slug": "scales-03-d-dorian",
@@ -224,6 +224,81 @@
       "summaryJa": "マイナー系のモード・ドリアン(B♭ナチュラルマイナーの6音目から開始)。明るすぎず暗すぎない独特の響き。",
       "tipsJa": "Cメジャーと同じ鍵盤使だが、Dから始まるためB♭が自然に入る。Dmのコードの上ならドリアンがai时、Dm7の上では特に響く。",
       "abc": "X:1\nT:D Dorian Mode Scale\nM:4/4\nL:1/8\nQ:1/4=80\nK:Dm\n|: D E F G A B c d | d c B A G F E D :|"
+    },
+    {
+      "slug": "exercise-05-fingerpicking-am",
+      "name": "Fingerpicking Pattern in Am",
+      "nameJa": "指弾きパターン(Am)",
+      "category": "exercise",
+      "level": "INTERMEDIATE",
+      "key": "Am",
+      "tempo": "1/4=76",
+      "meter": "4/4",
+      "tags": ["fingerpicking", "pattern", "arpeggio"],
+      "updated": "2026-08-27",
+      "summaryJa": "Am・Em・F のコードを指弾きパターンで回す。親指(p)がベース音、人差し指〜薬指(i-m-a)が高音弦を担当する基本形。",
+      "tipsJa": "親指は常に5・6弦を、i-m-a は1〜3弦を担当。各指の役割を固定し、リズムを崩さないこと。まずスローから。Am→Em→F→Am のコード進行で指が慣れるまで繰り返す。",
+      "abc": "X:1\nT:Fingerpicking Pattern in Am\nM:4/4\nL:1/8\nQ:1/4=76\nK:Am\n\"Am\" A c e a e a e a | \"Em\" E G B e B G E G |\n\"F\" F A c f c f c f | \"Am\" A2 e2 a2 e2 |"
+    },
+    {
+      "slug": "riff-04-slide-lick-g",
+      "name": "Slide Lick in G",
+      "nameJa": "スライドリフ(G)",
+      "category": "riffs",
+      "level": "INTERMEDIATE",
+      "key": "G",
+      "tempo": "1/4=100",
+      "meter": "4/4",
+      "tags": ["slide", "blues", "expression"],
+      "updated": "2026-08-27",
+      "summaryJa": "スライドを使った表現豊かなブルーズリフ。 > 記法(テンポラリ)でスライドの揺れを表現。",
+      "tipsJa": "実際のスライドは弦を押さえ直さずにフレットを移動。> は「前の音を長く、次の音を短く」にするので、スライドの入りと出しのニュアンスに近い。G メジャーペンタトニックのポジションで弾く。",
+      "abc": "X:1\nT:Slide Lick in G\nM:4/4\nL:1/8\nQ:1/4=100\nK:G\n|: G>g G>g d>g d>g | B>d B>d G>g G2 |]"
+    },
+    {
+      "slug": "scales-04-e-pentatonic-major",
+      "name": "E Major Pentatonic Scale",
+      "nameJa": "E メジャーペンタトニックスケール",
+      "category": "scales",
+      "level": "BEGINNER",
+      "key": "E",
+      "tempo": "1/4=80",
+      "meter": "4/4",
+      "tags": ["pentatonic", "major", "scale"],
+      "updated": "2026-08-27",
+      "summaryJa": "E メジャーペンタトニック(E F# G# B C#)。明るく開放的な響き。カントリー・ポップスで多用されるスケール。",
+      "tipsJa": "マイナーペンタトニックの相対メジャースケール。E マイナーペンタトニック(A C D E G)と同じ鍵盤だが、E を主音として聴くと明るい響きになる。上昇下降をスムーズに。",
+      "abc": "X:1\nT:E Major Pentatonic Scale\nM:4/4\nL:1/8\nQ:1/4=80\nK:E\n|: E>^F ^G>B c'>^c' B>^G | ^F>E B,>^D ^F>B, E2 :|"
+    },
+    {
+      "slug": "chords-04-jazz-ii-v-i",
+      "name": "Jazz II-V-I Progression",
+      "nameJa": "ジャズ II-V-I 進行(C)",
+      "category": "chords",
+      "level": "INTERMEDIATE",
+      "key": "C",
+      "tempo": "1/4=84",
+      "meter": "4/4",
+      "tags": ["jazz", "progression", "7th"],
+      "updated": "2026-08-27",
+      "summaryJa": "ジャズの基本進行 II-V-I を7thコードアルペジオで。Dm7→G7→CMaj7 の流れを指板で覚える。",
+      "tipsJa": "各コードの7th音に注目。Dm7のC、G7のF、CMaj7のBが進行の骨头。アルペジオを弾きながら7thの解決感を耳で確認しよう。",
+      "abc": "X:1\nT:Jazz II-V-I Progression\nM:4/4\nL:1/4\nQ:1/4=84\nK:C\n\"Dm7\" D F A c | \"G7\" G B d f | \"CMaj7\" c e g b | \"Dm7\" A F D c |"
+    },
+    {
+      "slug": "scales-05-g-mixolydian",
+      "name": "G Mixolydian Mode Scale",
+      "nameJa": "G ミクソリディアモード",
+      "category": "scales",
+      "level": "INTERMEDIATE",
+      "key": "G",
+      "tempo": "1/4=80",
+      "meter": "4/4",
+      "tags": ["mode", "mixolydian", "blues"],
+      "updated": "2026-08-27",
+      "summaryJa": "メジャー系のモード・ミクソリディア(C長調の5音目から開始)。メジャーの明るさにブルーズ感のある F♮ が混ざる。",
+      "tipsJa": "G メジャーとの違いは F♮(7度がフラット)。ブルーズやロックで非常によく使う。G7 コードの上では特に響く。F♮ が G に解決する感覚を掴もう。",
+      "abc": "X:1\nT:G Mixolydian Mode Scale\nM:4/4\nL:1/8\nQ:1/4=80\nK:G\n|: G A B c d e f g | g f e d c B A G :|"
     }
   ]
 }

@@ -4,7 +4,7 @@
 
 fadd9 は、ギターを入り口に **ABC記法(テキストで書く楽譜)** を専門的に扱う独習ライブラリです。既存 ABC 記法の弱点である「動くサンプルの少なさ」を埋めることを軸に、コード進行・スケール・リフ・曲をコピーして即使える譜例として公開します。
 
-[![Version](https://img.shields.io/badge/version-v1.1.0-blue.svg)](https://watanabe3tipapa.github.io/fadd9/updates/)
+[![Version](https://img.shields.io/badge/version-v1.2.0-blue.svg)](https://watanabe3tipapa.github.io/fadd9/updates/)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-live-blue.svg)](https://watanabe3tipapa.github.io/fadd9/)
 [![GitHub](https://img.shields.io/github/issues/watanabe3tipapa/fadd9.svg)](https://github.com/watanabe3tipapa/fadd9/issues)
 
@@ -20,11 +20,11 @@ fadd9 は、ギターを入り口に **ABC記法(テキストで書く楽譜)** 
 
 - Hero — Fadd9 コードダイアグラム(SVG 手描き)+ コンセプト導線
 - Why ABC — テキスト記譜の利点(TEXT / GIT / PLAY)
-- **Samples Library** — `data/samples.json` 正本の譜例 15 件。カテゴリ(練習/コード進行/スケール/リフ/曲)・検索・タグで絞り込み、詳細ページから ABC テキストをワンクリックコピー
-- **Play & Render** — 詳細ページで楽譜を SVG 描画し、ブラウザ内で再生(速度変更 WARP 対応)。abcjs v6 をローカル同梱、外部通信ゼロ
+- **Samples Library** — `data/samples.json` 正本の譜例 20 件。カテゴリ(練習/コード進行/スケール/リフ/曲)・検索・タグで絞り込み、詳細ページから ABC テキストをワンクリックコピー
+- **Play & Render** — 詳細ページで楽譜を SVG 描画し、ブラウザ内で再生(速度変更 WARP 対応)。abcjs v6 をローカル同梱、SoundFont もローカル格納、外部通信ゼロ
 - **Tutorial** — ABC記法チュートリアル。ステップバイステップで学習。鳴る実例付き
 - **Reference** — ABC記法チートシート。各記法要素に「鳴る実例」をその場で描画
-- **Standard** — ABC記法標準 v2.2 の詳細リファレンス。公式仕様を日本語で解説
+- **Standard** — ABC記法標準 v2.2 の詳細リファレンス。公式主要11セクションを網羅
 - **Playground** — テキストを書くと即描画・即再生のエディタ。下書きは localStorage 自動保存、譜例を読み込んで改造可能
 - **Worksheets** — 採譜ワークシート。印刷して使うテンプレート集(6種類)
 - **Fadd9 OS** — 譜例データをデスクトップのメタファーで読む練習室ビュー(Mac OS 9 風)
@@ -39,6 +39,14 @@ fadd9 は、ギターを入り口に **ABC記法(テキストで書く楽譜)** 
 - **再生中の音符ハイライト** — 再生時に該当する音符がティール色にハイライト
 - **印刷機能** — Playground/Worksheet から楽譜を印刷可能
 - **ギター用記法リファレンス** — パワーコード、アルペジオ、スラー等のギター特有の記法を解説
+
+### v1.2.0 の追加機能
+
+- **SoundFont ローカル同梱** — FluidR3_GM (acoustic guitar nylon/steel) をローカル格納、外部通信ゼロ
+- **Standard 全セクション網羅** — 公式 v2.2 の主要セクション(歌詞・複数ボイス・移調等)を網羅
+- **練習記録 (Practice Log)** — Now ページで日付・内容・BPM・メモを記録、連続日数ストリーク表示
+- **コード変換ツール** — コード名→フレット位置、ABC↔音名、フレット↔音名の3タブ変換ツール
+- **譜例 20 件** — 5件追加(指弾き、スライドリフ、ペンタトニック、II-V-I、ミクソリディア)
 
 ---
 
@@ -72,6 +80,7 @@ python3 -m http.server 8000
 | 3 | Play & Render(abcjs ローカル同梱、描画と再生) | ✅ 完了 |
 | 4 | Reference & Playground(チートシート、入力即再生、Fadd9 OS 改修) | ✅ 完了 |
 | 5 | Utilization Enhancement(Tutorial/Standard/Worksheets、ギター音色化、音符ハイライト) | ✅ 完了 |
+| 6 | Completion & Enhancement(SoundFont同梱、Standard拡充、練習記録、変換ツール) | ✅ 完了 |
 
 ## リポジトリ構成(主なファイル)
 
@@ -86,8 +95,9 @@ fadd9/
 ├── playground/index.html   # 入力即描画・即再生のエディタ
 ├── worksheets/index.html   # 採譜ワークシート一覧
 ├── worksheets/worksheet.html # 個別ワークシート(印刷対応)
-├── now/index.html          # Now ページ(練習の現在地)
+├── now/index.html          # Now ページ(練習の現在地 + 練習ログ)
 ├── os/index.html           # Fadd9 OS — 譜例データの練習室デスクトップ
+├── tools/index.html        # コード変換ツール(コード→フレット、ABC↔音名、フレット↔音名)
 ├── updates/index.html      # 更新履歴タイムライン
 ├── css/style.css           # デザイントークン / レスポンシブ / 印刷用スタイル
 ├── js/vendor/abcjs-basic-min.js # abcjs v6(楽譜描画+合成再生、ローカル同梱)
@@ -96,11 +106,14 @@ fadd9/
 ├── js/samples.js           # 譜例一覧・詳細レンダラ(+コピー・描画・再生・音符ハイライト)
 ├── js/reference.js         # チートシートの実例スコア描画
 ├── js/playground.js        # Playground エディタ(live render / 再生 / 下書き保存 / 印刷)
+├── js/practice.js          # 練習記録 CRUD / ストリーク計算(localStorage)
+├── js/converter.js         # コード変換ツール(コード辞書 + フレットマップ)
 ├── js/tutorial.js          # チュートリアル用 COPY ボタン処理
 ├── js/worksheets.js        # ワークシート一覧の描画
 ├── js/os.js                # ウィンドウマネージャ / Compact Mode(samples.json 正本)
 ├── data.json               # サイト設定メタデータ
-├── data/samples.json       # 譜例台帳の正本(15 譜例)
+├── data/samples.json       # 譜例台帳の正本(20 譜例)
+├── soundfont/FluidR3_GM/   # SoundFont JS ファイル(ギター音色、ローカル同梱)
 ├── tools/validate_abc.py   # ABC 小節長バリデータ(小節拍数を機械検算)
 ├── tools/generate_og.py    # OGP 画像生成スクリプト
 ├── feed.xml                # Atom feed
@@ -125,7 +138,8 @@ fadd9/
 
 - サンプル詳細は JS レンダリングのため、クローラによっては本文を取得できない(title/description は差し替え済み)
 - 再生は Web Audio 対応ブラウザのみ(Safari など非対応環境では譜面と COPY のみ)
-- Standard ページは公式全 15 セクションのうち主要 6 セクションのみ網羅
+- SoundFont は FluidR3_GM (acoustic_guitar_nylon / steel) を手動ダウンロードして同梱
+- Standard は Outdated Syntax / Dialects / Sample Tunes を除く主要11セクションを網羅
 
 ---
 
@@ -140,4 +154,4 @@ fadd9/
 
 ## 開発・保守状態
 
-- 最終更新: 2026-08-25 (Phase 5 — Utilization Enhancement)
+- 最終更新: 2026-08-27 (Phase 6 — Completion & Enhancement)
