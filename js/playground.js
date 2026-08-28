@@ -49,6 +49,7 @@
       visualObj = window.ABCJS.renderAbc(scoreEl, abc, {
         responsive: "resize",
         add_classes: true,
+        foregroundColor: "#1a1d26",
         paddingtop: 14,
         paddingbottom: 14,
         paddingleft: 18,
