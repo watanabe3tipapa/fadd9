@@ -785,19 +785,40 @@ SoundFont ローカル同梱・`program: 24` 指定をしても、ブラウザ�
 
 abcjs の `CreateSynth().init({ options: { program: 24 } })` の `options.program` は、SynthController 経由の再生では音色に確実には反映されない。abcjs が音色を決める確実な経路は **ABC 文字列内の `%%MIDI program` ディレクティブ**。
 
-### 対応（3点）
+### 一次対応（後で見直し）
 
-1. **`data/samples.json` 全20件の ABC 文字列に `%%MIDI program 24` を直接埋め込み**（`K:` 行の直後に挿入）。abcjs 公式の標準的な音色指定方法。これが確実な対策。
-2. **`js/samples.js`** — `synthControl.setTune(visualObj, false, { program: 24, soundFontUrl: "../soundfont/FluidR3_GM/" })` に audioParams を追加（保険）。
-3. **`js/playground.js`** — `synthControl.setTune(visualObj, false, { program: 24, soundFontUrl })` に audioParams を追加（保険）。
+1. **`data/samples.json` 全20件の ABC 文字列に `%%MIDI program 24` を直接埋め込み**（`K:` 行の直後に挿入）。abcjs 公式の標準的な音色指定方法。
+2. **`js/samples.js`** — `synthControl.setTune(visualObj, false, { program: 24, soundFontUrl })` に audioParams を追加。
+3. **`js/playground.js`** — 同様に audioParams を追加。
+
+### 一次対応後の症状
+
+`%%MIDI program 24` 追加後、**音自体が再生されなくなった**。この時点で `soundfont/` には単一 `acoustic_guitar_*-mp3.js`（base64埋め込み単一ファイル）を同梱していた。
+
+### 根本原因（一次対応の誤り）
+
+**abcjs v6.7.0 の synth は soundfont を `-mp3/{note}.mp3`（個別MP3ファイル群）形式でしか読み込まない**（`sync_load` コード: `GET {soundFontUrl}{instr}-mp3/{note}.mp3`、XMLHttpRequest + arraybuffer）。
+
+- 私たちが同梱していた `acoustic_guitar_nylon-mp3.js`（単一JS/base64形式）は **abcjs v6.7.0 では一切読まれない**。
+- つまり前回まで soundfont がローカルで読めておらず、`%%MIDI program` が無い間はデフォルト（オンライン）音源でピアノ音が出ていた。`%%MIDI program 24` を追加したことで nylon 音源が要求されたがローカルでは読めず → 音が出なくなった。
+
+### 正しい修正
+
+1. **`soundfont/FluidR3_GM/acoustic_guitar_nylon-mp3/` に、abcjs が読める個別MP3形式を88ファイル同梱**（Billions of音符分の flat 音名: A0〜G7 / Db・Eb・Gb・Ab・Bb）。合計約1.4MB。paulrosen/midi-js-soundfonts の `FluidR3_GM/acoustic_guitar_nylon-mp3/` から取得。
+2. **読まれない `.js` 形式の soundfont を削除**。
+3. `setTune` の audioParams（program + soundFontUrl）は**正しい設定**なので維持（SynthController が確実にローカル音源を使うため）。
+4. 音名は MIDI.js soundfont 形式に合わせ **flat 名（Db/Eb/Gb/Ab/Bb）** で統一されており、abcjs も flat 名で要求する（リポジトリに sharp 名ファイルが存在しないことからも、abcjs は flat 名前提）。
 
 ### 検証
 
-- abcjs v6.7.0 を Node で `require` し、`parseOnly` / `renderAbc` で `%%MIDI program 24` 入り ABC の描画が warnings なしで成功することを確認。
-- abcjs 内部の programOffsets が `acoustic_guitar_nylon` を default リストに含み、program 24 → nylon の対応が正しいことを確認。
+- abcjs v6.7.0 の soundfont ローダー（module 2228）が `-mp3/{note}.mp3` 形式のみであることを、vendor ソースのコードジャンプで確認。
+- paulrosen/midi-js-soundfonts の `FluidR3_GM/` に `acoustic_guitar_nylon-mp3.js`（単一JS）と `acoustic_guitar_nylon-mp3/`（個別MP3群）の両方が存在することを API で確認。
+- `localhost:8123` の http.server 経由で `.../acoustic_guitar_nylon-mp3/A2.mp3` 等が 200 で配信されることを curl で確認。
 - `tools/validate_abc.py` — `%%` で始まる stylesheet ディレクティブ行を body から除去するよう修正（`%%MIDI` 追加後も小節長検証が通るように）。
 
-### 注意
+### 注意（確認方法）
 
-- 実際の再生音はブラウザで確認が必要（ローカルにて `python3 -m http.server` 起動 → samples 詳細で PLAY）。
-- `file://` 直開きでは SoundFont の CORS 制限で音が出ないため、必ず `localhost` 経由で確認すること。
+- 実際の再生音はブラウザで確認が必要。ローカル: `python3 -m http.server 8000` → `http://localhost:8000/samples/sample.html?slug=...` → PLAY。
+- **`file://` 直開きでは SoundFont の XHR が CORS 制限で失敗**するため、必ず `localhost` で開くこと。
+- ブラウザ開発者コンソールで、`soundfont/.../acoustic_guitar_nylon-mp3/〇.mp3` が 200 で取得できていれば成功。
+- もし sharp 音（例 `C#4`）を要求する設定になっている場合、flat 名ファイルが無く該当音のみ鳴らない可能性がある。その場合は追加対応が必要（現状は abcjs が flat 名前提のため想定外）。
