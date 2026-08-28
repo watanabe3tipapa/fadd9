@@ -55,6 +55,7 @@ def main():
             print(f"[FAIL] {slug}: missing M:/L:/K:"); failures += 1; continue
 
         body = re.sub(r'^[A-Za-z]:.*$', '', body, flags=re.M)   # mid-tune fields (N:)
+        body = re.sub(r'^%.*$', '', body, flags=re.M)           # stylesheet directives (%%MIDI etc.)
         body = re.sub(r'"[^"]*"', '', body)                     # chord symbols
         for rep in ('|]', '||', ':|', '|:', '::'):
             body = body.replace(rep, '|')

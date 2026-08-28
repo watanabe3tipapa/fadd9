@@ -772,3 +772,32 @@ fadd9 を「完成された独習環境」にする。SoundFont ローカル同�
 - `tutorial/index.html` のCOPYボタンは `data-copy` 属性のバックスラッシュ変換のみ
 - `js/reference.js` のデモは描画のみ。再生機能は将来的に追加検討
 - `file://` プロトコルでは SoundFont の読み込みに CORS 制限あり（localhost 起動が必要）
+
+---
+
+## 修正記録(2026-08-27)— ギター音色がピアノのままになる問題の解消
+
+### 症状
+
+SoundFont ローカル同梱・`program: 24` 指定をしても、ブラウザ再生の音色が Acoustic Guitar (nylon) ではなく Piano のままだった。
+
+### 原因
+
+abcjs の `CreateSynth().init({ options: { program: 24 } })` の `options.program` は、SynthController 経由の再生では音色に確実には反映されない。abcjs が音色を決める確実な経路は **ABC 文字列内の `%%MIDI program` ディレクティブ**。
+
+### 対応（3点）
+
+1. **`data/samples.json` 全20件の ABC 文字列に `%%MIDI program 24` を直接埋め込み**（`K:` 行の直後に挿入）。abcjs 公式の標準的な音色指定方法。これが確実な対策。
+2. **`js/samples.js`** — `synthControl.setTune(visualObj, false, { program: 24, soundFontUrl: "../soundfont/FluidR3_GM/" })` に audioParams を追加（保険）。
+3. **`js/playground.js`** — `synthControl.setTune(visualObj, false, { program: 24, soundFontUrl })` に audioParams を追加（保険）。
+
+### 検証
+
+- abcjs v6.7.0 を Node で `require` し、`parseOnly` / `renderAbc` で `%%MIDI program 24` 入り ABC の描画が warnings なしで成功することを確認。
+- abcjs 内部の programOffsets が `acoustic_guitar_nylon` を default リストに含み、program 24 → nylon の対応が正しいことを確認。
+- `tools/validate_abc.py` — `%%` で始まる stylesheet ディレクティブ行を body から除去するよう修正（`%%MIDI` 追加後も小節長検証が通るように）。
+
+### 注意
+
+- 実際の再生音はブラウザで確認が必要（ローカルにて `python3 -m http.server` 起動 → samples 詳細で PLAY）。
+- `file://` 直開きでは SoundFont の CORS 制限で音が出ないため、必ず `localhost` 経由で確認すること。

@@ -66,7 +66,10 @@
 
     initAudio();
     if (synthControl && visualObj && audioReady) {
-      synthControl.setTune(visualObj, false).catch(() => {});
+      synthControl.setTune(visualObj, false, {
+        program: 24,
+        soundFontUrl: "../soundfont/FluidR3_GM/"
+      }).catch(() => {});
     }
   }
 

@@ -317,7 +317,10 @@
           soundFontUrl: "../soundfont/FluidR3_GM/"
         }
       })
-      .then(() => synthControl.setTune(visualObj, false))
+      .then(() => synthControl.setTune(visualObj, false, {
+        program: 24,
+        soundFontUrl: "../soundfont/FluidR3_GM/"
+      }))
       .catch(() => { audioPanel.hidden = true; });
   }
 
