@@ -1677,6 +1677,10 @@ a.abc-board__file:hover {
   display: block;
   width: 100%;
   height: auto;
+  /* abcjs は楽譜を currentColor（CSS color）で描画する。
+     親(.score-panel より外)のダークテーマ color(--ink, 明るい色)を継承すると
+     明るい紙背景に同系色で描画されて薄くなるため、紙に合う濃い色を明示する。 */
+  color: #1a1d26;
 }
 
 .score-fallback {
