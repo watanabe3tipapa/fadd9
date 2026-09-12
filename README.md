@@ -20,7 +20,7 @@ fadd9 は、ギターを入り口に **ABC記法(テキストで書く楽譜)** 
 
 - Hero — Fadd9 コードダイアグラム(SVG 手描き)+ コンセプト導線
 - Why ABC — テキスト記譜の利点(TEXT / GIT / PLAY)
-- **Samples Library** — `data/samples.json` 正本の譜例 20 件。カテゴリ(練習/コード進行/スケール/リフ/曲)・検索・タグで絞り込み、詳細ページから ABC テキストをワンクリックコピー
+- **Samples Library** — `data/samples.json` 正本の譜例 21 件。カテゴリ(練習/コード進行/スケール/リフ/曲)・検索・タグで絞り込み、詳細ページから ABC テキストをワンクリックコピー
 - **Play & Render** — 詳細ページで楽譜を SVG 描画し、ブラウザ内で再生(速度変更 WARP 対応)。abcjs v6 をローカル同梱、SoundFont もローカル格納、外部通信ゼロ
 - **Tutorial** — ABC記法チュートリアル。ステップバイステップで学習。鳴る実例付き
 - **Reference** — ABC記法チートシート。各記法要素に「鳴る実例」をその場で描画
@@ -46,7 +46,7 @@ fadd9 は、ギターを入り口に **ABC記法(テキストで書く楽譜)** 
 - **Standard 全セクション網羅** — 公式 v2.2 の主要セクション(歌詞・複数ボイス・移調等)を網羅
 - **練習記録 (Practice Log)** — Now ページで日付・内容・BPM・メモを記録、連続日数ストリーク表示
 - **コード変換ツール** — コード名→フレット位置、ABC↔音名、フレット↔音名の3タブ変換ツール
-- **譜例 20 件** — 5件追加(指弾き、スライドリフ、ペンタトニック、II-V-I、ミクソリディア)
+- **譜例 21 件** — 5件追加(指弾き、スライドリフ、ペンタトニック、II-V-I、ミクソリディア)
 
 ---
 
@@ -112,7 +112,7 @@ fadd9/
 ├── js/worksheets.js        # ワークシート一覧の描画
 ├── js/os.js                # ウィンドウマネージャ / Compact Mode(samples.json 正本)
 ├── data.json               # サイト設定メタデータ
-├── data/samples.json       # 譜例台帳の正本(20 譜例)
+├── data/samples.json       # 譜例台帳の正本(21 譜例)
 ├── soundfont/FluidR3_GM/   # SoundFont JS ファイル(ギター音色、ローカル同梱)
 ├── tools/validate_abc.py   # ABC 小節長バリデータ(小節拍数を機械検算)
 ├── tools/generate_og.py    # OGP 画像生成スクリプト

@@ -278,7 +278,7 @@
       return;
     }
 
-    if (!audioPanel || !window.ABCJS.synth.supportsAudio()) return; // 再生非対非対応環境では譜面だけ
+    if (!audioPanel || !window.ABCJS.synth.supportsAudio()) return; // 再生非対応環境では譜面だけ
     audioPanel.hidden = false;
 
     const cursorControl = {

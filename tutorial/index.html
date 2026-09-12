@@ -24,7 +24,7 @@
         <a href="../index.html">HOME</a> / <span>TUTORIAL</span>
       </nav>
       <h1 class="page-title">Tutorial<span class="section__sub">ABC記法チュートリアル</span></h1>
-      <p class="page-lead">ABC記法をステップバイステップで学ぶ。各セクションには鳴る実例付き。「書いて、貼って、鳴らす」を繰り返すうちに体に入ります。</p>
+      <p class="page-lead">ABC記法をステップバイステップで学ぶ。各セクションには鳴る実例付き。「書いて、貼って、鳴らす」を繰り返すうちに身につきます。</p>
     </div>
   </header>
 
@@ -179,7 +179,7 @@ C2 D E F   (二分・四分・四分・四分)</pre>
         <h2 class="section__title" id="chords-title">和音と和声<span class="section__sub">重音とコード記号</span></h2>
         <div class="ref-grid">
           <div class="ref-item reveal">
-            <h3 class="card__name">[CEG] 同時に鳴す</h3>
+            <h3 class="card__name">[CEG] 同時に鳴らす</h3>
             <p class="card__desc">括弧内の音を同時に発音。パワーコードなら <span class="mono">[EG]</span>。</p>
             <pre class="ref-code mono">[EG] z [EG] [EA]</pre>
             <figure class="ref-demo" data-demo="dyad"></figure>
@@ -220,7 +220,7 @@ C2 D E F   (二分・四分・四分・四分)</pre>
           </div>
           <div class="ref-item reveal">
             <h3 class="card__name">!fermata! フェルマータ</h3>
-            <p class="card__desc">音を伸ばす記号。终止式などで使用。</p>
+            <p class="card__desc">音を伸ばす記号。終止式などで使用。</p>
           </div>
           <div class="ref-item reveal">
             <h3 class="card__name">!accent! アクセント</h3>
@@ -240,7 +240,7 @@ C2 D E F   (二分・四分・四分・四分)</pre>
         <div class="ref-grid">
           <div class="ref-item reveal">
             <h3 class="card__name">%%MIDI program で音色指定</h3>
-            <p class="card__desc">MIDI音色を指定。ギターは25(Acoustic Guitar, steel)。</p>
+            <p class="card__desc">MIDI音色を指定。ギターは24(Acoustic Guitar, nylon)。</p>
             <pre class="ref-code mono">%%MIDI program 24</pre>
           </div>
           <div class="ref-item reveal">
@@ -294,15 +294,15 @@ C2 D E F   (二分・四分・四分・四分)</pre>
             <pre class="ref-code mono">E x E x G x G x</pre>
           </div>
           <div class="ref-item reveal">
-            <h3 class="card__name">!pp! 力づけ記号</h3>
+            <h3 class="card__name">!pp! 強弱記号</h3>
             <p class="card__desc">!pp!(!p!,!mp!,!mf!,!f!,!ff!)で強弱。</p>
             <pre class="ref-code mono">!pp! C D E F | !ff! G A B c</pre>
             <figure class="ref-demo" data-demo="dynamics"></figure>
           </div>
           <div class="ref-item reveal">
             <h3 class="card__name">カポ（カポタスト）の指定</h3>
-            <p class="card__desc">%%MIDI program で音色を変更。ギターは25(Acoustic Guitar, steel)。</p>
-            <pre class="ref-code mono">%%MIDI program 24
+            <p class="card__desc">カポの位置に応じて実音が上がる。%%MIDI transpose で再生の移調(半音数)を指定できる。</p>
+            <pre class="ref-code mono">%%MIDI transpose 2
 "G" G B d g | "C" c e g c' |</pre>
             <figure class="ref-demo" data-demo="capo"></figure>
           </div>
@@ -325,7 +325,7 @@ V:2 clef=bass</pre>
           </div>
           <div class="ref-item reveal">
             <h3 class="card__name">ギター向けの調号と音域</h3>
-            <p class="card__desc">ギターの音域はE2(32.7Hz)から。K:で調号を指定すると、 Pharmaceuticalsが自動的に適用される。</p>
+            <p class="card__desc">ギターの音域はE2(約82Hz)から。K:で調号を指定すると、その調号が楽譜に自動的に反映される。</p>
           </div>
         </div>
       </div>

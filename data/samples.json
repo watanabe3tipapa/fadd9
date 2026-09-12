@@ -53,7 +53,7 @@
       ],
       "updated": "2026-08-24",
       "summaryJa": "開放弦だけで弦移動を練習するエチュード。左手ゼロでピッキングの手首の動きだけに集中できる。",
-      "tipsJa": "E-A-高e-高a の順に弦を跨ぐ。ミュートしすぎず、余計な弦を鳴らさない角度を探す。オルタネイトピッキング固定で。",
+      "tipsJa": "E-A-e-a の順に弦を跨ぐ。ミュートしすぎず、余計な弦を鳴らさない角度を探す。オルタネイトピッキング固定で。",
       "abc": "X:1\nT:String Crossing - Open Strings\nM:4/4\nL:1/8\nQ:1/4=80\nK:C\n%%MIDI program 24\n|: E A e a E A e a | E A e a e2 A2 :|"
     },
     {
@@ -186,7 +186,7 @@
       ],
       "updated": "2026-08-24",
       "summaryJa": "ロックの基本単位・パワーコード(ルート+5度)を [EG] のような重音表記で書いたミニリフ。z(休符)で刻むパームミュート練習。",
-      "tipsJa": "右手の外側小指側の肉で弦に軽く触れてミュート。休符 z が鳴らない=ミュートできていない、ということ。[EG] は 6 弦 0 フレット+5 弦 2 フレットの形から。",
+      "tipsJa": "右手の外側小指側の肉で弦に軽く触れてミュート。休符 z が鳴る=ミュートできていない、ということ。[EG] は 6 弦 0 フレット+5 弦 2 フレットの形から。",
       "abc": "X:1\nT:Palm-Mute Power Chord Riff\nM:4/4\nL:1/8\nQ:1/4=120\nK:E\n%%MIDI program 24\nN:palm mute on all hits\n|: [EG] z [EG] z [EG] [EA] [EG] z | [EG] z [EG] z [EB] [EA] [EG] z :|"
     },
     {
@@ -261,8 +261,8 @@
         "expression"
       ],
       "updated": "2026-08-25",
-      "summaryJa": "スライドを使った表現豊かなリフ。ABC記法では装飾音(grace notes)でスライド感を表現する。",
-      "tipsJa": "実際のスライドは弦を押さえ直さずにフレットを移動。abcjsでは装飾音で近い表現が可能。スライドの入りと出しのニュアンスを意識。",
+      "summaryJa": "スライドを使った表現豊かなリフ。 > 記法(前の音を付点化)でスライドの揺れを表現する。",
+      "tipsJa": "実際のスライドは弦を押さえ直さずにフレットを移動。> は「前の音を長く、次の音を短く」にするので、スライドの入りと出しのニュアンスに近い。G メジャーペンタトニックのポジションで弾く。",
       "abc": "X:1\nT:Slide Lick in G\nM:4/4\nL:1/8\nQ:1/4=100\nK:G\n%%MIDI program 24\n|: G>g G>g d>g d>g | B>d B>d G2 z2 :|"
     },
     {
@@ -280,8 +280,8 @@
         "scale"
       ],
       "updated": "2026-08-25",
-      "summaryJa": "マイナー系のモード・ドリアン(B♭ナチュラルマイナーの6音目から開始)。明るすぎず暗すぎない独特の響き。",
-      "tipsJa": "Cメジャーと同じ鍵盤使だが、Dから始まるためB♭が自然に入る。Dmのコードの上ならドリアンがai时、Dm7の上では特に響く。",
+      "summaryJa": "マイナー系のモード・ドリアン(Cメジャースケールの2音目から開始)。メジャーの明るさとマイナーの暗さが同居する独特の響き。",
+      "tipsJa": "Cメジャーと同じ音列で、Dマイナーとの違いは 6 度が長 6 度(B)になるところ。Dm7 コードの上で弾くとドリアンの響きが特に映える。",
       "abc": "X:1\nT:D Dorian Mode Scale\nM:4/4\nL:1/8\nQ:1/4=80\nK:Dm\n%%MIDI program 24\n|: D E F G A B c d | d c B A G F E D :|"
     },
     {
@@ -338,7 +338,7 @@
       ],
       "updated": "2026-08-27",
       "summaryJa": "E メジャーペンタトニック(E F# G# B C#)。明るく開放的な響き。カントリー・ポップスで多用されるスケール。",
-      "tipsJa": "マイナーペンタトニックの相対メジャースケール。E マイナーペンタトニック(A C D E G)と同じ鍵盤だが、E を主音として聴くと明るい響きになる。上昇下降をスムーズに。",
+      "tipsJa": "マイナーペンタトニックの相対メジャースケール。C# マイナーペンタトニック(E F# G# B C#)と同じ音列で、E を主音として聴くと明るい響きになる。上昇下降をスムーズに。",
       "abc": "X:1\nT:E Major Pentatonic Scale\nM:4/4\nL:1/8\nQ:1/4=80\nK:E\n%%MIDI program 24\n|: E>^F ^G>B c'>^c' B>^G | ^F>E B,>^D ^F>B, E2 :|"
     },
     {
@@ -357,7 +357,7 @@
       ],
       "updated": "2026-08-27",
       "summaryJa": "ジャズの基本進行 II-V-I を7thコードアルペジオで。Dm7→G7→CMaj7 の流れを指板で覚える。",
-      "tipsJa": "各コードの7th音に注目。Dm7のC、G7のF、CMaj7のBが進行の骨头。アルペジオを弾きながら7thの解決感を耳で確認しよう。",
+      "tipsJa": "各コードの7th音に注目。Dm7のC、G7のF、CMaj7のBが進行の骨格。アルペジオを弾きながら7thの解決感を耳で確認しよう。",
       "abc": "X:1\nT:Jazz II-V-I Progression\nM:4/4\nL:1/4\nQ:1/4=84\nK:C\n%%MIDI program 24\n\"Dm7\" D F A c | \"G7\" G B d f | \"CMaj7\" c e g b | \"Dm7\" A F D c |"
     },
     {
@@ -378,6 +378,25 @@
       "summaryJa": "メジャー系のモード・ミクソリディア(C長調の5音目から開始)。メジャーの明るさにブルーズ感のある F♮ が混ざる。",
       "tipsJa": "G メジャーとの違いは F♮(7度がフラット)。ブルーズやロックで非常によく使う。G7 コードの上では特に響く。F♮ が G に解決する感覚を掴もう。",
       "abc": "X:1\nT:G Mixolydian Mode Scale\nM:4/4\nL:1/8\nQ:1/4=80\nK:G\n%%MIDI program 24\n|: G A B c d e f g | g f e d c B A G :|"
+    },
+    {
+      "slug": "song-03-cooleys-reel",
+      "name": "Cooley's Reel",
+      "nameJa": "クーリーズ・リール(アイリッシュ)",
+      "category": "songs",
+      "level": "INTERMEDIATE",
+      "key": "Em",
+      "tempo": "1/4=104",
+      "meter": "4/4",
+      "tags": [
+        "irish",
+        "folk",
+        "reel"
+      ],
+      "updated": "2026-09-12",
+      "summaryJa": "アイリッシュ・セッション屈指の名リール。E ドリアン/マイナーの浮遊感を、D コードの響きが鮮やかに彩る。パートごとの対比が魅力。",
+      "tipsJa": "リールは 8 分音符を均等に、軽く跳ねる意識で。A パートと B パートを滑らかにつなぎ、dBAF→DEFD の E マイナーへの解決をしっかり鳴らす。",
+      "abc": "X:1\nT:Cooley's\nC:Traditional (Public Domain)\nM:4/4\nL:1/8\nQ:1/4=104\nK:Emin\n%%MIDI program 24\n|:D2|\"Em\"EBBA B2 EB| ~B2 AB dBAG|\"D\"FDAD BDAD| FDAD dAFD|\n\"Em\"EBBA B2 EB| B2 AB defg|\"D\"afe^c dBAF|\"Em\"DEFD E2:|\n|:gf|\"Em\"eB B2 efge| eB B2 gedB|\"D\"A2 FA DAFA| A2 FA defg|\n\"Em\"eB B2 eBgB| eB B2 defg|\"D\"afe^c dBAF|\"Em\"DEFD E2:|"
     }
   ]
 }
